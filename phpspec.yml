@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: WITR
+        psr4_prefix: WITR
+        src_path: app
