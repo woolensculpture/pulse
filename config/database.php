@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'default' => 'pulse',
+	'default' => 'web',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,24 +52,24 @@ return [
 			'prefix'   => '',
 		],
 
-		'pulse' => [
+		'web' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_DATABASE', 'pulse'),
-			'username'  => env('DB_USERNAME', 'forge'),
-			'password'  => env('DB_PASSWORD', ''),
+			'host'      => env('WEBSITE_DB_HOST', 'localhost'),
+			'database'  => env('WEBSITE_DB_DATABASE', 'web'),
+			'username'  => env('WEBSITE_DB_USERNAME', 'forge'),
+			'password'  => env('WEBSITE_DB_PASSWORD', ''),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 			'strict'    => false,
 		],
 
-		'vinyl' => [
+		'bible' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_DATABASE', 'vinyl'),
-			'username'  => env('DB_USERNAME', 'forge'),
-			'password'  => env('DB_PASSWORD', ''),
+			'host'      => env('BIBLE_DB_HOST', 'localhost'),
+			'database'  => env('BIBLE_DB_DATABASE', 'bible'),
+			'username'  => env('BIBLE_DB_USERNAME', 'forge'),
+			'password'  => env('BIBLE_DB_PASSWORD', ''),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
