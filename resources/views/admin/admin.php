@@ -3,13 +3,13 @@
 	<div class="admin_section">
 	    <h2>Admin</h2>
 	    <ul>
-	        <li><a href="/admin/eboard">Change Eboard</a></li>
+	        <li><a href="/admin/eboard/eboard">Change Eboard</a></li>
+	        <li><a href="/admin/eboard/new_position">Add New Position</a></li>
 	        <?php if ($this->acl->can_read($this->role_id, Resource::Permissions)) : ?>
 	        <li><a href="<?php echo base_url(); ?>permissions/roles">Role Administration</a></li>
 			<li><a href="<?php echo base_url(); ?>permissions/resources">Resource Administration</a></li>
 			<li><a href="<?php echo base_url(); ?>permissions/permission">Permissions Administration</a></li>
 			<li><a href="<?php echo base_url(); ?>permissions/user_roles">Assign User Roles</a></li>
-			<li><a href="<?php echo base_url(); ?>/recordings">Program Recordings</a></li>
 			<?php endif; ?>
 	    </ul>
 	</div>

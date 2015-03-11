@@ -1,6 +1,6 @@
 <div class="general_wrap border">
 	<div class="general_section">
-		<div class="header">Edit User Information</div>
+		<div class="header">Add New User</div>
 		<?php
 			$formConfig = array('id' => 'user_form');
 			$nameConfig = array('name' => 'name', 'id' => 'name', 'required' => 'required');
