@@ -1,3 +1,10 @@
 /vendor
 /node_modules
 .env
+
+# legacy
+wiki/
+
+# other
+.DS_Store
+Thumbs.db

@@ -23,3 +23,18 @@ $factory('WITR\User', 'legacy_user', [
     'password' => md5('test'),
     'email' => 'legacy@test.com'
 ]);
+
+$factory('WITR\Show', [
+    'name' => 'The Pulse Of Music', 
+    'active' => true,
+    'style' => 'display: none;',
+    'show_picture' => 'show.jpg',
+    'slider_picture' => 'slider.jpg',
+]);
+
+$factory('WITR\TimeSlot', [
+    'show' => 'factory:WITR\Show',
+    'day' => 1,
+    'dj' => 'factory:WITR\User',
+    'hour' => 1
+]);

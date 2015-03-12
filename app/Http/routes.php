@@ -11,15 +11,41 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
+Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-Route::get('/about', function(){
+Route::get('/about', ['as' => 'about'], function(){
 	return view("about.about");
 });
 
-Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('shows', ['as' => 'shows.index', 'uses' => 'ShowController@schedule']);
+Route::get('shows/schedule', ['as' => 'shows.schedule', 'uses' => 'ShowController@schedule']);
+Route::get('shows/specialty', ['as' => 'shows.specialty', 'uses' => 'ShowController@schedule']);
+Route::get('shows/pulse', ['as' => 'shows.pulse', 'uses' => 'ShowController@schedule']);
+
+Route::get('events', ['as' => 'events.index', 'uses' => 'ShowController@schedule']);
+Route::get('contact', ['as' => 'contact', 'uses' => 'ShowController@schedule']);
+Route::get('hockey', ['as' => 'hockey', 'uses' => 'ShowController@schedule']);
+Route::get('askdestler', ['as' => 'askdestler', 'uses' => 'ShowController@schedule']);
+Route::get('home/listen', ['as' => 'listen', 'uses' => 'ShowController@schedule']);
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+	Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.eboard.eboard', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.eboard.new_position', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.permissions.roles', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.permissions.user_roles', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.schedule', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.shows', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.slider', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.reviews', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.video', 'uses' => 'AdminController@index']);
+	Route::get('/', ['as' => 'admin.contest.view_entries', 'uses' => 'AdminController@index']);
+});
