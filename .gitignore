@@ -4,3 +4,7 @@
 
 # legacy
 wiki/
+
+# other
+.DS_Store
+Thumbs.db
