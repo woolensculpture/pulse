@@ -13,6 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
+Route::get('/about', function(){
+	return view("about.about");
+});
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
