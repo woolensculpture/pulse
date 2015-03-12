@@ -58,6 +58,7 @@ class WeeklyScheduleSpec extends ObjectBehavior
     }
 }
 
+// Wrapper to stub out eloquent relations
 class TimeSlotTestWrapper
 {
 	protected $slot;
@@ -87,16 +88,24 @@ class TimeSlotTestWrapper
 
 	public function __call($method, $arguments)
     {
+        var_dump($method);
         return call_user_func_array(array($this->slot, $method), $arguments);
     }
 
     public function __set($name, $value)
     {
+        var_dump($name);
         $this->slot->$name = $value;
     }
 
     public function __get($name)
     {
+        if ($name == 'showForTimeslot') {
+            return $this->showForTimeslot();
+        }
+        if ($name == 'djForTimeslot') {
+            return $this->djForTimeslot();
+        }
         return $this->slot->$name;
     }
 }
