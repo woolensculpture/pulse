@@ -44,6 +44,11 @@ class ScheduledShowSpec extends ObjectBehavior
    		$this->show()->shouldBe('The Pulse Of Music');
    	}
 
+    function it_should_return_a_show_id()
+    {
+      $this->showId()->shouldBe(2);
+    }
+
    	function it_should_return_the_djs_picture()
    	{
    		$this->djPicture()->shouldBe('dj.jpg');
@@ -142,5 +147,11 @@ class ScheduledShowSpec extends ObjectBehavior
         $pastDay = Carbon::createFromDate(2015, 3, 3)->dayOfWeek + 1; // weeks start at 1
         $this->airsDayOfWeek($pastDay);
         $this->getRelativeAirDate()->shouldBe('Tuesday');
+    }
+
+    function it_should_return_air_day_of_week()
+    {
+      $this->airsDayOfWeek(3);
+      $this->airDayOfWeek()->shouldBe(3);
     }
 }

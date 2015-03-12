@@ -39,6 +39,11 @@ class ScheduledShow
         return $this->show->name;
     }
 
+    public function showId()
+    {
+        return $this->show->id;
+    }
+
     public function djPicture()
     {
         return $this->dj->picture;
@@ -129,4 +134,9 @@ class ScheduledShow
         }
     }
 
+
+    public function airDayOfWeek()
+    {
+        return $this->dayOfWeek;
+    }
 }

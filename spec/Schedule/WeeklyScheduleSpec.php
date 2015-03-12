@@ -21,7 +21,9 @@ class WeeklyScheduleSpec extends ObjectBehavior
     function it_should_get_all_scheduled_show_for_a_weekday()
     {
     	$this->beConstructedThrough('fromTimeSlots', [$this->getTimeSlots()]);
-    	$this->scheduleFor(Weekday::SUNDAY)->shouldNotBeEmpty();
+    	$schedule = $this->scheduleFor(Weekday::SUNDAY);
+    	$schedule->shouldNotBeEmpty();
+    	$schedule->first()->shouldHaveType('WITR\Schedule\ScheduledShow');
     }
 
     function it_should_map_time_slots_to_scheduled_shows()
@@ -30,15 +32,22 @@ class WeeklyScheduleSpec extends ObjectBehavior
     	$this->first()->shouldHaveType('WITR\Schedule\ScheduledShow');
     }
 
+    function it_should_merge_time_slots()
+    {
+    	$this->beConstructedThrough('fromTimeSlots', [$this->getTimeSlots()]);
+    	$this->first()->timespan()->shouldBe('1 - 3 AM');
+    }
+
     private function getTimeSlots()
     {
     	for ($day = Weekday::SUNDAY; $day <= Weekday::SATURDAY; $day++) 
         {
         	for ($hour = 1; $hour <= 24; $hour++)
         	{
+				$id = ($hour - 1) % 4 < 2 ? 1 : 2;
         		$slots[] = new TimeSlotTestWrapper(new TimeSlot([
-        			'show' => 1,
-        			'dj' => 1,
+        			'show' => $id,
+        			'dj' => $id,
         			'day' => $day,
         			'hour' => $hour
         		]));
@@ -60,16 +69,20 @@ class TimeSlotTestWrapper
 
 	public function show()
 	{
-		return new Show([
+		$show = new Show([
 			'name' => 'The Pulse of Music'
 		]);
+		$show->id = ($this->slot->hour - 1) % 4 < 2 ? 1 : 2;
+		return $show;
 	}
 
 	public function dj()
 	{
-		return new User([
+		$user = new User([
 			'dj_name' => 'Philosopher'
 		]);
+		$user->id = ($this->slot->hour - 1) % 4 < 2 ? 1 : 2;
+		return $user;
 	}
 
 	public function __call($method, $arguments)
