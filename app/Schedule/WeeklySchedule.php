@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 class WeeklySchedule extends Collection
 {
 
-    public static function fromTimeSlots(Collection $timeSlots)
+    public static function mergeFromTimeSlots(Collection $timeSlots)
     {
         $scheduledShows = new Collection();
         $timeSlots = $timeSlots->reduce(function($scheduledShows, $timeslot) {
@@ -28,6 +28,18 @@ class WeeklySchedule extends Collection
         $weeklySchedule = new WeeklySchedule($timeSlots);
 
         return $weeklySchedule;
+    }
+
+    public static function fromTimeSlots(Collection $timeSlots)
+    {
+        $timeSlots = $timeSlots->map(function($timeslot) {
+            $show = ScheduledShow::fromShowAndDJ($timeslot->showForTimeslot, $timeslot->djForTimeslot);
+            $show->startsAt($timeslot->hour);
+            $show->airsDayOfWeek($timeslot->day);
+            return $show;
+        });
+
+        return new WeeklySchedule($timeSlots);
     }
 
     private static function showContinuesIntoCurrentTimeslot($scheduledShow, $timeslot)

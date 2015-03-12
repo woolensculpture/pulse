@@ -20,7 +20,7 @@ class WeeklyScheduleSpec extends ObjectBehavior
 
     function it_should_get_all_scheduled_show_for_a_weekday()
     {
-    	$this->beConstructedThrough('fromTimeSlots', [$this->getTimeSlots()]);
+    	$this->beConstructedThrough('mergeFromTimeSlots', [$this->getTimeSlots()]);
     	$schedule = $this->scheduleFor(Weekday::SUNDAY);
     	$schedule->shouldNotBeEmpty();
     	$schedule->first()->shouldHaveType('WITR\Schedule\ScheduledShow');
@@ -30,11 +30,12 @@ class WeeklyScheduleSpec extends ObjectBehavior
     {
     	$this->beConstructedThrough('fromTimeSlots', [$this->getTimeSlots()]);
     	$this->first()->shouldHaveType('WITR\Schedule\ScheduledShow');
+        $this->first()->timespan()->shouldBe('1 - 2 AM');
     }
 
     function it_should_merge_time_slots()
     {
-    	$this->beConstructedThrough('fromTimeSlots', [$this->getTimeSlots()]);
+    	$this->beConstructedThrough('mergeFromTimeSlots', [$this->getTimeSlots()]);
     	$this->first()->timespan()->shouldBe('1 - 3 AM');
     }
 

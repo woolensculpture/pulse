@@ -1,24 +1,23 @@
-<?php namespace WITR\Http\Controllers;
+<?php namespace WITR\Http\Controllers\Admin;
 
 use WITR\Http\Requests;
 use WITR\Http\Controllers\Controller;
+use WITR\Schedule\WeeklySchedule;
+use WITR\TimeSlot;
 
 use Illuminate\Http\Request;
 
-use WITR\TimeSlot;
-use WITR\Schedule\WeeklySchedule;
-
-class ShowController extends Controller {
+class ScheduleController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function schedule()
+	public function index()
 	{
-		$schedule = WeeklySchedule::mergeFromTimeSlots(TimeSlot::with('djForTimeslot', 'showForTimeslot')->get());
-		return view('schedule.schedule')->withSchedule($schedule);
+		$timeslots = WeeklySchedule::fromTimeSlots(TimeSlot::with('djForTimeslot', 'showForTimeslot')->get());
+		return view('admin.schedule.index')->withTimeslots($timeslots);
 	}
 
 	/**
