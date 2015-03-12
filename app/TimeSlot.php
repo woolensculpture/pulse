@@ -15,13 +15,13 @@ class TimeSlot extends Model {
 
 	public $timestamps = false;
 
-	public function dj()
+	public function djForTimeslot()
 	{
-		return $this->hasOne('WITR\User', 'dj');
+		return $this->hasOne('WITR\User', 'id', 'dj');
 	}
 
-	public function show()
+	public function showForTimeslot()
 	{
-		return $this->hasOne('WITR\Show', 'show');
+		return $this->hasOne('WITR\Show', 'id', 'show');
 	}
 }

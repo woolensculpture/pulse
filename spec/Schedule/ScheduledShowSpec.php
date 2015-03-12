@@ -16,7 +16,8 @@ class ScheduledShowSpec extends ObjectBehavior
    			'name' => 'The Pulse Of Music',
    			'show_picture' => 'show.jpg',
    			'slider_picture' => 'slider.jpg',
-   			'style' => 'display: none;'
+   			'style' => 'display: none;',
+        'description' => 'Show Description'
 		]);
 		$show->id = 2;
 
@@ -102,6 +103,10 @@ class ScheduledShowSpec extends ObjectBehavior
    		$this->startsAt(12);
    		$this->extendShowByHour();
    		$this->timespan()->shouldBe('12 - 2 PM');
+
+      $this->startsAt(14);
+      $this->extendShowByHour();
+      $this->timespan()->shouldBe('2 - 4 PM');
    	}
 
    	function it_should_return_air_date_for_each_day_of_the_week()
@@ -153,5 +158,10 @@ class ScheduledShowSpec extends ObjectBehavior
     {
       $this->airsDayOfWeek(3);
       $this->airDayOfWeek()->shouldBe(3);
+    }
+
+    function it_should_return_a_show_description()
+    {
+      $this->showDescription()->shouldBe('Show Description');
     }
 }

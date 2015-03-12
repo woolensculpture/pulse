@@ -14,7 +14,7 @@ class ScheduledShow
     protected $startingHour;
     protected $endingHour;
 
-    public static function fromShowAndDJ(Show $show, User $dj)
+    public static function fromShowAndDJ($show, $dj)
     {
         $scheduledShow = new ScheduledShow();
 
@@ -94,17 +94,17 @@ class ScheduledShow
     public function timespan()
     {
         $suffix = $this->endingHour < 12 ? 'AM' : 'PM';
-        $endingHour = $this->endingHourAdjusted();
-        return $this->startingHour . ' - ' . $endingHour . ' ' . $suffix;
+        $endingHour = $this->hourAdjusted($this->endingHour);
+        $startingHour = $this->hourAdjusted($this->startingHour);
+        return $startingHour . ' - ' . $endingHour . ' ' . $suffix;
     }
 
-    private function endingHourAdjusted()
+    private function hourAdjusted($hour)
     {
-        $endingHour = $this->endingHour;
-        if ($endingHour > 12) {
-            $endingHour -= 12;
+        if ($hour > 12) {
+            $hour -= 12;
         }
-        return $endingHour;
+        return $hour;
     }
 
     public function airsDayOfWeek($airsDayOfWeek)
@@ -138,5 +138,10 @@ class ScheduledShow
     public function airDayOfWeek()
     {
         return $this->dayOfWeek;
+    }
+
+    public function showDescription()
+    {
+        return $this->show->description;
     }
 }

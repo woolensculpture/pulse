@@ -67,7 +67,7 @@ class TimeSlotTestWrapper
 		$this->slot = $slot;
 	}
 
-	public function show()
+	public function showForTimeslot()
 	{
 		$show = new Show([
 			'name' => 'The Pulse of Music'
@@ -76,7 +76,7 @@ class TimeSlotTestWrapper
 		return $show;
 	}
 
-	public function dj()
+	public function djForTimeslot()
 	{
 		$user = new User([
 			'dj_name' => 'Philosopher'

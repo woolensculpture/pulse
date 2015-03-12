@@ -18,7 +18,7 @@ class WeeklySchedule extends Collection
             } 
             else
             {
-                $show = ScheduledShow::fromShowAndDJ($timeslot->show(), $timeslot->dj());
+                $show = ScheduledShow::fromShowAndDJ($timeslot->showForTimeslot, $timeslot->djForTimeslot);
                 $show->startsAt($timeslot->hour);
                 $show->airsDayOfWeek($timeslot->day);
                 $scheduledShows->push($show);
@@ -33,8 +33,8 @@ class WeeklySchedule extends Collection
     private static function showContinuesIntoCurrentTimeslot($scheduledShow, $timeslot)
     {
         return $scheduledShow != null 
-            && $scheduledShow->djId() == $timeslot->dj()->id
-            && $scheduledShow->showId() == $timeslot->show()->id;
+            && $scheduledShow->djId() == $timeslot->djForTimeslot->id
+            && $scheduledShow->showId() == $timeslot->showForTimeslot->id;
     }
 
     public function scheduleFor($weekday)

@@ -14,15 +14,16 @@ class ScheduleTableSeeder extends Seeder {
     {
         // TestDummy::times(20)->create('App\Post');
         DB::table('schedule')->delete();
-        $user = User::firstOrFail();
+        $user = User::take(2)->get();
         $show = Show::firstOrFail();
         for ($day = 1; $day <= 7; $day++) 
         {
         	for ($hour = 1; $hour <= 24; $hour++)
         	{
+                $idIndex = ($hour - 1) % 4 < 2 ? 0 : 1;
         		$slot = new TimeSlot([
         			'show' => $show->id,
-        			'dj' => $user->id,
+        			'dj' => $user[$idIndex]->id,
         			'day' => $day,
         			'hour' => $hour
         		]);
