@@ -29,8 +29,11 @@
 					<p>(585) 475-2271 &nbsp; IM: WITRDJ</p>
 					<hr class="white">
 					<div style="padding: 0px 10px 0px 10px; text-align: left">
-						<span style="color: #7bc1eb">Want to Promote your business on WITR? Email:</span> <a style="color: #f9ec33" href="mailto:business@witr.rit.edu">business@witr.rit.edu</a> </br></br>
-						<span style="color: #7bc1eb">RIT Student interested in joining WITR? Email:</span> <a style="color: #f9ec33" href="mailto:mal@witr.rit.edu<">mal@witr.rit.edu</a>
+						<span style="color: #7bc1eb">Want to Promote your business on WITR? Email:</span>
+						<a style="color: #f9ec33" href="mailto:business@witr.rit.edu">business@witr.rit.edu</a>
+						</br></br>
+						<span style="color: #7bc1eb">RIT Student interested in joining WITR? Email:</span>
+						<a style="color: #f9ec33" href="mailto:mal@witr.rit.edu<">mal@witr.rit.edu</a>
 					</div>
 				</div>
 				<hr class="black">
