@@ -14,4 +14,14 @@ class TimeSlot extends Model {
 	protected $fillable = ['dj', 'show', 'day', 'hour'];
 
 	public $timestamps = false;
+
+	public function djForTimeslot()
+	{
+		return $this->hasOne('WITR\User', 'id', 'dj');
+	}
+
+	public function showForTimeslot()
+	{
+		return $this->hasOne('WITR\Show', 'id', 'show');
+	}
 }

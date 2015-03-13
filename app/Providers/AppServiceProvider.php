@@ -34,6 +34,11 @@ class AppServiceProvider extends ServiceProvider {
 		{
 		    $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
 		}
+
+		$this->app['view']->composers([
+		    'WITR\ViewComposers\UsersViewComposer' => 'shared.user_dropdown',
+		    'WITR\ViewComposers\ShowsViewComposer' => 'shared.show_dropdown',
+		]);
 	}
 
 }
