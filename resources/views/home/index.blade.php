@@ -48,14 +48,13 @@
 			
 			<hr class="white">
 			
-			<!-- Video -->
 			@include('home.partials.video')
 			
 			<div style="clear:both;"></div>
 			
 			<hr class="white">
 
-			<!-- Albums -->
+			@include('home.partials.albums')
 
 		</div>
 

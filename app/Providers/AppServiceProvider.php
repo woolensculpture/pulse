@@ -39,6 +39,7 @@ class AppServiceProvider extends ServiceProvider {
 		    'WITR\ViewComposers\UsersViewComposer' => 'shared.user_dropdown',
 		    'WITR\ViewComposers\ShowsViewComposer' => 'shared.show_dropdown',
 		    'WITR\ViewComposers\VideoViewComposer' => 'home.partials.video',
+		    'WITR\ViewComposers\AlbumsViewComposer' => 'home.partials.albums',
 		]);
 	}
 
