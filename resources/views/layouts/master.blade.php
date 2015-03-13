@@ -11,7 +11,7 @@ Developer: John Phillip Betley
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta charset="utf-8">
-	<meta name="author" content="John Betley">
+	<meta name="author" content="John Betley, Eli Clampett">
 
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
