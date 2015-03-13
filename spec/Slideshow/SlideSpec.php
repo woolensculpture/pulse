@@ -81,4 +81,10 @@ class SlideSpec extends ObjectBehavior
     	$this->beConstructedThrough('fromEvent', [$event]);
     	$this->url()->shouldBe('google.com');
     }
+
+    function it_should_not_display_a_slider_text_style(Event $event)
+    {
+    	$this->beConstructedThrough('fromEvent', [$event]);
+    	$this->textStyle()->shouldBeNull();
+    }
 }

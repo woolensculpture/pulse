@@ -64,6 +64,11 @@ class Slide
 
     public function textStyle()
     {
+        if ($this->type != 'SHOW')
+        {
+            return;
+        }
+        
         return $this->show->sliderStyle();
     }
 
@@ -73,7 +78,7 @@ class Slide
         {
             return;
         }
-        
+
         return $this->event->url;
     }
 }
