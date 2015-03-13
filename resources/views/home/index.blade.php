@@ -49,6 +49,7 @@
 			<hr class="white">
 			
 			<!-- Video -->
+			@include('home.partials.video')
 			
 			<div style="clear:both;"></div>
 			
