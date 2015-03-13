@@ -28,118 +28,49 @@
 		</ul>
 		
 		<hr style="color:white;background-color:white;width:97%">
-		<form action="{{ route('admin.schedule.update' }}" id="schedule_form" method="post">
-			<input type="hidden" value="{{ csrf_token() }}">
+		<form action="{{ route('admin.schedule.update') }}" id="schedule_form" method="post">
+			<input type="hidden" name="_method" value="PUT">
+			<input name="_token" type="hidden" value="{{ csrf_token() }}">
 			<table class="schedule_table" id="sunday">
-				<?php foreach($schedule['sunday'] as $row) : ?>
-				<tr>
-					<td>Time Block:</td>
-					<td>Show:</td>
-					<td>DJ:</td>
-				</tr>
-				<tr>
-					<td><?php echo $row->show->getTime(); ?></td>
-					<td><?php echo form_dropdown("show_" . $row->id, $show_array, $row->show->id ); ?></td>
-				    <td><?php echo form_dropdown("dj_" . $row->id, $dj_array, $row->dj ); ?></td>
-				</tr>
-				<tr style="height: 15px"></tr>
-				<?php endforeach; ?>
+				@foreach ($schedule->scheduleFor(WITR\Schedule\Weekday::SUNDAY) as $show)
+					@include('admin.schedule.partials.day', ['show' => $show])
+				@endforeach
 			</table>
 
 			<table class="schedule_table" id="monday">
-				<?php foreach($schedule['monday'] as $row) : ?>
-				<tr>
-					<td>Time Block:</td>
-					<td>Show:</td>
-					<td>DJ:</td>
-				</tr>
-				<tr>
-					<td><?php echo $row->show->getTime(); ?></td>
-					<td><?php echo form_dropdown("show_" . $row->id, $show_array, $row->show->id ); ?></td>
-				    <td><?php echo form_dropdown("dj_" . $row->id, $dj_array, $row->dj ); ?></td>
-				</tr>
-				<tr style="height: 15px"></tr>
-				<?php endforeach; ?>
+				@foreach ($schedule->scheduleFor(WITR\Schedule\Weekday::MONDAY) as $show)
+					@include('admin.schedule.partials.day', ['show' => $show])
+				@endforeach
 			</table>
 			
 			<table class="schedule_table" id="tuesday">
-				<?php foreach($schedule['tuesday'] as $row) : ?>
-				<tr>
-					<td>Time Block:</td>
-					<td>Show:</td>
-					<td>DJ:</td>
-				</tr>
-				<tr>
-					<td><?php echo $row->show->getTime(); ?></td>
-					<td><?php echo form_dropdown("show_" . $row->id, $show_array, $row->show->id ); ?></td>
-				    <td><?php echo form_dropdown("dj_" . $row->id, $dj_array, $row->dj ); ?></td>
-				</tr>
-				<tr style="height: 15px"></tr>
-				<?php endforeach; ?>
+				@foreach ($schedule->scheduleFor(WITR\Schedule\Weekday::TUESDAY) as $show)
+					@include('admin.schedule.partials.day', ['show' => $show])
+				@endforeach
 			</table>
 			
 			<table class="schedule_table" id="wednesday">
-				<?php foreach($schedule['wednesday'] as $row) : ?>
-				<tr>
-					<td>Time Block:</td>
-					<td>Show:</td>
-					<td>DJ:</td>
-				</tr>
-				<tr>
-					<td><?php echo $row->show->getTime(); ?></td>
-					<td><?php echo form_dropdown("show_" . $row->id, $show_array, $row->show->id ); ?></td>
-				    <td><?php echo form_dropdown("dj_" . $row->id, $dj_array, $row->dj ); ?></td>
-				</tr>
-				<tr style="height: 15px"></tr>
-				<?php endforeach; ?>
+				@foreach ($schedule->scheduleFor(WITR\Schedule\Weekday::WEDNESDAY) as $show)
+					@include('admin.schedule.partials.day', ['show' => $show])
+				@endforeach
 			</table>
 			
 			<table class="schedule_table" id="thursday">
-				<?php foreach($schedule['thursday'] as $row) : ?>
-				<tr>
-					<td>Time Block:</td>
-					<td>Show:</td>
-					<td>DJ:</td>
-				</tr>
-				<tr>
-					<td><?php echo $row->show->getTime(); ?></td>
-					<td><?php echo form_dropdown("show_" . $row->id, $show_array, $row->show->id ); ?></td>
-				    <td><?php echo form_dropdown("dj_" . $row->id, $dj_array, $row->dj ); ?></td>
-				</tr>
-				<tr style="height: 15px"></tr>
-				<?php endforeach; ?>
+				@foreach ($schedule->scheduleFor(WITR\Schedule\Weekday::THURSDAY) as $show)
+					@include('admin.schedule.partials.day', ['show' => $show])
+				@endforeach
 			</table>
 			
 			<table class="schedule_table" id="friday">
-				<?php foreach($schedule['friday'] as $row) : ?>
-				<tr>
-					<td>Time Block:</td>
-					<td>Show:</td>
-					<td>DJ:</td>
-				</tr>
-				<tr>
-					<td><?php echo $row->show->getTime(); ?></td>
-					<td><?php echo form_dropdown("show_" . $row->id, $show_array, $row->show->id ); ?></td>
-				    <td><?php echo form_dropdown("dj_" . $row->id, $dj_array, $row->dj ); ?></td>
-				</tr>
-				<tr style="height: 15px"></tr>
-				<?php endforeach; ?>
+				@foreach ($schedule->scheduleFor(WITR\Schedule\Weekday::FRIDAY) as $show)
+					@include('admin.schedule.partials.day', ['show' => $show])
+				@endforeach
 			</table>
 			
 			<table class="schedule_table" id="saturday">
-				<?php foreach($schedule['saturday'] as $row) : ?>
-				<tr>
-					<td>Time Block:</td>
-					<td>Show:</td>
-					<td>DJ:</td>
-				</tr>
-				<tr>
-					<td><?php echo $row->show->getTime(); ?></td>
-					<td><?php echo form_dropdown("show_" . $row->id, $show_array, $row->show->id ); ?></td>
-				    <td><?php echo form_dropdown("dj_" . $row->id, $dj_array, $row->dj ); ?></td>
-				</tr>
-				<tr style="height: 15px"></tr>
-				<?php endforeach; ?>
+				@foreach ($schedule->scheduleFor(WITR\Schedule\Weekday::SATURDAY) as $show)
+					@include('admin.schedule.partials.day', ['show' => $show])
+				@endforeach
 			</table>
 			<input type="submit" name="submit" value="Submit" />
 		</form>

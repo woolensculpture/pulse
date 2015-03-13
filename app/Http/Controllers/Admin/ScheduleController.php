@@ -16,50 +16,8 @@ class ScheduleController extends Controller {
 	 */
 	public function index()
 	{
-		$timeslots = WeeklySchedule::fromTimeSlots(TimeSlot::with('djForTimeslot', 'showForTimeslot')->get());
-		return view('admin.schedule.index')->withTimeslots($timeslots);
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
+		$schedule = WeeklySchedule::fromTimeSlots(TimeSlot::with('djForTimeslot', 'showForTimeslot')->get());
+		return view('admin.schedule.index')->withSchedule($schedule);
 	}
 
 	/**
@@ -68,20 +26,17 @@ class ScheduleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
-		//
-	}
+		$input = $request->all();
+		$timeslots = TimeSlot::all();
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		foreach ($timeslots as $timeslot) {
+			$dj = $input['user_' . $timeslot->id];
+			$show = $input['show_' . $timeslot->id];
+			$timeslot->dj = $dj;
+			$timeslot->show = $show;
+			$timeslot->save();
+		}
 	}
-
 }

@@ -13,6 +13,7 @@ class ScheduledShow
     protected $dj;
     protected $startingHour;
     protected $endingHour;
+    protected $id;
 
     public static function fromShowAndDJ($show, $dj)
     {
@@ -143,5 +144,15 @@ class ScheduledShow
     public function showDescription()
     {
         return $this->show->description;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function id()
+    {
+        return $this->id;
     }
 }

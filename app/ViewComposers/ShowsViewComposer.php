@@ -2,10 +2,10 @@
 
 namespace WITR\ViewComposers;
 
-use WITR\User;
+use WITR\Show;
 use Illuminate\View\View;
 
-class UsersViewComposer {
+class ShowsViewComposer {
 
 	/**
 	 * Bind data to the view.
@@ -15,6 +15,6 @@ class UsersViewComposer {
 	 */
 	public function compose(View $view)
 	{
-		$view->with('users', User::all());
+		$view->with('shows', Show::all());
 	}
 }

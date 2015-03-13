@@ -39,19 +39,34 @@ class WeeklyScheduleSpec extends ObjectBehavior
     	$this->first()->timespan()->shouldBe('1 - 3 AM');
     }
 
+    function it_should_give_each_merged_scheduled_show_timeslot_id()
+    {
+        $this->beConstructedThrough('mergeFromTimeSlots', [$this->getTimeSlots()]);
+        $this->first()->id()->shouldBe(0);
+    }
+
+    function it_should_give_each_scheduled_show_timeslot_id()
+    {
+        $this->beConstructedThrough('fromTimeSlots', [$this->getTimeSlots()]);
+        $this->first()->id()->shouldBe(0);
+    }
+
     private function getTimeSlots()
     {
+        $slotId = 0;
     	for ($day = Weekday::SUNDAY; $day <= Weekday::SATURDAY; $day++) 
         {
         	for ($hour = 1; $hour <= 24; $hour++)
         	{
 				$id = ($hour - 1) % 4 < 2 ? 1 : 2;
-        		$slots[] = new TimeSlotTestWrapper(new TimeSlot([
+        		$slot = new TimeSlotTestWrapper(new TimeSlot([
         			'show' => $id,
         			'dj' => $id,
         			'day' => $day,
         			'hour' => $hour
         		]));
+                $slot->id = $slotId++;
+                $slots[] = $slot;
         	}
         }
 
@@ -89,13 +104,11 @@ class TimeSlotTestWrapper
 
 	public function __call($method, $arguments)
     {
-        var_dump($method);
         return call_user_func_array(array($this->slot, $method), $arguments);
     }
 
     public function __set($name, $value)
     {
-        var_dump($name);
         $this->slot->$name = $value;
     }
 
