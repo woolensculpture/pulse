@@ -6,6 +6,7 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use WITR\Show;
 use WITR\User;
+use WITR\Schedule\ScheduledShow;
 use Carbon\Carbon;
 
 class ScheduledShowSpec extends ObjectBehavior

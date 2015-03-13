@@ -14,6 +14,7 @@ class ScheduledShow
     protected $startingHour;
     protected $endingHour;
     protected $id;
+    protected $dayOfWeek;
 
     public static function fromShowAndDJ($show, $dj)
     {
