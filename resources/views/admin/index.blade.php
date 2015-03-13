@@ -6,7 +6,7 @@
 	    <h2>Admin</h2>
 	    <ul>
 	        <li><a href="{{ route('admin.eboard.eboard') }}">Change Eboard</a></li>
-	        <li><a href="{{ route('admin.eboard.new_position') }}">Add New Position</a></li>
+	        <li><a href="{{ route('admin.eboard.new_position') }}">Add New Eboard Position</a></li>
 	        <li><a href="{{ route('admin.permissions.roles') }}">Role Administration</a></li>
 			<li><a href="{{ route('admin.permissions.user_roles') }}">Assign User Roles</a></li>
 	    </ul>
