@@ -41,7 +41,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.eboard.new_position', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.permissions.roles', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.permissions.user_roles', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.schedule', 'uses' => 'AdminController@index']);
+
+	Route::get('/schedule', ['as' => 'admin.schedule', 'uses' => 'ScheduleController@index']);
+	Route::put('/schedule/update', ['as' => 'admin.schedule.update', 'uses' => 'ScheduleController@update']);
+	
 	Route::get('/', ['as' => 'admin.shows', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.slider', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminController@index']);

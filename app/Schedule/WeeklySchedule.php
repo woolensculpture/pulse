@@ -19,6 +19,7 @@ class WeeklySchedule extends Collection
             else
             {
                 $show = ScheduledShow::fromShowAndDJ($timeslot->showForTimeslot, $timeslot->djForTimeslot);
+                $show->setId($timeslot->id);
                 $show->startsAt($timeslot->hour);
                 $show->airsDayOfWeek($timeslot->day);
                 $scheduledShows->push($show);
@@ -34,6 +35,7 @@ class WeeklySchedule extends Collection
     {
         $timeSlots = $timeSlots->map(function($timeslot) {
             $show = ScheduledShow::fromShowAndDJ($timeslot->showForTimeslot, $timeslot->djForTimeslot);
+            $show->setId($timeslot->id);
             $show->startsAt($timeslot->hour);
             $show->airsDayOfWeek($timeslot->day);
             return $show;
