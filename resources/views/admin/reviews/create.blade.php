@@ -12,7 +12,7 @@
   			</div>
 	  		<div>
 					{!! Form::label('album_name', 'Album Name:') !!}
-          {!! Form::text('album_name') !!}
+          			{!! Form::text('album_name') !!}
 				</div>
 				<div>
 					{!! Form::label('img_name', 'Album Image: (Note: Pictures should be of size 310x310)') !!}

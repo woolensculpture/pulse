@@ -44,7 +44,7 @@
 	            <a href="{{ route('admin.reviews.index') }}">Album Reviews</a>
 	        </li>
 			<li>
-			    <a href="{{ route('admin.video') }}">Featured Video</a>
+			    <a href="{{ route('admin.videos.index') }}">Featured Video</a>
 			</li>
 	    </ul>
 	</div>

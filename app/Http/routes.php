@@ -55,6 +55,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('reviews/edit/{id}', ['as' => 'admin.reviews.edit', 'uses' => 'AlbumReviewController@edit']);
 	Route::put('reviews/edit/{id}', ['as' => 'admin.reviews.update', 'uses' => 'AlbumReviewController@update']);
 	Route::delete('reviews/{id}', ['as' => 'admin.reviews.delete', 'uses' => 'AlbumReviewController@delete']);
-	Route::get('/', ['as' => 'admin.video', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.contest.view_entries', 'uses' => 'AdminController@index']);
+	Route::get('/videos', ['as' => 'admin.videos.index', 'uses' => 'VideoController@index']);
+	Route::get('/videos/create', ['as' => 'admin.videos.create', 'uses' => 'VideoController@new_review']);
+	Route::post('/videos/create', ['as' => 'admin.videos.create.save', 'uses' => 'VideoController@create']);
+	Route::get('videos/edit/{id}', ['as' => 'admin.videos.edit', 'uses' => 'VideoController@edit']);
+	Route::put('videos/edit/{id}', ['as' => 'admin.videos.update', 'uses' => 'VideoController@update']);
+	Route::delete('videos/{id}', ['as' => 'admin.videos.delete', 'uses' => 'VideoController@delete']);
 });
