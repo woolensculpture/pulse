@@ -1,4 +1,5 @@
-## Laravel PHP Framework
+## Pulse
+[![Build Status](https://travis-ci.org/JPBetley/pulse.svg?branch=master)](https://travis-ci.org/JPBetley/pulse)
 
 ### Setup
 Following the instructions outlined [here](http://laravel.com/docs/5.0/homestead#installation-and-setup).
