@@ -47,8 +47,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::put('/schedule/update', ['as' => 'admin.schedule.update', 'uses' => 'ScheduleController@update']);
 	
 	Route::get('/', ['as' => 'admin.shows', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.slider', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminController@index']);
+	Route::get('/events', ['as' => 'admin.events.index', 'uses' => 'EventController@index']);
+	Route::get('/events/create', ['as' => 'admin.events.create', 'uses' => 'EventController@new_event']);
+	Route::post('/events/create', ['as' => 'admin.events.create.save', 'uses' => 'EventController@create']);
+	Route::get('events/edit/{id}', ['as' => 'admin.events.edit', 'uses' => 'EventController@edit']);
+	Route::put('events/edit/{id}', ['as' => 'admin.events.update', 'uses' => 'EventController@update']);
+	Route::delete('events/{id}', ['as' => 'admin.events.delete', 'uses' => 'EventController@delete']);
 	Route::get('/reviews', ['as' => 'admin.reviews.index', 'uses' => 'AlbumReviewController@index']);
 	Route::get('/reviews/create', ['as' => 'admin.reviews.create', 'uses' => 'AlbumReviewController@new_review']);
 	Route::post('/reviews/create', ['as' => 'admin.reviews.create.save', 'uses' => 'AlbumReviewController@create']);

@@ -25,7 +25,7 @@
 	    <h2>Events</h2>
 	    <ul>
 	        <li>
-	            <a href="{{ route('admin.slider') }}">Promote Events to Front Page</a>
+	            <a href="{{ route('admin.events.index') }}">Promote Events to Front Page</a>
 	        </li>
 	    </ul>
 	</div>
