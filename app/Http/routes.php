@@ -34,9 +34,9 @@ Route::get('home/listen', ['as' => 'listen', 'uses' => 'ShowController@schedule'
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-	Route::get('/eboard', ['as' => 'admin.eboard.eboard', 'uses' => 'EboardController@index']);
-	Route::get('/eboard/new_position', ['as' => 'admin.eboard.new_position', 'uses' => 'EboardController@new_position']);
-	Route::post('/eboard/new_position', ['as' => 'admin.eboard.new_position.save', 'uses' => 'EboardController@create']);
+	Route::get('/eboard', ['as' => 'admin.eboard.index', 'uses' => 'EboardController@index']);
+	Route::get('/eboard/create', ['as' => 'admin.eboard.create', 'uses' => 'EboardController@new_position']);
+	Route::post('/eboard/create', ['as' => 'admin.eboard.create.save', 'uses' => 'EboardController@create']);
 	Route::get('eboard/edit/{id}', ['as' => 'admin.eboard.edit', 'uses' => 'EboardController@edit']);
 	Route::put('eboard/edit/{id}', ['as' => 'admin.eboard.update', 'uses' => 'EboardController@update']);
 	Route::delete('eboard/{id}', ['as' => 'admin.eboard.delete', 'uses' => 'EboardController@delete']);
@@ -47,9 +47,23 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::put('/schedule/update', ['as' => 'admin.schedule.update', 'uses' => 'ScheduleController@update']);
 	
 	Route::get('/', ['as' => 'admin.shows', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.slider', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.reviews', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.video', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.contest.view_entries', 'uses' => 'AdminController@index']);
+	Route::get('/events', ['as' => 'admin.events.index', 'uses' => 'EventController@index']);
+	Route::get('/events/create', ['as' => 'admin.events.create', 'uses' => 'EventController@new_event']);
+	Route::post('/events/create', ['as' => 'admin.events.create.save', 'uses' => 'EventController@create']);
+	Route::get('events/edit/{id}', ['as' => 'admin.events.edit', 'uses' => 'EventController@edit']);
+	Route::put('events/edit/{id}', ['as' => 'admin.events.update', 'uses' => 'EventController@update']);
+	Route::delete('events/{id}', ['as' => 'admin.events.delete', 'uses' => 'EventController@delete']);
+	Route::get('/reviews', ['as' => 'admin.reviews.index', 'uses' => 'AlbumReviewController@index']);
+	Route::get('/reviews/create', ['as' => 'admin.reviews.create', 'uses' => 'AlbumReviewController@new_review']);
+	Route::post('/reviews/create', ['as' => 'admin.reviews.create.save', 'uses' => 'AlbumReviewController@create']);
+	Route::get('reviews/edit/{id}', ['as' => 'admin.reviews.edit', 'uses' => 'AlbumReviewController@edit']);
+	Route::put('reviews/edit/{id}', ['as' => 'admin.reviews.update', 'uses' => 'AlbumReviewController@update']);
+	Route::delete('reviews/{id}', ['as' => 'admin.reviews.delete', 'uses' => 'AlbumReviewController@delete']);
+	Route::get('/videos', ['as' => 'admin.videos.index', 'uses' => 'VideoController@index']);
+	Route::get('/videos/create', ['as' => 'admin.videos.create', 'uses' => 'VideoController@new_review']);
+	Route::post('/videos/create', ['as' => 'admin.videos.create.save', 'uses' => 'VideoController@create']);
+	Route::get('videos/edit/{id}', ['as' => 'admin.videos.edit', 'uses' => 'VideoController@edit']);
+	Route::put('videos/edit/{id}', ['as' => 'admin.videos.update', 'uses' => 'VideoController@update']);
+	Route::delete('videos/{id}', ['as' => 'admin.videos.delete', 'uses' => 'VideoController@delete']);
 });
