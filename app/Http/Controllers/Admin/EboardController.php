@@ -2,6 +2,8 @@
 
 use WITR\Http\Requests;
 use WITR\Http\Controllers\Controller;
+use WITR\Eboard;
+use Input;
 
 use Illuminate\Http\Request;
 
@@ -14,71 +16,52 @@ class EboardController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$eboard = Eboard::all();
+		return view('admin.eboard.eboard', ['eboard' => $eboard]);
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
+	public function new_position()
+	{
+		return view('admin.eboard.new_position');
+	}
+
+	/**
+	* Save the new eboard position.
+	*
+	*@return Response
+	*/
 	public function create()
 	{
-		//
+		$input = Input::all();
+		$position = new Eboard($input);
+		$position->save();
+		return redirect()->route('admin.eboard.eboard');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit($id)
 	{
-		//
+		$position = Eboard::findOrFail($id);
+
+		return view('admin.eboard.edit', ['eboard' => $position]);
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update($id)
 	{
-		//
+		$position = Eboard::findOrFail($id);
+		$position->fill(Input::all());
+		$position->save();
+		return redirect()->route('admin.eboard.eboard');
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
+	public function delete($id)
 	{
-		//
+		Eboard::destroy($id);
+		return redirect()->route('admin.eboard.eboard');
 	}
 
 }
