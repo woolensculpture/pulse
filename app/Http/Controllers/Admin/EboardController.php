@@ -17,7 +17,7 @@ class EboardController extends Controller {
 	public function index()
 	{
 		$eboard = Eboard::all();
-		return view('admin.eboard.eboard', ['eboard' => $eboard]);
+		return view('admin.eboard.index', ['eboard' => $eboard]);
 	}
 
 	/**
@@ -27,7 +27,7 @@ class EboardController extends Controller {
 	 */
 	public function new_position()
 	{
-		return view('admin.eboard.new_position');
+		return view('admin.eboard.create');
 	}
 
 	/**
@@ -40,7 +40,7 @@ class EboardController extends Controller {
 		$input = Input::all();
 		$position = new Eboard($input);
 		$position->save();
-		return redirect()->route('admin.eboard.eboard');
+		return redirect()->route('admin.eboard.index');
 	}
 
 	public function edit($id)
@@ -55,13 +55,13 @@ class EboardController extends Controller {
 		$position = Eboard::findOrFail($id);
 		$position->fill(Input::all());
 		$position->save();
-		return redirect()->route('admin.eboard.eboard');
+		return redirect()->route('admin.eboard.index');
 	}
 
 	public function delete($id)
 	{
 		Eboard::destroy($id);
-		return redirect()->route('admin.eboard.eboard');
+		return redirect()->route('admin.eboard.index');
 	}
 
 }
