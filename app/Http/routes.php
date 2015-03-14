@@ -13,10 +13,7 @@
 
 Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
-
-Route::get('/about', ['as' => 'about'], function(){
-	return view("about.about");
-});
+Route::get('/about', ['as' => 'about', 'uses' => 'HomeController@about']);
 
 
 Route::controllers([
