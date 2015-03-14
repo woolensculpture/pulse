@@ -120,7 +120,7 @@ class ScheduledShow
 
     public function getRelativeAirDate()
     {
-        $today = Carbon::now()->dayOfWeek + 1;
+        $today = Carbon::now('America/New_York')->dayOfWeek + 1;
         if ($this->dayOfWeek == $today)
         {
             return 'Today';
