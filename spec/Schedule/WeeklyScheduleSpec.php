@@ -101,21 +101,7 @@ class WeeklyScheduleSpec extends ObjectBehavior
     function it_should_return_a_random_last_slide()
     {
         $this->beConstructedThrough('mergeFromTimeSlots', [$this->getTimeSlots()]);
-        $showList[] = $this->getShowsForSlideshow();
-        $showList[] = $this->getShowsForSlideshow();
-        $showList[] = $this->getShowsForSlideshow();
-        $showList[] = $this->getShowsForSlideshow();
-
-        $idCount = new Collection;
-        for ($i = 0; $i < 4; $i++) 
-        {
-            $showId = $showList[$i][3]->showId();
-            if ($idCount->contains($showId)) {
-                $idCount[$showId] += 1;
-            } else {
-                $idCount[$showId] = 1;
-            }
-        }
+        
     }
 
     private function getTimeSlots()

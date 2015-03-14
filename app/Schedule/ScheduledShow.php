@@ -166,7 +166,7 @@ class ScheduledShow
             return false;
         }
 
-        if ($this->startingHour != $today->hour())
+        if ($this->startingHour > $today->hour() || $this->endingHour <= $today->hour())
         {
             return false;
         }

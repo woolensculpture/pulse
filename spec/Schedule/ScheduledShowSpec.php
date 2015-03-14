@@ -181,5 +181,10 @@ class ScheduledShowSpec extends ObjectBehavior
 		$this->airsDayOfWeek($today->dayOfWeek());
 		$this->startsAt($today->hour());
 		$this->nowPlaying()->shouldBe(true);
+
+		$this->startsAt($today->hour() - 1);
+		$this->nowPlaying()->shouldBe(false);
+		$this->extendShowByHour();
+		$this->nowPlaying()->shouldBe(true);
 	}
 }
