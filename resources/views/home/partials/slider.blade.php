@@ -1,25 +1,26 @@
 <div id="news" class="scrollable">
     <ul class="items">
-    	<?php foreach($slider as $show) :?>
-        <li id="<?php $print = $show->type !== 'SLIDER' ? $show->type : 'fourth'; 
-        		echo $print;?>">
-            <?php if ($show->type !== 'SLIDER') : ?>
-            <!--<a href="#">-->
-		        <div class="message" style="<?php echo $show->show->style; ?>"><?php echo $show->message; ?></span></div>
-		        <div style="position: absolute;"><img class="newsimg border" src="<?php echo base_url(); ?>static/img/slider/<?php echo $show->show->slider_picture ?>"></div>
-		    <!--</a>-->
-		    <?php endif; ?>
-		    <?php if ($show->type === 'SLIDER') : ?>
+    	@foreach($slides as $slide)
+        <li id="">
+        	@if($slide->type() === 'SHOW')
+		        <div class="message" style="{{ $slide->textStyle() }}">{{ $slide->displayText() }}</span></div>
+		        <div style="position: absolute;">
+			        <img class="newsimg border" src="{{ secure_asset('img/slider/' . $slide->image()) }}">
+		        </div>
+	        @endif
+        	@if($slide->type() === 'EVENT')
 		    	<div style="position: absolute;">
-		    		<?php if ($show->url !== null) : ?>
-		    		<a href='<?php echo $show->url; ?>'>
-		    		<img class="newsimg border" src="<?php echo base_url(); ?>static/img/events/<?php echo $show->picture ?>">
+		    		@if ($show->url !== null)
+		    		<a href='{{ $slide->url() }}'>
+			    		<img class="newsimg border" src="{{ secure_asset('img/events/' . $slide->image()) }}">
 		    		</a> 
-		    		<?php else: ?> <img class="newsimg border" src="<?php echo base_url(); ?>static/img/events/<?php echo $show->picture ?>"> <?php endif; ?>
+		    		@else
+			    		<img class="newsimg border" src="{{ secure_asset('img/events/' . $slide->image()) }}">
+		    		@endif
 		    	</div>
-		    <?php endif; ?>
+	    	@endif
         </li>
-        <?php endforeach; ?>
+        @endforeach
     </ul>
     <div style="clear:both;"></div>
     <div class="navi">

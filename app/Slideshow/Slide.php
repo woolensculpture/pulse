@@ -6,6 +6,8 @@ class Slide
 {
     protected $show;
     protected $type;
+    protected $playOrder;
+    protected $index;
 
     public static function fromScheduledShow($show)
     {
@@ -27,9 +29,9 @@ class Slide
         return $slide;
     }
 
-    public function displayIndex($index)
+    public function playOrder($playOrder)
     {
-        $this->index = $index;
+        $this->playOrder = $playOrder;
     }
 
     public function displayText()
@@ -39,12 +41,12 @@ class Slide
             return;
         }
 
-        if ($this->index == 0)
+        if ($this->playOrder == 0)
         {
             return '&#9658;&nbsp;Now Playing';
         }
 
-        if ($this->index == 1)
+        if ($this->playOrder == 1)
         {
             return 'Up Next:';
         }
@@ -80,5 +82,26 @@ class Slide
         }
 
         return $this->event->url;
+    }
+
+    public function type()
+    {
+        return $this->type;
+    }
+
+    public function index($index)
+    {
+        $this->index = $index;
+    }
+
+    public function displayIndex()
+    {
+        $display = [
+            0 => 'first',
+            1 => 'second',
+            2 => 'third',
+            3 => 'fourth',
+        ];
+        return $display[$this->index];
     }
 }
