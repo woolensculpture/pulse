@@ -7,6 +7,7 @@ use Prophecy\Argument;
 use WITR\Show;
 use WITR\User;
 use WITR\Schedule\ScheduledShow;
+use WITR\Schedule\ScheduleTime;
 use Carbon\Carbon;
 
 class ScheduledShowSpec extends ObjectBehavior
@@ -142,33 +143,43 @@ class ScheduledShowSpec extends ObjectBehavior
 
 	function it_should_return_relative_air_date_for_shows_airing_today()
 	{
-		$today = Carbon::now('America/New_York')->dayOfWeek + 1; // weeks start at 1
+		$today = ScheduleTime::now()->dayOfWeek(); 
 		$this->airsDayOfWeek($today);
 		$this->getRelativeAirDate()->shouldBe('Today');
 	}
 
 	function it_should_return_relative_air_date_for_shows_airing_tomorrow()
 	{
-		$tomorrow = Carbon::now('America/New_York')->addDay()->dayOfWeek + 1; // weeks start at 1
+		$tomorrow = ScheduleTime::now()->dayOfWeek() + 1; 
 		$this->airsDayOfWeek($tomorrow);
 		$this->getRelativeAirDate()->shouldBe('Tomorrow');
 	}
 
 	function it_should_return_air_date_for_shows_airing_on_day_other_than_today_or_tomorrow()
 	{
-		$pastDay = Carbon::createFromDate(2015, 3, 3)->dayOfWeek + 1; // weeks start at 1
-		$this->airsDayOfWeek($pastDay);
+		$pastDay = ScheduleTime::fromDate(Carbon::createFromDate(2015, 3, 3)); // weeks start at 1
+		$this->airsDayOfWeek($pastDay->dayOfWeek());
 		$this->getRelativeAirDate()->shouldBe('Tuesday');
 	}
 
 	function it_should_return_air_day_of_week()
 	{
-	  $this->airsDayOfWeek(3);
-	  $this->airDayOfWeek()->shouldBe(3);
+		$this->airsDayOfWeek(3);
+		$this->airDayOfWeek()->shouldBe(3);
 	}
 
 	function it_should_return_a_show_description()
 	{
-	  $this->showDescription()->shouldBe('Show Description');
+		$this->showDescription()->shouldBe('Show Description');
+	}
+
+	function it_should_return_if_show_is_now_playing()
+	{
+		$this->nowPlaying()->shouldBe(false);
+
+		$today = ScheduleTime::now();
+		$this->airsDayOfWeek($today->dayOfWeek());
+		$this->startsAt($today->hour());
+		$this->nowPlaying()->shouldBe(true);
 	}
 }

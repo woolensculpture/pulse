@@ -121,12 +121,12 @@ class ScheduledShow
 
     public function getRelativeAirDate()
     {
-        $today = Carbon::now('America/New_York')->dayOfWeek + 1;
-        if ($this->dayOfWeek == $today)
+        $day = ScheduleTime::now()->dayOfWeek();
+        if ($this->dayOfWeek == $day)
         {
             return 'Today';
         }
-        else if ($this->dayOfWeek == $today + 1)
+        else if ($this->dayOfWeek == $day + 1)
         {
             return 'Tomorrow';
         }
@@ -155,5 +155,22 @@ class ScheduledShow
     public function id()
     {
         return $this->id;
+    }
+
+    public function nowPlaying()
+    {
+        $today = ScheduleTime::now();
+
+        if ($this->airDayOfWeek() != $today->dayOfWeek())
+        {
+            return false;
+        }
+
+        if ($this->startingHour != $today->hour())
+        {
+            return false;
+        }
+
+        return true;
     }
 }

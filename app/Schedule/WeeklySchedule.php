@@ -57,4 +57,17 @@ class WeeklySchedule extends Collection
             return $timeslot->airDayOfWeek() == $weekday;
         });
     }
+
+    public function getShowsForSlideshow()
+    {
+        $shows = new Collection();
+        $first = $this->first(function ($key, $show) {
+            return $show->nowPlaying();
+        });
+        $shows->push($first);
+        $nonPulseShows = $this->filter(function ($show) {
+            return $show->show() != 'The Pulse of Music';
+        });
+        return $shows->merge($nonPulseShows->take(3));
+    }
 }
