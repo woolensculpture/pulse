@@ -3,14 +3,13 @@
 @section('content')
 <div class="general_wrap border">
 	<div class="admin_section">
-		<h2>Edit Eboard Position</h2>
-			{!! Form::model($eboard,['method' => 'put', 'route' => ['admin.eboard.update', $eboard->id]]) !!}
+		<h2>Add New Eboard Position</h2>
+			{!! Form::open(array('route' => 'admin.eboard.create.save')) !!}
 				<br>
 				<div>
 					{!! Form::label('position', 'Position:') !!}
 					{!! Form::text('position') !!}
 				</div>
-
 	  		<div>
 					{!! Form::label('name', 'Name:') !!}
 					{!! Form::text('name') !!}
@@ -22,19 +21,11 @@
 				<div>
 					{!! Form::label('hours', 'Hours:') !!}
 					{!! Form::text('hours') !!}
-				</div>
+			  </div>
 				<div>
-          <table>
-					<tr>
-            <td>{!! Form::submit('Update Position') !!}
-                {!! Form::close() !!} </td>
-
-            <td>{!! Form::open(['method' => 'delete', 'route' => ['admin.eboard.delete', $eboard->id]]) !!}
-                {!! Form::submit('Delete Position') !!}
-                {!! Form::close() !!} </td>
-          </tr>
-          </table>
+					{!! Form::submit('Save Position') !!}
 				</div>
 	</div>
+		{!! Form::close() !!}
 </div>
 @stop

@@ -34,9 +34,9 @@ Route::get('home/listen', ['as' => 'listen', 'uses' => 'ShowController@schedule'
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-	Route::get('/eboard', ['as' => 'admin.eboard.eboard', 'uses' => 'EboardController@index']);
-	Route::get('/eboard/new_position', ['as' => 'admin.eboard.new_position', 'uses' => 'EboardController@new_position']);
-	Route::post('/eboard/new_position', ['as' => 'admin.eboard.new_position.save', 'uses' => 'EboardController@create']);
+	Route::get('/eboard', ['as' => 'admin.eboard.index', 'uses' => 'EboardController@index']);
+	Route::get('/eboard/create', ['as' => 'admin.eboard.create', 'uses' => 'EboardController@new_position']);
+	Route::post('/eboard/create', ['as' => 'admin.eboard.create.save', 'uses' => 'EboardController@create']);
 	Route::get('eboard/edit/{id}', ['as' => 'admin.eboard.edit', 'uses' => 'EboardController@edit']);
 	Route::put('eboard/edit/{id}', ['as' => 'admin.eboard.update', 'uses' => 'EboardController@update']);
 	Route::delete('eboard/{id}', ['as' => 'admin.eboard.delete', 'uses' => 'EboardController@delete']);
@@ -49,7 +49,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.shows', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.slider', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.reviews', 'uses' => 'AdminController@index']);
+	Route::get('/reviews', ['as' => 'admin.reviews.index', 'uses' => 'AlbumReviewController@index']);
+	Route::get('/reviews/create', ['as' => 'admin.reviews.create', 'uses' => 'AlbumReviewController@new_review']);
+	Route::post('/reviews/create', ['as' => 'admin.reviews.create.save', 'uses' => 'AlbumReviewController@create']);
+	Route::get('reviews/edit/{id}', ['as' => 'admin.reviews.edit', 'uses' => 'AlbumReviewController@edit']);
+	Route::put('reviews/edit/{id}', ['as' => 'admin.reviews.update', 'uses' => 'AlbumReviewController@update']);
+	Route::delete('reviews/{id}', ['as' => 'admin.reviews.delete', 'uses' => 'AlbumReviewController@delete']);
 	Route::get('/', ['as' => 'admin.video', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.contest.view_entries', 'uses' => 'AdminController@index']);
 });

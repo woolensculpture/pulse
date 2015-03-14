@@ -24,28 +24,7 @@
 		</tr>
 	@endforeach
 	</table>
-	<a class="button" style="width:70px; font-size:16px" href="{{ route('admin.eboard.new_position') }}">New Position</a>
+	<a class="button" style="width:70px; font-size:16px" href="{{ route('admin.eboard.create') }}">New Position</a>
 	<br>
 </div>
 @stop
-
-@section('scripts')
-<script type="text/javascript">
-	
-	$(document).ready(function(){
-		$('#eboard_form').submit(function(event){
-
-			event.preventDefault();
-
-			var data = $(this).serialize();
-
-			$.post('../admin/eboard_update', data, function() {
-				alert('Eboard has been updated!');
-			});
-		});
-		
-	});
-	
-</script>
-@stop
-

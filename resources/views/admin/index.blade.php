@@ -5,7 +5,7 @@
 	<div class="admin_section">
 	    <h2>Admin</h2>
 	    <ul>
-	        <li><a href="{{ route('admin.eboard.eboard') }}">Change Eboard</a></li>
+	        <li><a href="{{ route('admin.eboard.index') }}">Change Eboard</a></li>
 	        <li><a href="{{ route('admin.permissions.roles') }}">Role Administration</a></li>
 			<li><a href="{{ route('admin.permissions.user_roles') }}">Assign User Roles</a></li>
 	    </ul>
@@ -41,7 +41,7 @@
 	    <h2>Content</h2>
 	    <ul>
 	        <li>
-	            <a href="{{ route('admin.reviews') }}">Album Reviews</a>
+	            <a href="{{ route('admin.reviews.index') }}">Album Reviews</a>
 	        </li>
 			<li>
 			    <a href="{{ route('admin.video') }}">Featured Video</a>
