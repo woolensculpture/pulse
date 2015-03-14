@@ -24,13 +24,16 @@
   					{!! Form::text('hours') !!}
 				</div>
 				<div>
-					{!! Form::submit('Update Position') !!}
-          {!! Form::close() !!}
+          <table>
+					<tr>
+            <td>{!! Form::submit('Update Position') !!}
+                {!! Form::close() !!} </td>
 
-          {!! Form::open(['method' => 'delete', 'route' => ['admin.eboard.delete', $eboard->id]]) !!}
-          {!! Form::submit('Delete Position') !!}
-          {!! Form::close() !!}
-
+            <td>{!! Form::open(['method' => 'delete', 'route' => ['admin.eboard.delete', $eboard->id]]) !!}
+                {!! Form::submit('Delete Position') !!}
+                {!! Form::close() !!} </td>
+          </tr>
+          </table>
 				</div>
 	</div>
 </div>
