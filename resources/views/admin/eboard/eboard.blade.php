@@ -24,6 +24,8 @@
 		</tr>
 	@endforeach
 	</table>
+	<a class="button" style="width:70px; font-size:16px" href="{{ route('admin.eboard.new_position') }}">New Position</a>
+	<br>
 </div>
 @stop
 
