@@ -80,7 +80,6 @@ class WeeklyScheduleSpec extends ObjectBehavior
         })->shouldHaveCount(0);
     }
 
-/*
     function it_should_return_slides_where_all_shows_should_be_different()
     {
         $this->beConstructedThrough('mergeFromTimeSlots', [$this->getTimeSlots()]);
@@ -97,13 +96,6 @@ class WeeklyScheduleSpec extends ObjectBehavior
                 $shows[$i]->showId()->shouldNotBe($shows[$j]->showId());
             }
         }
-    }
-    */
-
-    function it_should_return_a_random_last_slide()
-    {
-        $this->beConstructedThrough('mergeFromTimeSlots', [$this->getTimeSlots()]);
-        
     }
 
     private function getTimeSlots()
