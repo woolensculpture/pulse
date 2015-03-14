@@ -20,4 +20,6 @@ class Video extends Model {
 
 	public $timestamps = false;
 
+	public $timestamps = false;
+
 }
