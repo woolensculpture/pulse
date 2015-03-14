@@ -19,7 +19,4 @@ class Video extends Model {
 	protected $fillable = ['artist', 'song', 'album', 'review', 'url_tag'];
 
 	public $timestamps = false;
-
-	public $timestamps = false;
-
 }
