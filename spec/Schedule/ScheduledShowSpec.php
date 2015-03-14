@@ -142,14 +142,14 @@ class ScheduledShowSpec extends ObjectBehavior
 
 	function it_should_return_relative_air_date_for_shows_airing_today()
 	{
-		$today = Carbon::now()->dayOfWeek + 1; // weeks start at 1
+		$today = Carbon::now('America/New_York')->dayOfWeek + 1; // weeks start at 1
 		$this->airsDayOfWeek($today);
 		$this->getRelativeAirDate()->shouldBe('Today');
 	}
 
 	function it_should_return_relative_air_date_for_shows_airing_tomorrow()
 	{
-		$tomorrow = Carbon::now()->addDay()->dayOfWeek + 1; // weeks start at 1
+		$tomorrow = Carbon::now('America/New_York')->addDay()->dayOfWeek + 1; // weeks start at 1
 		$this->airsDayOfWeek($tomorrow);
 		$this->getRelativeAirDate()->shouldBe('Tomorrow');
 	}

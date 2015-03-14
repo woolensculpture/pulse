@@ -37,9 +37,12 @@ Route::get('home/listen', ['as' => 'listen', 'uses' => 'ShowController@schedule'
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.eboard.eboard', 'uses' => 'AdminController@index']);
-	Route::get('/eboard/new_position', ['as' => 'admin.eboard.new_position', 'uses' => 'NewPositionController@index']);
-	Route::post('/eboard/new_position', ['as' => 'admin.eboard.new_position.save', 'uses' => 'NewPositionController@save']);
+	Route::get('/eboard', ['as' => 'admin.eboard.eboard', 'uses' => 'EboardController@index']);
+	Route::get('/eboard/new_position', ['as' => 'admin.eboard.new_position', 'uses' => 'EboardController@new_position']);
+	Route::post('/eboard/new_position', ['as' => 'admin.eboard.new_position.save', 'uses' => 'EboardController@create']);
+	Route::get('eboard/edit/{id}', ['as' => 'admin.eboard.edit', 'uses' => 'EboardController@edit']);
+	Route::put('eboard/edit/{id}', ['as' => 'admin.eboard.update', 'uses' => 'EboardController@update']);
+	Route::delete('eboard/{id}', ['as' => 'admin.eboard.delete', 'uses' => 'EboardController@delete']);
 	Route::get('/', ['as' => 'admin.permissions.roles', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.permissions.user_roles', 'uses' => 'AdminController@index']);
 
