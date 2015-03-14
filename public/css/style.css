@@ -779,22 +779,12 @@ input[type=submit]:hover, form a:hover, button:hover, .button:hover {
 ************************/
 
 .about_header {
-	width: 252px;
 	height: 75px;
-	line-height: 80%;
 }
 
 .about_section {
-	//display: inline-block;
-	float: left;
-
-	padding: 20px;
-	border-left: white 1px solid;
+	padding: 10px;
 }
-
-	.about_section:first-child {
-		border-left: white 0px solid;
-	}
 
 
 /************************
