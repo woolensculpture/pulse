@@ -44,7 +44,7 @@
 		
 		<div id="home_primary" class="border">
 
-			<!-- Slider -->
+			@include('home.partials.slider')
 			
 			<hr class="white">
 			
