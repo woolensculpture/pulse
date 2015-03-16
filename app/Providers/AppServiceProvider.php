@@ -30,6 +30,12 @@ class AppServiceProvider extends ServiceProvider {
 			'WITR\Services\Registrar'
 		);
 
+		if ($this->app->environment('production')) {
+		    $this->app->bind('WITR\TopTwenty\Reader', 'WITR\TopTwenty\SQLReader');
+        } else {
+		    $this->app->bind('WITR\TopTwenty\Reader', 'WITR\TopTwenty\DummyReader');
+        }
+
 		if($this->app->environment('local'))
 		{
 		    $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
@@ -41,6 +47,8 @@ class AppServiceProvider extends ServiceProvider {
 		    'WITR\ViewComposers\VideoViewComposer' => 'home.partials.video',
 		    'WITR\ViewComposers\AlbumsViewComposer' => 'home.partials.albums',
 		    'WITR\ViewComposers\SliderViewComposer' => 'home.partials.slider',
+		    'WITR\ViewComposers\NowPlayingViewComposer' => 'home.partials.nowplaying',
+		    'WITR\ViewComposers\TopTwentyViewComposer' => 'home.partials.toptwenty',
 		]);
 	}
 

@@ -16,7 +16,7 @@ class ScheduleTimeSpec extends ObjectBehavior
 
     function it_should_be_constructed_from_date()
     {
-    	$this->beConstructedThrough('fromDate', [Carbon::now()]);
+    	$this->beConstructedThrough('fromDate', [Carbon::now('America/New_York')]);
     	$this->value()->eq(Carbon::now('America/New_York'))->shouldBe(true);
     }
 

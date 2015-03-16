@@ -48,7 +48,8 @@ class WeeklySchedule extends Collection
     {
         return $scheduledShow != null 
             && $scheduledShow->djId() == $timeslot->djForTimeslot->id
-            && $scheduledShow->showId() == $timeslot->showForTimeslot->id;
+            && $scheduledShow->showId() == $timeslot->showForTimeslot->id
+            && $scheduledShow->airDayOfWeek() == $timeslot->day;
     }
 
     public function scheduleFor($weekday)

@@ -157,9 +157,10 @@ class ScheduledShowSpec extends ObjectBehavior
 
 	function it_should_return_air_date_for_shows_airing_on_day_other_than_today_or_tomorrow()
 	{
-		$pastDay = ScheduleTime::fromDate(Carbon::createFromDate(2015, 3, 3)); // weeks start at 1
-		$this->airsDayOfWeek($pastDay->dayOfWeek());
-		$this->getRelativeAirDate()->shouldBe('Tuesday');
+		$nextDay = ScheduleTime::now()->dayOfWeek() + 2;
+		$this->airsDayOfWeek($nextDay);
+		$this->getRelativeAirDate()->shouldNotBe('Today');
+		$this->getRelativeAirDate()->shouldNotBe('Tomorrow');
 	}
 
 	function it_should_return_air_day_of_week()

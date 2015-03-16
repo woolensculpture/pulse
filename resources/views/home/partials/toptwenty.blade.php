@@ -1,5 +1,5 @@
 <ol id="toptwenty">
-<?php foreach ($charts as $row): ?>
-	<li><?php echo $row->artist . " - " . $row->title . "\n"; ?>
-<?php endforeach; ?>
+	@foreach($toptwenty as $song)
+		<li>{{ $song->artist }} - {{ $song->title }}</li>
+	@endforeach
 </ol>
