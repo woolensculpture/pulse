@@ -28,7 +28,9 @@ class SliderViewComposer {
 		$events = Event::where('type', 'SLIDER')
 			->where('date', '>=', Carbon::today('America/New_York'))
 			->get();
-		if (!$events->isEmpty()) {
+		
+		if (!$events->isEmpty()) 
+		{
 			$slides->addEvent($events->random());
 		}
 
