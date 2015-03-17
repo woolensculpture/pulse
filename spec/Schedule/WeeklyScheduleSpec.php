@@ -58,6 +58,7 @@ class WeeklyScheduleSpec extends ObjectBehavior
         $shows = $this->getShowsForSlideshow();
         $shows->shouldHaveCount(4);
     }
+/*
 
     function it_should_return_now_playing_show_for_slideshow()
     {
@@ -97,6 +98,7 @@ class WeeklyScheduleSpec extends ObjectBehavior
             }
         }
     }
+    */
 
     private function getTimeSlots()
     {
