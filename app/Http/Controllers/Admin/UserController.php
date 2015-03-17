@@ -34,7 +34,10 @@ class UserController extends Controller {
 	public function create()
 	{
 		$input = Input::all();
-		$user = new Eboard($input);
+		$user = new User($input);
+
+		$fullName = Input:
+
 		$user->save();
 		return redirect()->route('admin.users.index');
 	}
