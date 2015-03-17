@@ -46,20 +46,29 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/schedule', ['as' => 'admin.schedule', 'uses' => 'ScheduleController@index']);
 	Route::put('/schedule/update', ['as' => 'admin.schedule.update', 'uses' => 'ScheduleController@update']);
 	
-	Route::get('/', ['as' => 'admin.shows', 'uses' => 'AdminController@index']);
 	Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminController@index']);
+	
+	Route::get('/shows', ['as' => 'admin.shows.index', 'uses' => 'ShowController@index']);
+	Route::get('/shows/create', ['as' => 'admin.shows.create', 'uses' => 'ShowController@new_show']);
+	Route::post('/shows/create', ['as' => 'admin.shows.create.save', 'uses' => 'ShowController@create']);
+	Route::get('shows/edit/{id}', ['as' => 'admin.shows.edit', 'uses' => 'ShowController@edit']);
+	Route::put('shows/edit/{id}', ['as' => 'admin.shows.update', 'uses' => 'ShowController@update']);
+	Route::delete('shows/{id}', ['as' => 'admin.shows.delete', 'uses' => 'ShowController@delete']);
+	
 	Route::get('/events', ['as' => 'admin.events.index', 'uses' => 'EventController@index']);
 	Route::get('/events/create', ['as' => 'admin.events.create', 'uses' => 'EventController@new_event']);
 	Route::post('/events/create', ['as' => 'admin.events.create.save', 'uses' => 'EventController@create']);
 	Route::get('events/edit/{id}', ['as' => 'admin.events.edit', 'uses' => 'EventController@edit']);
 	Route::put('events/edit/{id}', ['as' => 'admin.events.update', 'uses' => 'EventController@update']);
 	Route::delete('events/{id}', ['as' => 'admin.events.delete', 'uses' => 'EventController@delete']);
+	
 	Route::get('/reviews', ['as' => 'admin.reviews.index', 'uses' => 'AlbumReviewController@index']);
 	Route::get('/reviews/create', ['as' => 'admin.reviews.create', 'uses' => 'AlbumReviewController@new_review']);
 	Route::post('/reviews/create', ['as' => 'admin.reviews.create.save', 'uses' => 'AlbumReviewController@create']);
 	Route::get('reviews/edit/{id}', ['as' => 'admin.reviews.edit', 'uses' => 'AlbumReviewController@edit']);
 	Route::put('reviews/edit/{id}', ['as' => 'admin.reviews.update', 'uses' => 'AlbumReviewController@update']);
 	Route::delete('reviews/{id}', ['as' => 'admin.reviews.delete', 'uses' => 'AlbumReviewController@delete']);
+	
 	Route::get('/videos', ['as' => 'admin.videos.index', 'uses' => 'VideoController@index']);
 	Route::get('/videos/create', ['as' => 'admin.videos.create', 'uses' => 'VideoController@new_review']);
 	Route::post('/videos/create', ['as' => 'admin.videos.create.save', 'uses' => 'VideoController@create']);
