@@ -4,6 +4,8 @@ namespace WITR\Http\Controllers\Admin;
 
 use WITR\Http\Requests;
 use WITR\Http\Controllers\Controller;
+use WITR\User;
+use Input;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +18,13 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$users = User::all();
+		return view('admin.users.index', ['users' => $users]);
+	}
+
+	public function new_user()
+	{
+		return view('admin.users.create'); 
 	}
 
 	/**
@@ -26,28 +34,16 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		//
-	}
+		$input = Input::all();
+		$user = new User($input);
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+		$fullName = explode(' ', Input::input('name'));
+		$firstName = $fullName[0];
+		$user->dj_name = $firstName;
+		dd($user->dj_name);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
+		$user->save();
+		return redirect()->route('admin.users.index');
 	}
 
 	/**
@@ -58,7 +54,9 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::findOrFail($id);
+
+		return view('admin.users.edit', ['user' => $user]);
 	}
 
 	/**
@@ -69,7 +67,10 @@ class UserController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$user = User::findOrFail($id);
+		$user->fill(Input::all());
+		$user->save();
+		return redirect()->route('admin.users.index');
 	}
 
 	/**
@@ -78,9 +79,10 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function delete($id)
 	{
-		//
+		User::destroy($id);
+		return view('admin.users.index');
 	}
 
 }

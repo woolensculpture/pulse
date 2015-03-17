@@ -33,7 +33,7 @@
 	    <h2>DJs/Users</h2>
 	    <ul>
 	        <li>
-	            <a href="{{ route('admin.users') }}">Add/Edit DJs/Users</a>
+	            <a href="{{ route('admin.users.index') }}">Add/Edit DJs/Users</a>
 	        </li>
 	    </ul>
 	</div>
