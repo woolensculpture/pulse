@@ -5,6 +5,7 @@ namespace WITR\Http\Controllers\Admin;
 use WITR\Http\Requests;
 use WITR\Http\Controllers\Controller;
 use WITR\User;
+use Input;
 
 use Illuminate\Http\Request;
 
@@ -36,7 +37,10 @@ class UserController extends Controller {
 		$input = Input::all();
 		$user = new User($input);
 
-		$fullName = Input:
+		$fullName = explode(' ', Input::input('name'));
+		$firstName = $fullName[0];
+		$user->dj_name = $firstName;
+		dd($user->dj_name);
 
 		$user->save();
 		return redirect()->route('admin.users.index');
