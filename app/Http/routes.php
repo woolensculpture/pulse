@@ -48,13 +48,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	
 	Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminController@index']);
 	
-	Route::get('/shows', ['as' => 'admin.shows.index', 'uses' => 'ShowController@index']);
-	Route::get('/shows/create', ['as' => 'admin.shows.create', 'uses' => 'ShowController@new_show']);
-	Route::post('/shows/create', ['as' => 'admin.shows.create.save', 'uses' => 'ShowController@create']);
-	Route::get('shows/edit/{id}', ['as' => 'admin.shows.edit', 'uses' => 'ShowController@edit']);
-	Route::put('shows/edit/{id}', ['as' => 'admin.shows.update', 'uses' => 'ShowController@update']);
-	Route::delete('shows/{id}', ['as' => 'admin.shows.delete', 'uses' => 'ShowController@delete']);
-	
 	Route::get('/events', ['as' => 'admin.events.index', 'uses' => 'EventController@index']);
 	Route::get('/events/create', ['as' => 'admin.events.create', 'uses' => 'EventController@new_event']);
 	Route::post('/events/create', ['as' => 'admin.events.create.save', 'uses' => 'EventController@create']);
@@ -68,6 +61,20 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('reviews/edit/{id}', ['as' => 'admin.reviews.edit', 'uses' => 'AlbumReviewController@edit']);
 	Route::put('reviews/edit/{id}', ['as' => 'admin.reviews.update', 'uses' => 'AlbumReviewController@update']);
 	Route::delete('reviews/{id}', ['as' => 'admin.reviews.delete', 'uses' => 'AlbumReviewController@delete']);
+
+	Route::get('/shows', ['as' => 'admin.shows.index', 'uses' => 'ShowController@index']);
+	Route::get('/shows/create', ['as' => 'admin.shows.create', 'uses' => 'ShowController@new_show']);
+	Route::post('/shows/create', ['as' => 'admin.shows.create.save', 'uses' => 'ShowController@create']);
+	Route::get('shows/edit/{id}', ['as' => 'admin.shows.edit', 'uses' => 'ShowController@edit']);
+	Route::put('shows/edit/{id}', ['as' => 'admin.shows.update', 'uses' => 'ShowController@update']);
+	Route::delete('shows/{id}', ['as' => 'admin.shows.delete', 'uses' => 'ShowController@delete']);
+
+	Route::get('/users', ['as' => 'admin.users.index', 'uses' => 'UserController@index']);
+	Route::get('/users/create', ['as' => 'admin.users.create', 'uses' => 'UserController@new_user']);
+	Route::post('/users/create', ['as' => 'admin.users.create.save', 'uses' => 'UserController@create']);
+	Route::get('users/edit/{id}', ['as' => 'admin.users.edit', 'uses' => 'UserController@edit']);
+	Route::put('users/edit/{id}', ['as' => 'admin.users.update', 'uses' => 'UserController@update']);
+	Route::delete('users/{id}', ['as' => 'admin.users.delete', 'uses' => 'UserController@delete']);
 	
 	Route::get('/videos', ['as' => 'admin.videos.index', 'uses' => 'VideoController@index']);
 	Route::get('/videos/create', ['as' => 'admin.videos.create', 'uses' => 'VideoController@new_review']);
