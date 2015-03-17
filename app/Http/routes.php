@@ -13,8 +13,13 @@
 
 Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
-Route::get('/about', ['as' => 'about', 'uses' => 'HomeController@about']);
+Route::get('home/listen', ['as' => 'listen', 'uses' => 'ShowController@schedule']);
+Route::get('about', ['as' => 'about', 'uses' => 'HomeController@about']);
+Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 
+Route::get('hockey', ['as' => 'hockey', 'uses' => 'HockeyController@index']);
+Route::get('events', ['as' => 'events.index', 'uses' => 'ShowController@schedule']);
+Route::get('askdestler', ['as' => 'askdestler', 'uses' => 'ShowController@schedule']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -25,12 +30,6 @@ Route::get('shows', ['as' => 'shows.index', 'uses' => 'ShowController@schedule']
 Route::get('shows/schedule', ['as' => 'shows.schedule', 'uses' => 'ShowController@schedule']);
 Route::get('shows/specialty', ['as' => 'shows.specialty', 'uses' => 'ShowController@schedule']);
 Route::get('shows/pulse', ['as' => 'shows.pulse', 'uses' => 'ShowController@schedule']);
-
-Route::get('events', ['as' => 'events.index', 'uses' => 'ShowController@schedule']);
-Route::get('contact', ['as' => 'contact', 'uses' => 'ShowController@schedule']);
-Route::get('hockey', ['as' => 'hockey', 'uses' => 'HockeyController@index']);
-Route::get('askdestler', ['as' => 'askdestler', 'uses' => 'ShowController@schedule']);
-Route::get('home/listen', ['as' => 'listen', 'uses' => 'ShowController@schedule']);
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
