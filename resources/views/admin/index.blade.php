@@ -17,7 +17,7 @@
 	            <a href="{{ route('admin.schedule') }}">Edit Schedule</a>
 	        </li>
 	        <li>
-	            <a href="{{ route('admin.shows') }}">Add/Edit Shows</a>
+	            <a href="{{ route('admin.shows.index') }}">Add/Edit Shows</a>
 	        </li>
 	    </ul>
 	</div>

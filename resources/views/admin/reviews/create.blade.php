@@ -9,8 +9,8 @@
 				<div>
 					{!! Form::label('band_name', 'Band Name:') !!}
 					{!! Form::text('band_name') !!}
-  			</div>
-	  		<div>
+  				</div>
+	  			<div>
 					{!! Form::label('album_name', 'Album Name:') !!}
           			{!! Form::text('album_name') !!}
 				</div>
