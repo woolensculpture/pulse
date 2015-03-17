@@ -86,11 +86,6 @@ class ScheduledShow
     public function extendShowByHour()
     {
         $this->endingHour++;
-
-        if ($this->endingHour > 24) 
-        {
-            $this->endingHour -= 24;
-        }
     }
 
     public function timespan()
@@ -103,7 +98,7 @@ class ScheduledShow
 
     private function hourAdjusted($hour)
     {
-        if ($hour > 12) {
+        while ($hour > 12) {
             $hour -= 12;
         }
         return $hour;

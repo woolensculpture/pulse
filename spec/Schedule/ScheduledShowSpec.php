@@ -99,7 +99,7 @@ class ScheduledShowSpec extends ObjectBehavior
 		$this->startsAt(23);
 		$this->extendShowByHour();
 		$this->start()->shouldBe(23);
-		$this->end()->shouldBe(1);
+		$this->end()->shouldBe(25);
 	}
 
 	function it_should_display_a_time_span()
