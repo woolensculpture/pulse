@@ -10,7 +10,7 @@
 	        @endif
         	@if($slide->type() === 'EVENT')
 		    	<div style="position: absolute;">
-		    		@if ($show->url !== null)
+		    		@if ($slide->url() !== null)
 		    		<a href='{{ $slide->url() }}'>
 			    		<img class="newsimg border" src="{{ secure_asset('img/events/' . $slide->image()) }}">
 		    		</a> 
