@@ -1,5 +1,7 @@
 <?php namespace WITR\Http\Controllers;
 
+use WITR\Eboard;
+
 class HomeController extends Controller {
 
 	/*
@@ -36,6 +38,12 @@ class HomeController extends Controller {
 	public function about()
 	{
 		return view('about');
+	}
+
+	public function contact()
+	{
+		$eboard = Eboard::all();
+		return view('contact', ['eboard' => $eboard]);
 	}
 
 }
