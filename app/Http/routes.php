@@ -13,7 +13,8 @@
 
 Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
-Route::get('/about', ['as' => 'about', 'uses' => 'HomeController@about']);
+Route::get('about', ['as' => 'about', 'uses' => 'HomeController@about']);
+Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 
 
 Route::controllers([
@@ -27,7 +28,6 @@ Route::get('shows/specialty', ['as' => 'shows.specialty', 'uses' => 'ShowControl
 Route::get('shows/pulse', ['as' => 'shows.pulse', 'uses' => 'ShowController@schedule']);
 
 Route::get('events', ['as' => 'events.index', 'uses' => 'ShowController@schedule']);
-Route::get('contact', ['as' => 'contact', 'uses' => 'ShowController@schedule']);
 Route::get('hockey', ['as' => 'hockey', 'uses' => 'ShowController@schedule']);
 Route::get('askdestler', ['as' => 'askdestler', 'uses' => 'ShowController@schedule']);
 Route::get('home/listen', ['as' => 'listen', 'uses' => 'ShowController@schedule']);
