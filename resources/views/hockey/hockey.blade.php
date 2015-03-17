@@ -1,3 +1,6 @@
+@extends('layouts.master')
+
+@section('content')
 <style>
 
 body {
@@ -38,7 +41,7 @@ body {
 	height: 70px;
 	margin-top: 0px;
 	float: left;
-	background-image: url("<?php echo base_url();?>static/img/hockey/nextgame.png");
+	background-image: url("{{ secure_asset('img/hockey/nextgame.png') }}");
 }
 
 #date {
@@ -124,52 +127,69 @@ p {
 .schedule:hover {
 	text-decoration: none;
 }
+
+.opponent {
+	margin-left: 7px; 
+	margin-top: 3px; 
+	color: #f9ec33;
+	font-family: "AlternateGothic2BTRegular";
+	font-size: 24px;
+	font-weight: normal;
+	line-height: 18px;
+}
+
+.gametime {
+	margin-left: 8px; 
+	margin-top: 0px;
+	color: #ffffff;
+}
 </style>
 
 <div id="container">
-	<img src="<?php echo base_url();?>static/img/hockey/header.png" alt="Welcome to RIT Hockey, presented by WITR 89.7" style="float:left;" />
+	<img src="{{ secure_asset('img/hockey/header.png') }}" alt="Welcome to RIT Hockey, presented by WITR 89.7" style="float:left;" />
     <div id="content">
     	<div class="section">
-        	<h1 style="width: 250px;">WITR IS PROUD TO PRESENT LIVE BROADCASTS OF MEN'S AND WOMEN'S DIVISION 1 ICE HOCKEY!</h1>
-            <p style="width: 250px; margin-top: 20px;"> We’re looking forward to another season of continued success with the Men’s team. And we’re proud to be a part of the Women’s inaugural Division 1 season! If you can’t make it to game, get in on the action here!</p>
+        	<h1 style="width: 250px;">WITR IS PROUD TO PRESENT LIVE BROADCASTS OF MEN'S AND WOMEN'S DIVISION I ICE HOCKEY!</h1>
+            <p style="width: 250px; margin-top: 20px;">We parter with the RIT Men's and Women's Hockey teams to bring all the Division I action straight to you!</p>
         </div>
         <div id="divider"></div>
         <div class="section" id="hockey">
-        	<img src="<?php echo base_url();?>static/img/hockey/mens.png" alt="Men's Hockey" />
+        	<img src="{{ secure_asset('img/hockey/mens.png') }}" alt="Men's Hockey" />
             <h2>UPCOMING GAME</h2>
             <div class="nextgame">
             	<div id="date">
-                	<p class="month"> <?php echo strftime('%b', strtotime($hockey['mens']->date)); ?> </p>
-                    <p class="day"> <?php echo strftime('%d', strtotime($hockey['mens']->date)); ?> </p>
+                	<p class="month">{{ $men->start->format('M') }}</p>
+                	<p class="day">{{ $men->start->format('d') }}</p>
                 </div>
                 <div id="team">
-                	<h1 style="margin-left: 7px; margin-top: 3px; color: #f9ec33;"> <?php echo $hockey['mens']->home ? "vs. " : "at "; echo $hockey['mens']->opponent; ?> </h1>
-                    <h2 style="margin-left: 8px; margin-top: 0px;"> <?php echo strftime('%l:%M %p', strtotime($hockey['mens']->time)); ?> </h2>
+                	<div class="opponent">{{ $men->isHome ? 'vs. ' : 'at '}} {!! $men->opponent !!}</div>
+                    <div class="gametime">{{ $men->start->format('h:i A') }}</div>
                 </div>
             </div>
-            <a href="//witr.rit.edu/static/live.m3u"><img src="<?php echo base_url();?>static/img/hockey/stream.png" alt="Listen Live" class="listenlive"/></a>
+            <a href="{{ secure_asset('2nd.m3u') }}"><img src="{{ secure_asset('img/hockey/stream.png') }}" alt="Listen Live" class="listenlive"/></a>
             <a href="http://www.ritathletics.com/schedule.aspx?path=mhock" class="schedule" target="0">VIEW SCHEDULE</a>
             <p style="margin-top: 30px; float: left;">Men’s Hockey is sportscast by Ed Trefgzer, Scott Biggar, Chris Lerch, and Nick Phelan. We broadcast both home and away games over the air. </p>
         </div>
         <div id="divider"></div>
         <div class="section" id="hockey" style="margin-left: 0px;">
-        	<img src="<?php echo base_url();?>static/img/hockey/womens.png" alt="Women's Hockey" />
+        	<img src="{{ secure_asset('img/hockey/womens.png') }}" alt="Women's Hockey" />
             <h2>UPCOMING GAME</h2>
             <div class="nextgame">
             	<div id="date">
-                	<p class="month"> <?php echo strftime('%b', strtotime($hockey['womens']->date)); ?> </p>
-                    <p class="day"> <?php echo strftime('%d', strtotime($hockey['womens']->date)); ?> </p>
+                	<p class="month">{{ $women->start->format('M') }}</p>
+                	<p class="day">{{ $women->start->format('d') }}</p>
                 </div>
                 <div id="team">
-                	<h1 style="margin-left: 7px; margin-top: 3px; color: #f9ec33;"> <?php echo $hockey['womens']->home ? "vs. " : "at "; echo $hockey['womens']->opponent; ?> </h1>
-                    <h2 style="margin-left: 8px; margin-top: 0px;">2:35 PM</h2>
+                	<div class="opponent">{{ $women->isHome ? 'vs. ' : 'at '}} {!! $women->opponent !!}</div>
+                    <div class="gametime">{{ $women->start->format('h:i A') }}</div>
                 </div>
             </div>
-            <a href="//witr.rit.edu/static/2nd.m3u"><img src="<?php echo base_url();?>static/img/hockey/stream.png" alt="Listen Live" class="listenlive"/></a>
+            <a href="{{ secure_asset('2nd.m3u') }}"><img src="{{ secure_asset('img/hockey/stream.png') }}" alt="Listen Live" class="listenlive"/></a>
             <a href="http://www.ritathletics.com/schedule.aspx?path=whock" class="schedule" target="0">VIEW SCHEDULE</a>
-            <p style="margin-top: 30px; float: left;">Women’s Hockey is sportscast by Nick Phelan, Fernando Ellis, and Renee Radwan. We broadcast home games over our 2nd internet stream.</p>
+            <p style="margin-top: 30px; float: left;">Women’s Hockey is sportscast by Steph Kotula and her team of broadcasters. We broadcast home games over our 2nd internet stream.</p>
         </div>
     </div>
-    <img src="<?php echo base_url();?>static/img/hockey/footer.png" style="float:left;"/>
+    <img src="{{ secure_asset('img/hockey/footer.png') }}" style="float:left;"/>
 </div>
 
+@stop
