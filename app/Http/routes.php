@@ -18,7 +18,6 @@ Route::get('about', ['as' => 'about', 'uses' => 'HomeController@about']);
 Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 
 Route::get('hockey', ['as' => 'hockey', 'uses' => 'HockeyController@index']);
-Route::get('events', ['as' => 'events.index', 'uses' => 'ShowController@schedule']);
 Route::get('askdestler', ['as' => 'askdestler', 'uses' => 'ShowController@schedule']);
 
 Route::controllers([

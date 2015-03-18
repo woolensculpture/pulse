@@ -73,11 +73,6 @@
 							.data('scrollable');
 							
 			$('.albumreview:first').css("margin-right", "10px");
-
-	        $.getJSON('https://witr.rit.edu/nowplaying.php', function(data) {
-	            $('#nowplaying-artist').text(data.artist);
-	            $('#nowplaying-title').text(data.title);
-	        });
 		});
 		
 		
