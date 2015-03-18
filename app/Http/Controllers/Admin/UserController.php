@@ -5,6 +5,7 @@ namespace WITR\Http\Controllers\Admin;
 use WITR\Http\Requests;
 use WITR\Http\Controllers\Controller;
 use WITR\User;
+use WITR\Role;
 use Input;
 
 use Illuminate\Http\Request;
@@ -54,9 +55,10 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$roles = Role::lists('name', 'id');
 		$user = User::findOrFail($id);
 
-		return view('admin.users.edit', ['user' => $user]);
+		return view('admin.users.edit', ['roles' => $roles, 'user' => $user]);
 	}
 
 	/**

@@ -19,6 +19,17 @@
           {!! Form::text('email') !!}
         </div>
         <div>
+          <table>
+            <tr>
+              <td>{!! Form::label('user_role', 'User Role:') !!}</td>
+            </tr>
+            <tr>
+              <td>{!! Form::select('user_role', $roles, $user->user_role) !!}</td>
+            </tr>
+          </table>
+        </div>
+        <br>
+        <div>
           {!! Form::label('picture', 'Picture: (Note: Pictures should be of size 175x175)') !!}
           {!! Form::file('picture') !!}
         </div>

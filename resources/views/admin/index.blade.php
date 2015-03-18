@@ -6,8 +6,6 @@
 	    <h2>Admin</h2>
 	    <ul>
 	        <li><a href="{{ route('admin.eboard.index') }}">Change Eboard</a></li>
-	        <li><a href="{{ route('admin.permissions.roles') }}">Role Administration</a></li>
-			<li><a href="{{ route('admin.permissions.user_roles') }}">Assign User Roles</a></li>
 	    </ul>
 	</div>
 	<div class="admin_section">
