@@ -70,7 +70,6 @@ Developer: John Phillip Betley
 				    <li><a href="{{ route('shows.pulse') }}">The Pulse of Music</a></li>
 				</ul>
 			</li>
-			<li><a href="{{ route('events.index') }}">Events</a></li>
 			<li><a href="{{ route('about') }}">About</a>
 				<!--
 				<ul class="sub_nav">
