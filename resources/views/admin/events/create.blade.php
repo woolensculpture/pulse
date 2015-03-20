@@ -22,6 +22,7 @@
 					{!! Form::label('picture', 'Event Image: (Note: Pictures should be of size 670x344)') !!}
 					{!! Form::file('picture') !!}
 				</div>
+				<br>
 				<div>
 					{!! Form::submit('Save Event') !!}
 				</div>
@@ -35,6 +36,20 @@
 	$(document).ready(function() {
 		$('#date').datepicker();
 
+	});
+
+	$(function() {
+	  var $form = $('form');
+	  $form.on('submit', validate); 
+	  
+		function validate(e) {
+			var $input = $('input[type=file]');
+			if ($input.val().length == 0) {
+		    	e.preventDefault();
+		    	$('.error-message').remove();
+		    	$input.after('<div class="error-message">File Input Required</div>');
+		   }
+		 }
 	});
 </script>
 @stop
