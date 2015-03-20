@@ -38,10 +38,10 @@ $(function() {
   $form.on('submit', validate); 
   
 	function validate(e) {
+		$('.error-message').remove();
 		var $input = $('input[type=file]');
 		if ($input.val().length == 0) {
 	    	e.preventDefault();
-	    	$('.error-message').remove();
 	    	$input.after('<div class="error-message">File Input Required</div>');
 	   }
 	 }

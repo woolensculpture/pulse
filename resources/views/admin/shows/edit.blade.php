@@ -21,7 +21,7 @@
         {!! Form::file('show_picture') !!}
       </div>
       <div>
-        {!! Form::label('review', 'Slider Picture: (Note: Pictures shoule be of size 670x344') !!}
+        {!! Form::label('slider_picuture', 'Slider Picture: (Note: Pictures shoule be of size 670x344') !!}
         {!! Form::file('slider_picture', [ 'id' => 'slider-input' ]) !!}
       </div>
       <div>
