@@ -40,7 +40,12 @@ class ScheduleTime
 
     public function hour()
     {
-        return $this->datetime->hour;
+        $hour = $this->datetime->hour;
+        if ($hour == 0) {
+            return 24;
+        } else {
+            return $hour;
+        }
     }
 
     public function __get($name)
