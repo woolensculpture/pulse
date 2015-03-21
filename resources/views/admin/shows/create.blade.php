@@ -20,21 +20,17 @@
 			</div>
 			<div>
 				{!! Form::label('review', 'Slider Picture: (Note: Pictures shoule be of size 670x344') !!}
-				{!! Form::file('slider_picture') !!}
+				{!! Form::file('slider_picture', [ 'id' => 'slider-input' ]) !!}
 			</div>
 			<div>
 				<div>
 				  {!! Form::label('style', 'Styles:') !!}
-				  {!! Form::textarea('style', $show->style, [ 'id' => 'style-input' ]) !!}
+				  {!! Form::textarea('style', 'position: absolute; top: 20px; left: 20px; font-size: 44px;', [ 'id' => 'style-input' ]) !!}
 				</div>
 				<div style="position: relative; height: 344px; margin-bottom: 10px">
-					<div id="style-display" class="message" style="{{ $show->style }}">Tomorrow 11 - 12 AM</span></div>
-					<div style="position: absolute;">
-						@if($show->slider_picture != null)
-							<img id="slider-image" class="newsimg border" src="{{ secure_asset('img/slider/' . $show->slider_picture) }}">
-						@else
-							<img id="slider-image" class="newsimg border" src="#">
-						@endif
+					<div id="style-display" class="message" style="position: absolute; top: 20px; left: 20px; font-size: 44px;">Tomorrow 11 - 12 AM</span></div>
+					<div>
+						<img id="slider-image" class="newsimg border" src="#">
 					</div>
 				</div>
 		  	</div>

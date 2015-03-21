@@ -116,12 +116,12 @@ class ScheduledShow
 
     public function getRelativeAirDate()
     {
-        $day = ScheduleTime::now()->dayOfWeek();
-        if ($this->dayOfWeek == $day)
+        $now = ScheduleTime::now();
+        if ($this->dayOfWeek == $now->dayOfWeek)
         {
             return 'Today';
         }
-        else if ($this->dayOfWeek == $day + 1)
+        else if ($this->dayOfWeek == $now->addDay()->dayOfWeek)
         {
             return 'Tomorrow';
         }

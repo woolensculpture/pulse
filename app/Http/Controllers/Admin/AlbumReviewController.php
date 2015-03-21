@@ -62,9 +62,8 @@ class AlbumReviewController extends Controller {
 		$review = AlbumReview::findOrFail($id);
 		$oldFilename = $review->img_name;
 		$review->fill(Input::all());
-		if (Input::has('img_name')) 
+		if (Input::hasFile('img_name')) 
 		{
-			dd(public_path().'/img/albums/'.$oldFilename);
 			File::delete(public_path().'/img/albums/'.$oldFilename);
 			$file = Input::file('img_name');
 			$filename = $file->getClientOriginalName();

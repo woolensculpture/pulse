@@ -31,7 +31,7 @@
 			</div>
 			<div style="position: relative; height: 344px; margin-bottom: 10px">
 				<div id="style-display" class="message" style="{{ $show->style }}">Tomorrow 11 - 12 AM</span></div>
-				<div style="position: absolute;">
+				<div>
 					@if($show->slider_picture != null)
 						<img id="slider-image" class="newsimg border" src="{{ secure_asset('img/slider/' . $show->slider_picture) }}">
 					@else
