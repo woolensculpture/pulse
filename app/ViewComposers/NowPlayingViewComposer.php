@@ -4,6 +4,9 @@ namespace WITR\ViewComposers;
 
 use WITR\AlbumReview;
 use Illuminate\View\View;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use stdClass;
 
 class NowPlayingViewComposer {
 
@@ -15,8 +18,17 @@ class NowPlayingViewComposer {
 	 */
 	public function compose(View $view)
 	{
-		$data = file_get_contents('http://logger.witr.rit.edu/latest.json');
-	    $json = json_decode($data);
-		$view->with('nowplaying', $json);
+        $client = new Client();
+        try {
+			$response = $client->get('http://logger.witr.rit.edu/latest.json', [
+				'timeout' => 1,
+			]);
+			return $view->with('nowplaying', $response->json(['object' => true]));
+		} catch (RequestException $e) {
+			$data = new stdClass;
+			$data->artist = '';
+			$data->title = 'Not Available';
+			return $view->with('nowplaying', $data);
+		}
 	}
 }
