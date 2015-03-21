@@ -150,14 +150,14 @@ class ScheduledShowSpec extends ObjectBehavior
 
 	function it_should_return_relative_air_date_for_shows_airing_tomorrow()
 	{
-		$tomorrow = ScheduleTime::now()->dayOfWeek() + 1; 
+		$tomorrow = ScheduleTime::now()->addDay()->dayOfWeek; 
 		$this->airsDayOfWeek($tomorrow);
 		$this->getRelativeAirDate()->shouldBe('Tomorrow');
 	}
 
 	function it_should_return_air_date_for_shows_airing_on_day_other_than_today_or_tomorrow()
 	{
-		$nextDay = ScheduleTime::now()->dayOfWeek() + 2;
+		$nextDay = ScheduleTime::now()->addDays(2)->dayOfWeek;
 		$this->airsDayOfWeek($nextDay);
 		$this->getRelativeAirDate()->shouldNotBe('Today');
 		$this->getRelativeAirDate()->shouldNotBe('Tomorrow');
