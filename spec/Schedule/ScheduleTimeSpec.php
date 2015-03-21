@@ -24,20 +24,20 @@ class ScheduleTimeSpec extends ObjectBehavior
     {
     	$day = Carbon::create(2015, 3, 3, 0);
     	$this->beConstructedThrough('fromDate', [$day]);
-    	$this->dayOfWeek()->shouldBe(2);
+    	$this->dayOfWeek->shouldBe(2);
     }
 
     function it_should_return_correct_day_of_week_if_after_1_am()
     {
     	$day = Carbon::create(2015, 3, 3, 1);
     	$this->beConstructedThrough('fromDate', [$day]);
-    	$this->dayOfWeek()->shouldBe(3);
+    	$this->dayOfWeek->shouldBe(3);
     }
 
     function it_should_return_correct_hour()
     {
     	$day = Carbon::create(2015, 3, 3, 5);
     	$this->beConstructedThrough('fromDate', [$day]);
-    	$this->hour()->shouldBe(5);
+    	$this->hour->shouldBe(5);
     }
 }
