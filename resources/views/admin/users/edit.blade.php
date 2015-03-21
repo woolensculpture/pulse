@@ -4,7 +4,7 @@
 <div class="general_wrap border">
 	<div class="admin_section">
 		<h2>Edit User</h2>
-			{!! Form::model($user,['method' => 'put', 'route' => ['admin.users.update', $user->id], 'file' => true]) !!}
+			{!! Form::model($user,['method' => 'put', 'route' => ['admin.users.update', $user->id], 'files' => true]) !!}
 				<br>
 				<div>
           {!! Form::label('name', 'Name:') !!}

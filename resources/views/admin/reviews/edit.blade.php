@@ -4,7 +4,7 @@
 <div class="general_wrap border">
 	<div class="admin_section">
 		<h2>Edit Album Review</h2>
-			{!! Form::model($review,['method' => 'put', 'route' => ['admin.reviews.update', $review->id], 'file' => true]) !!}
+			{!! Form::model($review,['method' => 'put', 'route' => ['admin.reviews.update', $review->id], 'files' => true]) !!}
 				<br>
 				<div>
           {!! Form::label('band_name', 'Band Name:') !!}

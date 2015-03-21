@@ -6,7 +6,7 @@
 
 		<h2>Edit Album Review</h2>
 
-		{!! Form::model($show,['method' => 'put', 'route' => ['admin.shows.update', $show->id], 'file' => true]) !!}
+		{!! Form::model($show,['method' => 'put', 'route' => ['admin.shows.update', $show->id], 'files' => true]) !!}
       <br>
       <div>
         {!! Form::label('name', 'Show Name:') !!}
