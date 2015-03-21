@@ -39,6 +39,17 @@ class ShowController extends Controller {
 	{
 		$input = Input::all();
 		$show = new Show($input);
+
+		$file_show = Input::file('show_picture');
+		$filename_show = $file_show->getClientOriginalName();
+		$file->move(public_path().'img/shows', $filename_show);
+		$show->show_ipcture = $filename_show;
+
+		$file_slider = Input::file('slider_picture');
+		$filename_slider = $file_slider->getClientOriginalName();
+		$file->move(public_path().'img/shows', $filename_slider);
+		$show->slider_picture = $filename_slider;
+
 		$show->save();
 		return redirect()->route('admin.shows.index');
 	}
