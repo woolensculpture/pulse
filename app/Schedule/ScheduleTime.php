@@ -42,4 +42,23 @@ class ScheduleTime
     {
         return $this->datetime->hour;
     }
+
+    public function __get($name)
+    {
+        if ($name == 'dayOfWeek')
+        {
+            return $this->dayOfWeek();
+        }
+        return $this->datetime->$name;
+    }
+
+    public function __call($method, $arguments)
+    {
+        if (method_exists($this, $method))
+        {
+            return $this->$method();
+        }
+        call_user_func_array(array($this->datetime, $method), $arguments);
+        return $this;
+    }
 }
