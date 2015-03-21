@@ -52,6 +52,20 @@
 
 	$(function() {
 		SliderStyle.init();
+
+		var $form = $('form');
+		$form.on('submit', validate); 
+	  
+		function validate(e) {
+			$('.error-message').remove();
+			var $input = $('input[type=file]');
+			$input.each(function() {
+				if ($(this).val().length == 0) {
+					e.preventDefault();
+					$(this).after('<div class="error-message">File Input Required</div>');
+				}
+			});
+	    }
 	});
 
 </script>

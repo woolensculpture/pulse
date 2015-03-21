@@ -1064,3 +1064,7 @@ input[type=submit]:hover, form a:hover, button:hover, .button:hover {
 .role_wrap button {
 	margin-left: 10px;
 }
+
+.error-message {
+  color: red;
+}

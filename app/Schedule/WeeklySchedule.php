@@ -67,7 +67,7 @@ class WeeklySchedule extends Collection
         });
         $shows->push($first);
         $nonPulseShows = $this->filter(function ($show) {
-            return $show->show() != 'The Pulse of Music';
+            return strtolower($show->show()) != 'the pulse of music';
         });
 
         $shows = $shows->merge($nonPulseShows->take(2));

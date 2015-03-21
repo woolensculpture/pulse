@@ -21,7 +21,7 @@ class NowPlayingViewComposer {
         $client = new Client();
         try {
 			$response = $client->get('http://logger.witr.rit.edu/latest.json', [
-				'timeout' => 2,
+				'timeout' => 1,
 			]);
 			return $view->with('nowplaying', $response->json(['object' => true]));
 		} catch (RequestException $e) {

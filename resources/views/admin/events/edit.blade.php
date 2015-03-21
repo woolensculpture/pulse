@@ -4,7 +4,7 @@
 <div class="general_wrap border">
 	<div class="admin_section">
 		<h2>Edit Event </h2>
-			{!! Form::model($event,['method' => 'put', 'route' => ['admin.events.update', $event->id], 'file' => true]) !!}
+			{!! Form::model($event,['method' => 'put', 'route' => ['admin.events.update', $event->id], 'files' => true]) !!}
         <br>
         <div>
           {!! Form::label('name', 'Event Name:') !!}
