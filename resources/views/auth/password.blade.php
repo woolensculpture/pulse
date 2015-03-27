@@ -1,7 +1,7 @@
-@extends('app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container-fluid">
+<div id="login_form" class="border general_wrap">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
@@ -14,8 +14,8 @@
 					@endif
 
 					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+						<div class="error-message">
+							<strong>Whoops!</strong> There were some problems with your input.<br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>

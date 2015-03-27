@@ -49,6 +49,7 @@ class AppServiceProvider extends ServiceProvider {
 		    'WITR\ViewComposers\SliderViewComposer' => 'home.partials.slider',
 		    'WITR\ViewComposers\NowPlayingViewComposer' => 'home.partials.nowplaying',
 		    'WITR\ViewComposers\TopTwentyViewComposer' => 'home.partials.toptwenty',
+		    'WITR\ViewComposers\AuthViewComposer' => 'layouts.partials.auth-buttons',
 		]);
 	}
 

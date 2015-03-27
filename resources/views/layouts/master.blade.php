@@ -52,6 +52,7 @@ Developer: John Phillip Betley
 	<div id="header">
 
 		<div class="button_container">
+			@include('layouts.partials.auth-buttons')
 		</div>
 		
 		<!-- LOGO -->
