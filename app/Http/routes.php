@@ -20,10 +20,12 @@ Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 Route::get('hockey', ['as' => 'hockey', 'uses' => 'HockeyController@index']);
 Route::get('askdestler', ['as' => 'askdestler', 'uses' => 'ShowController@schedule']);
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::get('login', ['uses' => 'Auth\AuthController@login']);
+Route::get('logout', ['uses' => 'Auth\AuthController@logout']);
+Route::get('auth/login', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@login']);
+Route::get('auth/logout', ['as' => 'auth.logout', 'uses' => 'Auth\AuthController@logout']);
+Route::post('auth/login', ['as' => 'auth.authenticate', 'uses' => 'Auth\AuthController@authenticate']);
+Route::controller('password', 'Auth\PasswordController');
 
 Route::get('shows', ['as' => 'shows.index', 'uses' => 'ShowController@schedule']);
 Route::get('shows/schedule', ['as' => 'shows.schedule', 'uses' => 'ShowController@schedule']);

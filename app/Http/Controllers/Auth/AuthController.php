@@ -3,23 +3,9 @@
 use WITR\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller {
-
-	/**
-	 * Create a new authentication controller instance.
-	 *
-	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
-	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
-	 * @return void
-	 */
-	public function __construct(Guard $auth, Registrar $registrar)
-	{
-		$this->auth = $auth;
-		$this->registrar = $registrar;
-
-		$this->middleware('guest', ['except' => 'getLogout']);
-	}
 
 	/**
 	 * The Guard implementation.
@@ -29,18 +15,25 @@ class AuthController extends Controller {
 	protected $auth;
 
 	/**
-	 * The registrar implementation.
+	 * Create a new authentication controller instance.
 	 *
-	 * @var Registrar
+	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
+	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
+	 * @return void
 	 */
-	protected $registrar;
+	public function __construct(Guard $auth)
+	{
+		$this->auth = $auth;
+
+		$this->middleware('guest', ['except' => 'logout']);
+	}
 
 	/**
 	 * Show the application login form.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function getLogin()
+	public function login()
 	{
 		return view('auth.login');
 	}
@@ -51,7 +44,7 @@ class AuthController extends Controller {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function postLogin(Request $request)
+	public function authenticate(Request $request)
 	{
 		$this->validate($request, [
 			'email' => 'required', 'password' => 'required',
@@ -76,7 +69,7 @@ class AuthController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function getLogout()
+	public function logout()
 	{
 		$this->auth->logout();
 
