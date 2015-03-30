@@ -10,8 +10,9 @@ class UserTableSeeder extends Seeder {
     public function run()
     {
     	DB::table('user')->delete();
-        TestDummy::create('test_user');
-        TestDummy::create('legacy_user');
+        TestDummy::create('normal_user');
+        TestDummy::create('editor_user');
+        TestDummy::create('admin_user');
     	TestDummy::times(20)->create('WITR\User');
     }
 

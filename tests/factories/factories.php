@@ -8,20 +8,31 @@ $factory('WITR\User', [
     'email' => $faker->email
 ]);
 
-$factory('WITR\User', 'test_user', [
+$factory('WITR\User', 'normal_user', [
     'name' => 'Test User',
     'dj_name' => 'Dee Testable',
     'username' => 'test',
     'password' => Hash::make('test'),
-    'email' => 'test@test.com'
+    'email' => 'normal@example.com',
+    'user_role' => 1
 ]);
 
-$factory('WITR\User', 'legacy_user', [
-    'name' => 'Legacy User',
-    'dj_name' => 'Legacy Dee Testable',
-    'username' => 'legacy',
-    'password' => md5('test'),
-    'email' => 'legacy@test.com'
+$factory('WITR\User', 'editor_user', [
+    'name' => 'Editor',
+    'dj_name' => 'Editor',
+    'username' => 'editor',
+    'password' => Hash::make('test'),
+    'email' => 'editor@example.com',
+    'user_role' => 2
+]);
+
+$factory('WITR\User', 'admin_user', [
+    'name' => 'Admin',
+    'dj_name' => 'Admin',
+    'username' => 'admin',
+    'password' => Hash::make('test'),
+    'email' => 'admin@example.com',
+    'user_role' => 3
 ]);
 
 $factory('WITR\Show', [
