@@ -22,7 +22,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password', 'dj_name', 'picture'];
+	protected $fillable = ['name', 'email', 'password', 'dj_name', 'picture', 'user_role'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -36,10 +36,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	/**
      * @return mixed
      */
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany('Role')->withTimestamps();
+        return $this->belongsTo('WITR\Role',  'user_role', 'id');
     }
+
     /**
      * Does the user have a particular role?
      *
@@ -48,31 +49,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function hasRole($name)
     {
-        foreach ($this->roles as $role)
-        {
-            if ($role->name == $name) return true;
-        }
-        return false;
+        return $this->role->name == $name;
     }
-    /**
-     * Assign a role to the user
-     *
-     * @param $role
-     * @return mixed
-     */
-    public function assignRole($role)
-    {
-        return $this->roles()->attach($role);
-    }
-    /**
-     * Remove a role from a user
-     *
-     * @param $role
-     * @return mixed
-     */
-    public function removeRole($role)
-    {
-        return $this->roles()->detach($role);
-    }
-
 }

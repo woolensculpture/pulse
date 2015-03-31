@@ -17,11 +17,11 @@ class TimeSlot extends Model {
 
 	public function djForTimeslot()
 	{
-		return $this->hasOne('WITR\User', 'id', 'dj');
+		return $this->belongsTo('WITR\User', 'dj', 'id');
 	}
 
 	public function showForTimeslot()
 	{
-		return $this->hasOne('WITR\Show', 'id', 'show');
+		return $this->belongsTo('WITR\Show', 'show', 'id');
 	}
 }
