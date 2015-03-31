@@ -12,7 +12,7 @@ sudo: false
 install: travis_retry composer install --no-interaction --prefer-source
 
 before_script:
-  - mysql -e 'create database web;create database bible;'
+  - mysql -e 'create database web;'
   - php artisan migrate --seed
 
 script: 

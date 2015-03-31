@@ -64,12 +64,12 @@ return [
 			'strict'    => false,
 		],
 
-		'bible' => [
+		'logger' => [
 			'driver'    => 'mysql',
-			'host'      => env('BIBLE_DB_HOST', 'localhost'),
-			'database'  => env('BIBLE_DB_DATABASE', 'bible'),
-			'username'  => env('BIBLE_DB_USERNAME', 'forge'),
-			'password'  => env('BIBLE_DB_PASSWORD', ''),
+			'host'      => env('LOGGER_DB_HOST', 'localhost'),
+			'database'  => env('LOGGER_DB_DATABASE', 'logger'),
+			'username'  => env('LOGGER_DB_USERNAME', 'forge'),
+			'password'  => env('LOGGER_DB_PASSWORD', ''),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
