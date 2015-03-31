@@ -34,19 +34,16 @@ Route::get('shows/pulse', ['as' => 'shows.pulse', 'uses' => 'ShowController@sche
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+
 	Route::get('/eboard', ['as' => 'admin.eboard.index', 'uses' => 'EboardController@index']);
 	Route::get('/eboard/create', ['as' => 'admin.eboard.create', 'uses' => 'EboardController@new_position']);
 	Route::post('/eboard/create', ['as' => 'admin.eboard.create.save', 'uses' => 'EboardController@create']);
 	Route::get('eboard/{id}', ['as' => 'admin.eboard.edit', 'uses' => 'EboardController@edit']);
 	Route::put('eboard/{id}', ['as' => 'admin.eboard.update', 'uses' => 'EboardController@update']);
 	Route::delete('eboard/{id}', ['as' => 'admin.eboard.delete', 'uses' => 'EboardController@delete']);
-	Route::get('/', ['as' => 'admin.permissions.roles', 'uses' => 'AdminController@index']);
-	Route::get('/', ['as' => 'admin.permissions.user_roles', 'uses' => 'AdminController@index']);
 
 	Route::get('/schedule', ['as' => 'admin.schedule', 'uses' => 'ScheduleController@index']);
 	Route::put('/schedule/update', ['as' => 'admin.schedule.update', 'uses' => 'ScheduleController@update']);
-	
-	Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminController@index']);
 	
 	Route::get('/events', ['as' => 'admin.events.index', 'uses' => 'EventController@index']);
 	Route::get('/events/create', ['as' => 'admin.events.create', 'uses' => 'EventController@new_event']);

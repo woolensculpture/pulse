@@ -1,19 +1,19 @@
 <?php
 
-class AdminControllerTest extends IntegrationTestCase {
+class ShowControllerTest extends IntegrationTestCase {
 
 	/** @test */
 	public function it_denies_unauthorized_access()
 	{
 		$this->beUser();
-		$this->visit('/admin')
+		$this->visit('/admin/shows')
             ->onPage('/home');
 	}
 
 	/** @test */
 	public function it_redirects_guests()
 	{
-		$this->visit('/admin')
+		$this->visit('/admin/shows')
             ->onPage('/auth/login');
 	}
 
@@ -21,11 +21,11 @@ class AdminControllerTest extends IntegrationTestCase {
 	public function it_allows_authorized_access()
 	{
 		$this->beEditor();
-		$this->visit('/admin')
-            ->onPage('/admin');
+		$this->visit('/admin/shows')
+            ->onPage('/admin/shows');
             
-		$this->beAdmin();
-		$this->visit('/admin')
-            ->onPage('/admin');
+        $this->beAdmin();
+		$this->visit('/admin/shows')
+            ->onPage('/admin/shows');
 	}
 }
