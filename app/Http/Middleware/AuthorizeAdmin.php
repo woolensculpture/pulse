@@ -33,7 +33,7 @@ class AuthorizeAdmin {
 	public function handle($request, Closure $next)
 	{
 		$user = $this->auth->user();
-		if ($user->hasRole('super_admin'))
+		if ($user->hasRole('admin'))
 		{
 			return $next($request);
 		}

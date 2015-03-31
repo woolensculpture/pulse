@@ -33,7 +33,7 @@ class AuthorizeEditor {
 	public function handle($request, Closure $next)
 	{
 		$user = $this->auth->user();
-		if ($user->hasRole('admin') || $user->hasRole('super_admin'))
+		if ($user->hasRole('editor') || $user->hasRole('admin'))
 		{
 			return $next($request);
 		}
