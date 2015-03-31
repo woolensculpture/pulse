@@ -1,12 +1,17 @@
 <?php
 
-$factory('WITR\User', [
-    'name' => 'Test User',
-    'dj_name' => 'Dee Testable',
-    'username' => $faker->username,
-    'password' => Hash::make('test'),
-    'email' => $faker->email
-]);
+$factory('WITR\User', function($faker) {
+    $password = Hash::make('test');
+    $roles = DB::table('user_roles')->lists('id');
+    return [
+        'name' => $faker->name,
+        'dj_name' => $faker->name,
+        'username' => $faker->username,
+        'password' => $password,
+        'email' => $faker->email,
+        'user_role' => $roles[array_rand($roles)]
+    ];
+});
 
 $factory('WITR\User', 'normal_user', [
     'name' => 'Test User',

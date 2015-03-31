@@ -14,7 +14,8 @@
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
 		"laracasts/generators": "~1.1",
-		"laracasts/testdummy": "~2.0"
+		"laracasts/testdummy": "~2.0",
+		"laracasts/integrated": "0.11.*"
 	},
 	"autoload": {
 		"classmap": [
@@ -26,7 +27,8 @@
 	},
 	"autoload-dev": {
 		"classmap": [
-			"tests/TestCase.php"
+			"tests/TestCase.php",
+			"tests/integration/IntegrationTestCase.php"
 		]
 	},
 	"scripts": {

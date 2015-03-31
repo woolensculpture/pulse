@@ -11,5 +11,5 @@ class Role extends Model {
 	 */
 	protected $table = 'user_roles';
     
-    public $timestampts = false;
+    public $timestamps = false;
 }

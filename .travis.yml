@@ -4,9 +4,16 @@ php:
   - 5.4
   - 5.5
 
+env:
+  - APP_ENV=testing WEBSITE_DB_HOST=localhost WEBSITE_DB_DATABASE=web WEBSITE_DB_USERNAME=travis 
+
 sudo: false
 
 install: travis_retry composer install --no-interaction --prefer-source
+
+before_script:
+  - mysql -e 'create database web;'
+  - php artisan migrate --seed
 
 script: 
   - vendor/bin/phpunit

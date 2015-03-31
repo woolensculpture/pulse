@@ -27,6 +27,8 @@ class Kernel extends HttpKernel {
 		'auth' => 'WITR\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'WITR\Http\Middleware\RedirectIfAuthenticated',
+		'admin' => 'WITR\Http\Middleware\AuthorizeAdmin',
+		'editor' => 'WITR\Http\Middleware\AuthorizeEditor',
 	];
 
 }
