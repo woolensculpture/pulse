@@ -5,7 +5,7 @@ php:
   - 5.5
 
 env:
-  - WEBSITE_DB_HOST=localhost WEBSITE_DB_DATABASE=web WEBSITE_DB_USERNAME=travis 
+  - APP_ENV=testing WEBSITE_DB_HOST=localhost WEBSITE_DB_DATABASE=web WEBSITE_DB_USERNAME=travis 
 
 sudo: false
 
