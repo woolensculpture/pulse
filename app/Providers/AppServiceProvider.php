@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use WITR\Services\Whitelist;
+use WITR\Services\IcecastReader;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -58,6 +59,14 @@ class AppServiceProvider extends ServiceProvider {
 			$startIp = $config['witr.whitelist.start'];
 			$endIp = $config['witr.whitelist.end'];
 			return new Whitelist($startIp, $endIp);
+		});
+
+		$this->app->bind('WITR\Services\IcecastReader', function($app) {
+			$config = $app['config'];
+			$hostname = $config['witr.icecast.hostname'];
+			$credentials = $config['witr.icecast.credentials'];
+			$mounts = $config['witr.icecast.mounts'];
+			return new IcecastReader($hostname, $credentials, $mounts);
 		});
 	}
 
