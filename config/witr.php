@@ -17,6 +17,16 @@ return [
 		'end' => env('WHITELIST_END', '127.0.0.1')
 	],
 
+	/*
+	|--------------------------------------------------------------------------
+	| Icecast Server Information
+	|--------------------------------------------------------------------------
+	|
+	| Server Information and credentials used to access streaming server.
+	| Also includes lists of the mounts used for reporting display
+	|
+	*/
+
 	'icecast' => [
 		'hostname' => env('ICECAST_HOSTNAME'),
 
@@ -36,6 +46,17 @@ return [
 				'witr-undrgnd-mobile',
 			]
 		]
-	]
+	],
+
+	/*
+	|--------------------------------------------------------------------------
+	| Hours Form Location
+	|--------------------------------------------------------------------------
+	|
+	| Address to the external form used to submit DJ work hours
+	|
+	*/
+
+	'hours_form' => env('DJ_HOURS_FORM')
 
 ];

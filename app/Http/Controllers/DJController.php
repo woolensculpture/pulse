@@ -20,7 +20,7 @@ class DJController extends Controller {
 	 */
 	public function index()
 	{
-		return 'test';
+		return view('dj.index');
 	}
 
 	/**
