@@ -32,6 +32,8 @@ Route::get('shows/schedule', ['as' => 'shows.schedule', 'uses' => 'ShowControlle
 Route::get('shows/specialty', ['as' => 'shows.specialty', 'uses' => 'ShowController@schedule']);
 Route::get('shows/pulse', ['as' => 'shows.pulse', 'uses' => 'ShowController@schedule']);
 
+Route::get('dj', ['as' => 'dj.index', 'uses' => 'DJController@index']);
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
 

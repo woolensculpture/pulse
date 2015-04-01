@@ -29,6 +29,7 @@ class Kernel extends HttpKernel {
 		'guest' => 'WITR\Http\Middleware\RedirectIfAuthenticated',
 		'admin' => 'WITR\Http\Middleware\AuthorizeAdmin',
 		'editor' => 'WITR\Http\Middleware\AuthorizeEditor',
+		'dj' => 'WITR\Http\Middleware\VerifyAuthOrWhitelisted',
 	];
 
 }
