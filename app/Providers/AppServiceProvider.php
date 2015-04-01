@@ -1,6 +1,7 @@
 <?php namespace WITR\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use WITR\Services\Whitelist;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -51,6 +52,13 @@ class AppServiceProvider extends ServiceProvider {
 		    'WITR\ViewComposers\TopTwentyViewComposer' => 'home.partials.toptwenty',
 		    'WITR\ViewComposers\AuthViewComposer' => 'layouts.partials.auth-buttons',
 		]);
+
+		$this->app->bind('WITR\Services\Whitelist', function($app) {
+			$config = $app['config'];
+			$startIp = $config['witr.whitelist.start'];
+			$endIp = $config['witr.whitelist.end'];
+			return new Whitelist($startIp, $endIp);
+		});
 	}
 
 }

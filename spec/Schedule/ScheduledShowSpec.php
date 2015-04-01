@@ -112,9 +112,12 @@ class ScheduledShowSpec extends ObjectBehavior
 		$this->extendShowByHour();
 		$this->timespan()->shouldBe('12 - 2 PM');
 
-	  $this->startsAt(14);
-	  $this->extendShowByHour();
-	  $this->timespan()->shouldBe('2 - 4 PM');
+		$this->startsAt(14);
+		$this->extendShowByHour();
+		$this->timespan()->shouldBe('2 - 4 PM');
+
+		$this->startsAt(24);
+		$this->timespan()->shouldBe('12 - 1 AM');
 	}
 
 	function it_should_return_air_date_for_each_day_of_the_week()
