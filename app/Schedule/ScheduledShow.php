@@ -90,7 +90,7 @@ class ScheduledShow
 
     public function timespan()
     {
-        $suffix = $this->endingHour < 12 ? 'AM' : 'PM';
+        $suffix = $this->endingHour < 12 || $this->endingHour > 24 ? 'AM' : 'PM';
         $endingHour = $this->hourAdjusted($this->endingHour);
         $startingHour = $this->hourAdjusted($this->startingHour);
         return $startingHour . ' - ' . $endingHour . ' ' . $suffix;
