@@ -63,15 +63,31 @@ class EventController extends Controller {
 	public function update($id)
 	{
 		$event = Event::findOrFail($id);
+		$oldFilename = $event->picture;
 		$event->fill(Input::all());
+
+		if(Input::hasFile('picture'))
+		{
+			File::delete(public_path().'/img/events/'.$oldFilename);
+			$file = Input::file('picture');
+			$filename = $file->getClientOriginalName();
+			$file->move(public_path().'/img/events', $filename);
+			$event->picture = $filename;
+		}
+
 		$date = Carbon::createFromFormat('m/d/Y', Input::input('date'));
 		$event->date = $date;
+
+
+
 		$event->save();
 		return redirect()->route('admin.events.index');
 	}
 
 	public function delete($id)
 	{
+		$event = Event::findOrFail($id);
+		File::delete(public_path().'/img/events/'.$event->picture);
 		Event::destroy($id);
 		return redirect()->route('admin.events.index');
 	}
