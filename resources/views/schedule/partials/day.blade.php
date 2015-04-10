@@ -6,6 +6,6 @@
             <span>{{ $show->show() }} WITH {{ $show->dj() }}</span><br>
 			{{ $show->showDescription() }}
         </p>
-		<img src="{{ secure_asset('img/shows/' . $show->djPicture()) }}" />
+		<img src="{{ secure_asset('img/djs/' . $show->djPicture()) }}" />
     </div>
 </li>
