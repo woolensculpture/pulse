@@ -16,7 +16,7 @@ class ScheduleTableSeeder extends Seeder {
         DB::table('schedule')->delete();
         $user = User::take(2)->get();
         $shows = Show::all();
-        for ($day = 1; $day <= 7; $day++) 
+        for ($day = 0; $day <= 6; $day++) 
         {
         	for ($hour = 1; $hour <= 24; $hour++)
         	{

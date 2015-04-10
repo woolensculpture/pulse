@@ -122,25 +122,25 @@ class ScheduledShowSpec extends ObjectBehavior
 
 	function it_should_return_air_date_for_each_day_of_the_week()
 	{
-		$this->airsDayOfWeek(1);
+		$this->airsDayOfWeek(0);
 		$this->getAirDate()->shouldBe('Sunday');
 
-		$this->airsDayOfWeek(2);
+		$this->airsDayOfWeek(1);
 		$this->getAirDate()->shouldBe('Monday');
 		
-		$this->airsDayOfWeek(3);
+		$this->airsDayOfWeek(2);
 		$this->getAirDate()->shouldBe('Tuesday');
 		
-		$this->airsDayOfWeek(4);
+		$this->airsDayOfWeek(3);
 		$this->getAirDate()->shouldBe('Wednesday');
 		
-		$this->airsDayOfWeek(5);
+		$this->airsDayOfWeek(4);
 		$this->getAirDate()->shouldBe('Thursday');
 		
-		$this->airsDayOfWeek(6);
+		$this->airsDayOfWeek(5);
 		$this->getAirDate()->shouldBe('Friday');
 		
-		$this->airsDayOfWeek(7);
+		$this->airsDayOfWeek(6);
 		$this->getAirDate()->shouldBe('Saturday');
 	}
 
