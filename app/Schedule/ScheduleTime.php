@@ -30,7 +30,7 @@ class ScheduleTime
 
     public function dayOfWeek()
     {
-        $day = $this->datetime->dayOfWeek + 1;
+        $day = $this->datetime->dayOfWeek;
         if ($this->datetime->hour < 1)
         {
             $day--;
