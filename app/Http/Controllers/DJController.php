@@ -2,6 +2,7 @@
 
 use WITR\Http\Requests;
 use WITR\Http\Controllers\Controller;
+use WITR\Services\IcecastReader;
 
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class DJController extends Controller {
 	 */
 	public function index()
 	{
-		return 'test';
+		return view('dj.index');
 	}
 
 	/**
@@ -27,9 +28,10 @@ class DJController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function listeners(IcecastReader $icecast, $studio = 'studio-x')
 	{
-		//
+		$listeners = $icecast->get($studio);
+		return view('dj.listeners', compact('listeners'));
 	}
 
 	/**

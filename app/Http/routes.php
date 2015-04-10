@@ -33,6 +33,10 @@ Route::get('shows/specialty', ['as' => 'shows.specialty', 'uses' => 'ShowControl
 Route::get('shows/pulse', ['as' => 'shows.pulse', 'uses' => 'ShowController@schedule']);
 
 Route::get('dj', ['as' => 'dj.index', 'uses' => 'DJController@index']);
+Route::get('dj/listeners/{studio?}', ['as' => 'dj.listeners', 'uses' => 'DJController@listeners']);
+Route::get('dj/top', ['as' => 'dj.charts', 'uses' => 'DJController@index']);
+Route::get('dj/support', ['as' => 'dj.support', 'uses' => 'DJController@index']);
+Route::get('dj/file/{file}', ['as' => 'dj.file', 'uses' => 'DJController@index']);
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
