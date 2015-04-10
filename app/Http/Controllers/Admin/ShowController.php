@@ -46,15 +46,15 @@ class ShowController extends Controller {
 		$input = Input::all();
 		$show = new Show($input);
 
-		$file_show = Input::file('show_picture');
-		$filename_show = $file_show->getClientOriginalName();
-		$file->move(public_path().'img/shows', $filename_show);
-		$show->show_ipcture = $filename_show;
+		$fileShow = Input::file('show_picture');
+		$filenameShow = $fileShow->getClientOriginalName();
+		$file->move(public_path().'/img/shows', $filenameShow);
+		$show->show_picture = $filenameShow;
 
-		$file_slider = Input::file('slider_picture');
-		$filename_slider = $file_slider->getClientOriginalName();
-		$file->move(public_path().'img/shows', $filename_slider);
-		$show->slider_picture = $filename_slider;
+		$fileSlider = Input::file('slider_picture');
+		$filenameSlider = $fileSlider->getClientOriginalName();
+		$file->move(public_path().'/img/shows', $filenameSlider);
+		$show->slider_picture = $filenameSlider;
 
 		$show->save();
 		return redirect()->route('admin.shows.index');
@@ -64,6 +64,29 @@ class ShowController extends Controller {
 	{
 		$show = Show::findOrFail($id);
 
+		$oldFilenameShow = $show->show_picture;
+		$oldFilenameSlider = $show->slider_picture;
+
+		$show->fill(Input::all());
+		if (Input::hasFile('show_picture')) 
+		{
+			File::delete(public_path().'/img/shows/'.$oldFilenameShow);
+			$fileShow = Input::file('show_picture');
+			$filenameShow = $fileShow->getClientOriginalName();
+			$file->move(public_path().'/img/shows', $filenameShow);
+			$show->show_picture = $filenameShow;
+		}
+
+		if (Input::hasFile('slider_picture')) 
+		{
+			File::delete(public_path().'/img/shows/'.$oldFilenameSlider);
+			$fileSlider = Input::file('slider_picture');
+			$filenameSlider = $fileSlider->getClientOriginalName();
+			$file->move(public_path().'/img/shows', $filenameSlider);
+			$show->slider_picture = $filenameSlider;
+		}
+
+		$show->save();
 		return view('admin.shows.edit', ['show' => $show]);
 	}
 
@@ -77,6 +100,9 @@ class ShowController extends Controller {
 
 	public function delete($id)
 	{
+		$show = Show::findOrFail($id);
+		File::delete(public_path().'/img/shows/'.$show->show_picture);
+		File::delete(public_path().'/img/shows/'.$show->slider_picture);
 		Show::destroy($id);
 		return redirect()->route('admin.shows.index');
 	}
