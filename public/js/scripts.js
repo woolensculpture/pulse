@@ -21,4 +21,13 @@ $(document).ready(function() {
 	
 	$("#player_link[rel]").overlay();
 
+    $('.noty-message').each(function(index, value) {
+        var $this = $(this),
+            text = $this.html();
+        var notyMessage = noty({
+            text: text,
+            type: $this.data('type')
+        });
+    })
+
 });

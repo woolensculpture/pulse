@@ -30,5 +30,6 @@ Route::get('shows/pulse', ['as' => 'shows.pulse', 'uses' => 'ShowController@sche
 Route::get('dj', ['as' => 'dj.index', 'uses' => 'DJController@index']);
 Route::get('dj/listeners/{studio?}', ['as' => 'dj.listeners', 'uses' => 'DJController@listeners']);
 Route::get('dj/top', ['as' => 'dj.charts', 'uses' => 'DJController@index']);
-Route::get('dj/support', ['as' => 'dj.support', 'uses' => 'DJController@index']);
-Route::get('dj/file/{file}', ['as' => 'dj.file', 'uses' => 'DJController@index']);
+Route::get('dj/support', ['as' => 'dj.support', 'uses' => 'DJController@ticketForm']);
+Route::post('dj/support', ['as' => 'dj.support.create', 'uses' => 'DJController@submitTicket']);
+Route::get('dj/file/{file}', ['as' => 'dj.file', 'uses' => 'DJController@fetchFile']);
