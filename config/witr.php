@@ -50,16 +50,24 @@ return [
 
 	/*
 	|--------------------------------------------------------------------------
-	| Hours Form Location
+	| DJ Form Locations
 	|--------------------------------------------------------------------------
-	|
-	| Address to the external form used to submit DJ work hours
-	|
 	*/
 
 	'dj_forms' => [
 		'hours' => env('DJ_HOURS_FORM', '/'),
 		'cd_signout' => env('CD_SIGNOUT_FORM', '/')
+	],
+
+	/*
+	|--------------------------------------------------------------------------
+	| DJ Form Locations
+	|--------------------------------------------------------------------------
+	*/
+
+	'ticket_recipient' => [
+		'name' => 'WITR Engineering',
+		'email' => env('TICKET_EMAIL', 'test@example.com')
 	]
 
 ];

@@ -1,9 +1,11 @@
 <?php namespace WITR\Http\Controllers;
 
 use WITR\Http\Requests;
+use WITR\Http\Requests\DJ\TicketRequest;
 use WITR\Http\Controllers\Controller;
 use WITR\Services\IcecastReader;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
+use Illuminate\Contracts\Mail\Mailer;
 
 use Illuminate\Http\Request;
 
@@ -45,15 +47,22 @@ class DJController extends Controller {
 		return response()->download($locationRoot . $file);
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+	public function ticketForm()
 	{
-		//
+		return view('dj.ticket');
+	}
+
+	public function submitTicket(Mailer $mailer, TicketRequest $request)
+	{
+		$ticketRecipient = app('config')['witr.ticket_recipient'];
+		$mailer->send('emails.support_ticket', $request->all(), function($message) use ($ticketRecipient)
+		{
+			$message->to($ticketRecipient['email'], $ticketRecipient['name'])
+					->subject('WITR Support Ticket');
+		});
+
+		return redirect()->route('dj.index')
+			->with('success', 'Support Ticket Submitted!');
 	}
 
 	/**
