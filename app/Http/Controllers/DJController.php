@@ -4,6 +4,7 @@ use WITR\Http\Requests;
 use WITR\Http\Requests\DJ\TicketRequest;
 use WITR\Http\Controllers\Controller;
 use WITR\Services\IcecastReader;
+use WITR\TopTwenty\Reader as WeeklyChart;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Mail\Mailer;
 
@@ -16,21 +17,11 @@ class DJController extends Controller {
 		$this->middleware('dj');
 	}
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
 		return view('dj.index');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function listeners(IcecastReader $icecast, $studio = 'studio-x')
 	{
 		$listeners = $icecast->get($studio);
@@ -65,37 +56,9 @@ class DJController extends Controller {
 			->with('success', 'Support Ticket Submitted!');
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+	public function topWeek(WeeklyChart $chart)
 	{
-		//
+		$tracks = $chart->getWeek();
+		return view('dj.chart', compact('tracks'));
 	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }
