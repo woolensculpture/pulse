@@ -3,6 +3,7 @@
 use WITR\Http\Requests;
 use WITR\Http\Controllers\Controller;
 use WITR\Services\IcecastReader;
+use Illuminate\Contracts\Filesystem\Factory as Storage;
 
 use Illuminate\Http\Request;
 
@@ -34,14 +35,14 @@ class DJController extends Controller {
 		return view('dj.listeners', compact('listeners'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function fetchFile(Storage $storage, $file)
 	{
-		//
+		if (!$storage->exists($file))
+		{
+			return abort(404);
+		}
+		$locationRoot = $storage->getDriver()->getAdapter()->getPathPrefix();
+		return response()->download($locationRoot . $file);
 	}
 
 	/**

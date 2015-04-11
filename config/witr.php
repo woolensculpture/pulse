@@ -57,6 +57,9 @@ return [
 	|
 	*/
 
-	'hours_form' => env('DJ_HOURS_FORM')
+	'dj_forms' => [
+		'hours' => env('DJ_HOURS_FORM', '/'),
+		'cd_signout' => env('CD_SIGNOUT_FORM', '/')
+	]
 
 ];

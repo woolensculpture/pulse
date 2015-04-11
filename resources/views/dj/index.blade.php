@@ -29,8 +29,13 @@
 		        <span style="margin-left: 10px; font-size: 10pt" class="clean_type">Password: W1k189.7</span>
 			</li>
 			<li>
-		        <a href="{{ app('config')['witr.hours_form'] }}">
+		        <a href="{{ app('config')['witr.dj_forms.hours'] }}">
 			        Work Hours
+		        </a>
+			</li>
+			<li>
+		        <a href="{{ app('config')['witr.dj_forms.cd_signout'] }}">
+			        CD Signout
 		        </a>
 			</li>
 		</ul>
