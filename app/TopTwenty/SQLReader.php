@@ -1,6 +1,7 @@
 <?php
 
 namespace WITR\TopTwenty;
+use DB;
 
 class SQLReader implements Reader {
 
