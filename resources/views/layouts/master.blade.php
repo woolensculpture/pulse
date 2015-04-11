@@ -27,6 +27,9 @@ Developer: John Phillip Betley
 	<script type="text/javascript" src="{{ secure_asset('js/jquery-ui.min.js') }}"></script>
 	<script type="text/javascript" src="{{ secure_asset('js/scripts.js') }}"></script>
 	<script type="text/javascript" src="{{ secure_asset('js/jquery.tools.min.js') }}"></script>
+	<script type="text/javascript" src="{{ secure_asset('js/jquery.noty.min.js') }}"></script>
+	<script type="text/javascript" src="{{ secure_asset('js/noty.defaults.js') }}"></script>
+	<script type="text/javascript" src="{{ secure_asset('js/noty.theme.default.js') }}"></script>
 	
 	
 	<title>WITR 89.7</title>
@@ -45,6 +48,8 @@ Developer: John Phillip Betley
 	</script>
 </head>
 <body>
+
+@include('shared.messages')
 
 <div id="sitewrap">
 	
