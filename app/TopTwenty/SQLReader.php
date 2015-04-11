@@ -9,4 +9,10 @@ class SQLReader implements Reader {
 		$toptwenty = DB::connection('logger')->table('top_20')->get();
 		return $toptwenty;
 	}
+
+	public function getWeek()
+	{
+		$toptwenty = DB::connection('logger')->table('top_week')->get();
+		return $toptwenty;
+	}
 }
