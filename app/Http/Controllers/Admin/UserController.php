@@ -31,7 +31,8 @@ class UserController extends Controller {
 
 	public function new_user()
 	{
-		return view('admin.users.create'); 
+		$roles = Role::lists('name', 'id');
+		return view('admin.users.create', ['roles' => $roles]); 
 	}
 
 	/**
