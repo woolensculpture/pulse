@@ -956,6 +956,13 @@ input[type=submit]:hover, button:hover, .button:hover {
 	color: #0090c4;
 }
 
+.admin_section form {
+	display: inline;
+}
+.delete-form button, .delete-form input[type=submit] {
+	background-color: #f23333;
+}
+
 
 
 /************************

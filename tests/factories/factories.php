@@ -54,3 +54,10 @@ $factory('WITR\TimeSlot', [
     'dj' => 'factory:WITR\User',
     'hour' => 1
 ]);
+
+$factory('WITR\Eboard', [
+    'position' => 'Test Position',
+    'name' => $faker->name,
+    'email' => $faker->email,
+    'hours' => 'MW 2 - 4 PM EST'
+]);
