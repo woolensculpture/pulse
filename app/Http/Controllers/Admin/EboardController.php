@@ -1,6 +1,6 @@
 <?php namespace WITR\Http\Controllers\Admin;
 
-use WITR\Http\Requests;
+use WITR\Http\Requests\Admin\Eboard as Requests;
 use WITR\Http\Controllers\Controller;
 use WITR\Eboard;
 use Input;
@@ -41,12 +41,13 @@ class EboardController extends Controller {
 	*
 	*@return Response
 	*/
-	public function create()
+	public function create(Requests\CreateRequest $request)
 	{
-		$input = Input::all();
+		$input = $request->all();
 		$position = new Eboard($input);
 		$position->save();
-		return redirect()->route('admin.eboard.index');
+		return redirect()->route('admin.eboard.index')
+			->with('success', 'Position Saved!');
 	}
 
 	public function edit($id)
@@ -56,12 +57,13 @@ class EboardController extends Controller {
 		return view('admin.eboard.edit', ['eboard' => $position]);
 	}
 
-	public function update($id)
+	public function update(Requests\UpdateRequest $request, $id)
 	{
 		$position = Eboard::findOrFail($id);
-		$position->fill(Input::all());
+		$position->fill($request->all());
 		$position->save();
-		return redirect()->route('admin.eboard.index');
+		return redirect()->route('admin.eboard.index')
+			->with('success', 'Position Saved!');
 	}
 
 	public function delete($id)

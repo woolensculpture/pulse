@@ -1,6 +1,6 @@
 <?php namespace WITR\Http\Controllers\Admin;
 
-use WITR\Http\Requests;
+use WITR\Http\Requests\Admin\Video as Requests;
 use WITR\Http\Controllers\Controller;
 use WITR\Video;
 use Input;
@@ -41,12 +41,13 @@ class VideoController extends Controller {
 	*
 	*@return Response
 	*/
-	public function create()
+	public function create(Requests\CreateRequest $request)
 	{
-		$input = Input::all();
+		$input = $request->all();
 		$video = new Video($input);
 		$video->save();
-		return redirect()->route('admin.videos.index');
+		return redirect()->route('admin.videos.index')
+			->with('success', 'Video Review Saved!');
 	}
 
 	public function edit($id)
@@ -56,12 +57,13 @@ class VideoController extends Controller {
 		return view('admin.videos.edit', ['video' => $video]);
 	}
 
-	public function update($id)
+	public function update(Requests\UpdateRequest $request, $id)
 	{
 		$video = Video::findOrFail($id);
-		$video->fill(Input::all());
+		$video->fill($request->all());
 		$video->save();
-		return redirect()->route('admin.videos.index');
+		return redirect()->route('admin.videos.index')
+			->with('success', 'Video Review Saved!');
 	}
 
 	public function delete($id)
