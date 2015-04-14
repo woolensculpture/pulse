@@ -230,7 +230,7 @@ input[type=submit]:hover, button:hover, .button:hover {
 
 .logout_button {
 	font-family: Verdana;
-	width: 50px;
+	min-width: 50px;
 	text-align: center;
 }
 
@@ -954,6 +954,17 @@ input[type=submit]:hover, button:hover, .button:hover {
 
 .admin_section a:hover {
 	color: #0090c4;
+}
+
+.admin_section form {
+	display: inline;
+}
+.delete-form input[type=submit] {
+	background-color: #f23333;
+}
+
+.delete-form input[type=submit]:hover {
+	background-color: #ed0909;
 }
 
 
