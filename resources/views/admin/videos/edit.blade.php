@@ -4,6 +4,7 @@
 <div class="general_wrap border">
 	<div class="admin_section">
 		<h2>Edit Video Review</h2>
+		@include('shared.validation-messages')
 		{!! Form::model($video,['method' => 'put', 'route' => ['admin.videos.update', $video->id]]) !!}
 			<br>
 			<div>

@@ -61,3 +61,11 @@ $factory('WITR\Eboard', [
     'email' => $faker->email,
     'hours' => 'MW 2 - 4 PM EST'
 ]);
+
+$factory('WITR\Video', [
+    'artist' => $faker->company,
+    'song' => $faker->catchPhrase,
+    'album' => $faker->catchPhrase,
+    'review' => $faker->paragraph,
+    'url_tag' => $faker->randomNumber
+]);
