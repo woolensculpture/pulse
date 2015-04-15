@@ -69,3 +69,10 @@ $factory('WITR\Video', [
     'review' => $faker->paragraph,
     'url_tag' => $faker->randomNumber
 ]);
+
+$factory('WITR\Event', [
+    'name' => $faker->catchPhrase,
+    'date' => $faker->date('m/d/Y'),
+    'picture' => '',
+    'url' => $faker->url
+]);

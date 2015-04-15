@@ -1,6 +1,12 @@
 <?php
 
+use Laracasts\Integrated\Services\Laravel\DatabaseTransactions;
+use Laracasts\TestDummy\Factory as TestDummy;
+use Carbon\Carbon;
+
 class EventControllerTest extends IntegrationTestCase {
+
+	use DatabaseTransactions;
 
 	/** @test */
 	public function it_denies_unauthorized_access()
@@ -27,5 +33,27 @@ class EventControllerTest extends IntegrationTestCase {
 		$this->beAdmin();
 		$this->visit('/admin/events')
             ->onPage('/admin/events');
+	}
+
+	/** @test */
+	public function it_creates_an_event()
+	{
+		$form = TestDummy::attributesFor('WITR\Event', [
+			'picture' => __DIR__ . '/files/event.jpg',
+		]);
+
+		$dbEntry = $form;
+		$dbEntry['picture'] = 'event.jpg';
+		$dbEntry['date'] = new Carbon($dbEntry['date']);
+
+		$this->beAdmin();
+		$this->visit('/admin/events/create')
+			->onPage('/admin/events/create')
+			->submitForm('Save Event', $form)
+			->andSee('Event Saved!')
+			->onPage('/admin/events')
+			->verifyInDatabase('events', $dbEntry)
+			->seeFile(public_path() . '/img/events/event.jpg');
+
 	}
 }

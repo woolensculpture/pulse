@@ -40,17 +40,21 @@ class EventController extends Controller {
 	/**
 	* Save the new eboard position.
 	*
-	*@return Response
+	* @return Response
 	*/
 	public function create()
 	{
 		$input = Input::all();
 		$event = new Event($input);
-		$date = Carbon::createFromFormat('m/d/Y', Input::input('date'));
-		$event->date = $date;
+		$event->date = Carbon::createFromFormat('m/d/Y', $input['date']);
 		$event->type = 'SLIDER';
+		$file = Input::file('picture');
+		$filename = $file->getClientOriginalName();
+		$file->move(public_path() . '/img/events/', $filename);
+		$event->picture = $filename;
 		$event->save();
-		return redirect()->route('admin.events.index');
+		return redirect()->route('admin.events.index')
+			->with('success', 'Event Saved!');
 	}
 
 	public function edit($id)
