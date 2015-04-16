@@ -23,6 +23,7 @@ class IntegrationTestCase extends Integrated {
 
     protected function makeRequestUsingForm(Form $form)
     {
+        $files = [];
         $plainFiles = $form->getFiles();
         foreach ($plainFiles as $key => $file) {
             $files[$key] = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error'], true);
