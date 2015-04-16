@@ -144,7 +144,8 @@ return [
 		'WITR\Providers\ConfigServiceProvider',
 		'WITR\Providers\EventServiceProvider',
 		'WITR\Providers\RouteServiceProvider',
-		'Collective\Html\HtmlServiceProvider'
+		'Collective\Html\HtmlServiceProvider',
+		'Cviebrock\ImageValidator\ImageValidatorServiceProvider'
 
 	],
 
