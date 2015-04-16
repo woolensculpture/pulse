@@ -4,6 +4,7 @@
 <div class="general_wrap border">
 	<div class="admin_section">
 		<h2>Add New Event</h2>
+		@include('shared.validation-messages')
 		{!! Form::open(array('route' => 'admin.events.create.save', 'files' => true)) !!}
 			<br>
 			<div>

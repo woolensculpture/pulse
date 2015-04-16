@@ -1,6 +1,6 @@
 <?php namespace WITR\Http\Controllers\Admin;
 
-use WITR\Http\Requests;
+use WITR\Http\Requests\Admin\Event as Requests;
 use WITR\Http\Controllers\Controller;
 use WITR\Event;
 use Carbon\Carbon;
@@ -42,13 +42,13 @@ class EventController extends Controller {
 	*
 	* @return Response
 	*/
-	public function create()
+	public function create(Requests\CreateRequest $request)
 	{
-		$input = Input::all();
+		$input = $request->all();
 		$event = new Event($input);
 		$event->date = Carbon::createFromFormat('m/d/Y', $input['date']);
 		$event->type = 'SLIDER';
-		$file = Input::file('picture');
+		$file = $request->file('picture');
 		$filename = time() . '-' . $file->getClientOriginalName();
 		$file->move(public_path() . '/img/events/', $filename);
 		$event->picture = $filename;

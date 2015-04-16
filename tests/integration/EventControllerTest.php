@@ -55,4 +55,24 @@ class EventControllerTest extends IntegrationTestCase {
 			->verifyInDatabase('events', $dbEntry)
 			->seeFile(public_path() . '/img/events/' . time() . '-event.jpg');
 	}
+
+	/** @test */
+	public function it_validates_a_create_request()
+	{
+		$form = TestDummy::attributesFor('WITR\Event', [
+			'picture' => __DIR__ . '/files/non-event.jpg',
+			'date' => ''
+		]);
+
+		$dbEntry = $form;
+		$dbEntry['picture'] = time() . '-event.jpg';
+
+		$this->beAdmin();
+		$this->visit('/admin/events/create')
+			->onPage('/admin/events/create')
+			->submitForm('Save Event', $form)
+			->andSee('The date field is required')
+			->andSee('The picture must be 670 pixels wide and 344 pixels tall')
+			->onPage('/admin/events/create');
+	}
 }
