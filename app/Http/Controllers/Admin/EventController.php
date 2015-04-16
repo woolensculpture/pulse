@@ -49,7 +49,7 @@ class EventController extends Controller {
 		$event->date = Carbon::createFromFormat('m/d/Y', $input['date']);
 		$event->type = 'SLIDER';
 		$file = Input::file('picture');
-		$filename = $file->getClientOriginalName();
+		$filename = time() . '-' . $file->getClientOriginalName();
 		$file->move(public_path() . '/img/events/', $filename);
 		$event->picture = $filename;
 		$event->save();

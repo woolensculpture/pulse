@@ -43,7 +43,7 @@ class EventControllerTest extends IntegrationTestCase {
 		]);
 
 		$dbEntry = $form;
-		$dbEntry['picture'] = 'event.jpg';
+		$dbEntry['picture'] = time() . '-event.jpg';
 		$dbEntry['date'] = new Carbon($dbEntry['date']);
 
 		$this->beAdmin();
@@ -53,7 +53,6 @@ class EventControllerTest extends IntegrationTestCase {
 			->andSee('Event Saved!')
 			->onPage('/admin/events')
 			->verifyInDatabase('events', $dbEntry)
-			->seeFile(public_path() . '/img/events/event.jpg');
-
+			->seeFile(public_path() . '/img/events/' . time() . '-event.jpg');
 	}
 }
