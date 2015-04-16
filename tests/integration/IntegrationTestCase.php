@@ -2,6 +2,8 @@
 
 use Laracasts\Integrated\Extensions\Laravel as Integrated;
 use WITR\User;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\DomCrawler\Form;
 
 class IntegrationTestCase extends Integrated {
 
@@ -18,6 +20,18 @@ class IntegrationTestCase extends Integrated {
 
 		return $app;
 	}
+
+    protected function makeRequestUsingForm(Form $form)
+    {
+        $files = [];
+        $plainFiles = $form->getFiles();
+        foreach ($plainFiles as $key => $file) {
+            $files[$key] = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error'], true);
+        }
+        return $this->makeRequest(
+            $form->getMethod(), $form->getUri(), $form->getValues(), [], $files
+        );
+    }
 
 	/**
      * Get the base url for all requests.
