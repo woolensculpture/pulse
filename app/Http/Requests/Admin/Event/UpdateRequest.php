@@ -11,7 +11,7 @@ class UpdateRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -22,7 +22,10 @@ class UpdateRequest extends Request {
 	public function rules()
 	{
 		return [
-			//
+			'picture' => 'sometimes|image_size:670,344',
+			'date' => 'required|date|date_format:m/d/Y',
+			'url' => 'sometimes|url',
+			'name' => 'required'
 		];
 	}
 

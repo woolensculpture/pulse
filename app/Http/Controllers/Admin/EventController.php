@@ -5,6 +5,7 @@ use WITR\Http\Controllers\Controller;
 use WITR\Event;
 use Carbon\Carbon;
 use Input;
+use File;
 
 use Illuminate\Http\Request;
 
@@ -49,7 +50,7 @@ class EventController extends Controller {
 		$event->date = Carbon::createFromFormat('m/d/Y', $input['date']);
 		$event->type = 'SLIDER';
 		$file = $request->file('picture');
-		$filename = time() . '-' . $file->getClientOriginalName();
+		$filename = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
 		$file->move(public_path() . '/img/events/', $filename);
 		$event->picture = $filename;
 		$event->save();
@@ -64,28 +65,27 @@ class EventController extends Controller {
 		return view('admin.events.edit', ['event' => $event]);
 	}
 
-	public function update($id)
+	public function update(Requests\UpdateRequest $request, $id)
 	{
 		$event = Event::findOrFail($id);
-		$oldFilename = $event->picture;
-		$event->fill(Input::all());
+		$event->fill($request->except(['date', 'picture']));
 
-		if(Input::hasFile('picture'))
+		if ($request->hasFile('picture'))
 		{
-			File::delete(public_path().'/img/events/'.$oldFilename);
-			$file = Input::file('picture');
-			$filename = $file->getClientOriginalName();
+			$oldFilename = $event->picture;
+			$file = $request->file('picture');
+			$filename = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
 			$file->move(public_path().'/img/events', $filename);
 			$event->picture = $filename;
+			File::delete(public_path().'/img/events/'.$oldFilename);
 		}
 
-		$date = Carbon::createFromFormat('m/d/Y', Input::input('date'));
+		$date = Carbon::createFromFormat('m/d/Y', $request->input('date'));
 		$event->date = $date;
 
-
-
 		$event->save();
-		return redirect()->route('admin.events.index');
+		return redirect()->route('admin.events.index')
+			->with('success', 'Event Saved!');
 	}
 
 	public function delete($id)
