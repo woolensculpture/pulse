@@ -33,6 +33,12 @@ class IntegrationTestCase extends Integrated {
         );
     }
 
+    protected function cannotSeeFile($file)
+    {
+        $this->assertFileNotExists($file);
+        return $this;
+    }
+
 	/**
      * Get the base url for all requests.
      *

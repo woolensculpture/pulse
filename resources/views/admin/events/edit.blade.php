@@ -3,7 +3,8 @@
 @section('content')
 <div class="general_wrap border">
 	<div class="admin_section">
-		<h2>Edit Event </h2>
+		<h2>Edit Event</h2>
+		@include('shared.validation-messages')
 		{!! Form::model($event,['method' => 'put', 'route' => ['admin.events.update', $event->id], 'files' => true]) !!}
 			<br>
 			<div>
