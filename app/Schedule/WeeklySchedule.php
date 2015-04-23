@@ -62,11 +62,9 @@ class WeeklySchedule extends Collection
     public function getShowsForSlideshow()
     {
         $shows = new Collection();
-        $first = $this->first(function ($key, $show) {
-            return $show->nowPlaying();
-        });
-        $shows->push($first);
-        $nonPulseShows = $this->filter(function ($show) {
+        $sortedShows = $this->getShowsInPlayOrder();
+        $shows->push($sortedShows->shift());
+        $nonPulseShows = $sortedShows->filter(function ($show) {
             return strtolower($show->show()) != 'the pulse of music';
         });
 
@@ -83,5 +81,16 @@ class WeeklySchedule extends Collection
         $shows->push($random);
 
         return $shows;
+    }
+
+    public function getShowsInPlayOrder()
+    {
+        $first = $this->first(function ($key, $show) {
+            return $show->nowPlaying();
+        });
+        $firstKey = $this->search($first);
+        $sorted = $this->slice($firstKey);
+        $firstHalfSorted = $this->slice(0, $firstKey);
+        return $sorted->merge($firstHalfSorted);
     }
 }

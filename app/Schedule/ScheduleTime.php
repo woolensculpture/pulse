@@ -14,6 +14,11 @@ class ScheduleTime
         return ScheduleTime::fromDate(Carbon::now('America/New_York'));
     }
 
+    public static function setTestNow($now)
+    {
+        Carbon::setTestNow($now);
+    }
+
     public function value()
     {
         return $this->datetime;
