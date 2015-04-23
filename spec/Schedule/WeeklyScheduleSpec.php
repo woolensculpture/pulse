@@ -9,6 +9,8 @@ use WITR\TimeSlot;
 use WITR\Show;
 use WITR\User;
 use WITR\Schedule\Weekday;
+use WITR\Schedule\ScheduleTime;
+use Carbon\Carbon;
 use Laracasts\TestDummy\Factory;
 
 class WeeklyScheduleSpec extends ObjectBehavior
@@ -57,6 +59,18 @@ class WeeklyScheduleSpec extends ObjectBehavior
         $this->beConstructedThrough('mergeFromTimeSlots', [$this->getTimeSlots()]);
         $shows = $this->getShowsForSlideshow();
         $shows->shouldHaveCount(4);
+    }
+
+    function it_should_return_shows_sorted_in_order_of_play_from_now()
+    {
+        $this->beConstructedThrough('mergeFromTimeSlots', [$this->getTimeSlots()]);
+        ScheduleTime::setTestNow(Carbon::create(2015, 4, 22, 12));
+        $shows = $this->getShowsInPlayOrder();
+        $firstShow = $shows->first();
+        $firstShow->nowPlaying()->shouldBe(true);
+        $shows->get(1)->start()->shouldBe($firstShow->end());
+        $shows->last()->end()->shouldBe($firstShow->start());
+        $this->count()->shouldBe($shows->count());
     }
 /*
 
