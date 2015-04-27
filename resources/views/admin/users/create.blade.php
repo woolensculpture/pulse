@@ -15,6 +15,29 @@
           			{!! Form::text('email') !!}
 				</div>
 				<div>
+					{!! Form::label('password', 'Password:') !!}
+					{!! Form::text('password') !!}
+				</div>
+				<div>
+					{!! Form::label('dj_user', 'DJ Name:') !!}
+					{!! Form::text('dj_user') !!}
+				</div>
+				<div>
+		          <table>
+		            <tr>
+		              <td>{!! Form::label('user_role', 'User Role:') !!}</td>
+		            </tr>
+		            <tr>
+		              <td>{!! Form::select('user_role', $roles) !!}</td>
+		            </tr>
+		          </table>
+		        </div>
+		        <br>
+		        <div>
+					{!! Form::label('picture', 'Picture: (Note: Pictures should be of size 175x175)') !!}
+    				{!! Form::file('picture') !!}
+		        </div>
+				<div>
 					{!! Form::submit('Save User') !!}
 				</div>
 	</div>
