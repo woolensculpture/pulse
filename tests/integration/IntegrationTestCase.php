@@ -7,6 +7,8 @@ use Symfony\Component\DomCrawler\Form;
 
 class IntegrationTestCase extends Integrated {
 
+    protected $files = [];
+
 	/**
 	 * Creates the application.
 	 *
@@ -20,6 +22,15 @@ class IntegrationTestCase extends Integrated {
 
 		return $app;
 	}
+
+    /** @tearDown */
+    public function removeFiles()
+    {
+        foreach ($this->files as $key => $file)
+        {
+            File::delete($file);
+        }
+    }
 
     protected function makeRequestUsingForm(Form $form)
     {
@@ -36,6 +47,13 @@ class IntegrationTestCase extends Integrated {
     protected function cannotSeeFile($file)
     {
         $this->assertFileNotExists($file);
+        return $this;
+    }
+
+    public function seeFile($file)
+    {
+        parent::seeFile($file);
+        $this->files[] = $file;
         return $this;
     }
 

@@ -75,7 +75,7 @@ class EventController extends Controller {
 			$oldFilename = $event->picture;
 			$file = $request->file('picture');
 			$filename = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
-			$file->move(public_path().'/img/events', $filename);
+			$file->move(public_path().'/img/events/', $filename);
 			$event->picture = $filename;
 			File::delete(public_path().'/img/events/'.$oldFilename);
 		}
