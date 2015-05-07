@@ -115,7 +115,6 @@ class EventControllerTest extends IntegrationTestCase {
 
 		$this->beAdmin();
 		$this
-			->seeFile(public_path() . '/img/events/' . $event->picture)
 			->visit('/admin/events/' . $event->id)
 			->onPage('/admin/events/' . $event->id)
 			->submitForm('Update Event', $form)
