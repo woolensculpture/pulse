@@ -64,14 +64,14 @@ $factory('WITR\Eboard', [
 
 $factory('WITR\Video', [
     'artist' => $faker->company,
-    'song' => $faker->catchPhrase,
-    'album' => $faker->catchPhrase,
+    'song' => $faker->text(45),
+    'album' => $faker->text(45),
     'review' => $faker->paragraph,
     'url_tag' => $faker->randomNumber
 ]);
 
 $factory('WITR\Event', [
-    'name' => $faker->catchPhrase,
+    'name' => $faker->text(45),
     'date' => $faker->date('m/d/Y'),
     'picture' => '',
     'url' => $faker->url
