@@ -52,7 +52,11 @@ class VideoControllerTest extends IntegrationTestCase {
 	public function it_validates_a_video_review_create_request()
 	{
 		$form = TestDummy::attributesFor('WITR\Video', [
-			'artist' => ''
+			'artist' => '',
+			'song' => '',
+			'album' => '',
+			'review' => '',
+			'url_tag' => '',
 		]);
 
 		$this->beEditor();
@@ -60,6 +64,10 @@ class VideoControllerTest extends IntegrationTestCase {
 			->onPage('/admin/videos/create')
 			->submitForm('Save Review', $form)
 			->andSee('The artist field is required')
+			->andSee('The song field is required')
+			->andSee('The album field is required')
+			->andSee('The review field is required')
+			->andSee('The YouTube URL is required')
 			->onPage('/admin/videos/create');
 	}
 
@@ -68,6 +76,9 @@ class VideoControllerTest extends IntegrationTestCase {
 	{
 		$video = TestDummy::create('WITR\Video');
 		$video->song = 'test song';
+		$video->artist = 'test artist';
+		$video->album = 'test album';
+		$video->review = 'test review';
 		$form = $video->toArray();
 		unset($form['id']);
 
@@ -85,6 +96,10 @@ class VideoControllerTest extends IntegrationTestCase {
 	{
 		$video = TestDummy::create('WITR\Video');
 		$video->song = '';
+		$video->artist = '';
+		$video->album = '';
+		$video->review = '';
+		$video->url_tag = '';
 		$form = $video->toArray();
 		unset($form['id']);
 
@@ -93,6 +108,10 @@ class VideoControllerTest extends IntegrationTestCase {
 			->onPage('/admin/videos/' . $video->id)
 			->submitForm('Update Review', $form)
 			->andSee('The song field is required')
+			->andSee('The artist field is required')
+			->andSee('The album field is required')
+			->andSee('The review field is required')
+			->andSee('The YouTube URL is required')
 			->onPage('/admin/videos/' . $video->id);
 	}
 }

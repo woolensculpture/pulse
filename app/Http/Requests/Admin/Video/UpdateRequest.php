@@ -30,4 +30,11 @@ class UpdateRequest extends Request {
 		];
 	}
 
+	public function messages()
+	{
+		return [
+			'url_tag.required' => 'The YouTube URL is required.',
+		];
+	}
+
 }
