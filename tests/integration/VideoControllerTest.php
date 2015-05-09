@@ -37,7 +37,12 @@ class VideoControllerTest extends IntegrationTestCase {
 	/** @test */
 	public function it_creates_a_video_review()
 	{
-		$form = TestDummy::attributesFor('WITR\Video');
+		$form = TestDummy::attributesFor('WITR\Video', [
+			'url_tag' => 'https://www.youtube.com/watch?v=ZTidn2dBYbY'
+		]);
+
+		$dbEntry = $form;
+		$dbEntry['url_tag'] = 'ZTidn2dBYbY';
 
 		$this->beEditor();
 		$this->visit('/admin/videos/create')
@@ -45,7 +50,7 @@ class VideoControllerTest extends IntegrationTestCase {
 			->submitForm('Save Review', $form)
 			->andSee('Video Review Saved!')
 			->onPage('/admin/videos')
-			->verifyInDatabase('videos', $form);
+			->verifyInDatabase('videos', $dbEntry);
 	}
 
 	/** @test */

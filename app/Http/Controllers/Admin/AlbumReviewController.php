@@ -1,12 +1,10 @@
 <?php namespace WITR\Http\Controllers\Admin;
 
-use WITR\Http\Requests;
+use WITR\Http\Requests\Admin\AlbumReview as Requests;
 use WITR\Http\Controllers\Controller;
 use WITR\AlbumReview;
-use Input;
 use File;
-
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AlbumReviewController extends Controller {
 
@@ -42,18 +40,17 @@ class AlbumReviewController extends Controller {
 	*
 	*@return Response
 	*/
-	public function create()
+	public function create(Requests\CreateRequest $request)
 	{
-		$input = Input::all();
-		$review = new AlbumReview($input);
+		$review = new AlbumReview($request->except('img_name'));
 
-		$file = Input::file('img_name');
-		$filename = $file->getClientOriginalName();
-		$file->move(public_path().'/img/albums', $filename);
-		$review->img_name = $filename;
+		$file = $request->file('img_name');
+		$review->img_name = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
+		$file->move(public_path() . '/img/albums', $review->img_name);
 
 		$review->save();
-		return redirect()->route('admin.reviews.index');
+		return redirect()->route('admin.reviews.index')
+			->with('success', 'Album Review Saved!');
 	}
 
 	public function edit($id)
@@ -63,28 +60,27 @@ class AlbumReviewController extends Controller {
 		return view('admin.reviews.edit', ['review' => $review]);
 	}
 
-	public function update($id)
+	public function update(Requests\UpdateRequest $request, $id)
 	{
 		$review = AlbumReview::findOrFail($id);
-		$oldFilename = $review->img_name;
-		$review->fill(Input::all());
-		if (Input::hasFile('img_name')) 
+		$review->fill($request->except('img_name'));
+		if ($request->hasFile('img_name')) 
 		{
-			File::delete(public_path().'/img/albums/'.$oldFilename);
-			$file = Input::file('img_name');
-			$filename = $file->getClientOriginalName();
-			$file->move(public_path().'/img/albums', $filename);
-			$review->img_name = $filename;
+			File::delete(public_path() . '/img/albums/' . $review->img_name);
+			$file = $request->file('img_name');
+			$review->img_name = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
+			$file->move(public_path() . '/img/albums', $review->img_name);
 		}
 
 		$review->save();
-		return redirect()->route('admin.reviews.index');
+		return redirect()->route('admin.reviews.index')
+			->with('success', 'Album Review Saved!');
 	}
 
 	public function delete($id)
 	{
 		$review = AlbumReview::findOrFail($id);
-		File::delete(public_path().'/img/albums/'.$review->img_name);
+		File::delete(public_path() . '/img/albums/' . $review->img_name);
 		AlbumReview::destroy($id);
 		return redirect()->route('admin.reviews.index');
 	}
