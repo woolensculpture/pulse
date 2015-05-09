@@ -8,31 +8,27 @@ class DummyReader implements Reader {
 
 	public function get()
 	{
-		for ($i = 0; $i < 20; $i++)
-		{
-			$song = new stdClass();
-			$song->artist = 'Rage Against The Machine';
-			$song->title = 'Bombtrack';
-			$song->count = $i;
-			$song->name = 'Feature';
-			$songs[] = $song;
-		}
-
-		return $songs;
+		return $this->getAmount(20);
 	}
 
 	public function getWeek()
 	{
-		for ($i = 0; $i < 50; $i++)
+		return $this->getAmount(50);
+	}
+
+	private function getAmount($amount)
+	{
+		$songs = [];
+		for ($i = 0; $i < $amount; $i++)
 		{
 			$song = new stdClass();
 			$song->artist = 'Rage Against The Machine';
 			$song->title = 'Bombtrack';
-			$song->count = 50 - $i;
+			$song->count = $amount - $i;
 			$song->name = 'Feature';
 			$songs[] = $song;
 		}
 
-		return $songs;
+		return $songs;	
 	}
 }
