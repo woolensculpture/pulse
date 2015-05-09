@@ -69,7 +69,8 @@ class VideoController extends Controller {
 	public function delete($id)
 	{
 		Video::destroy($id);
-		return redirect()->route('admin.videos.index');
+		return redirect()->route('admin.videos.index')
+			->with('success', 'Video Review Deleted!');
 	}
 
 }

@@ -119,4 +119,18 @@ class VideoControllerTest extends IntegrationTestCase {
 			->andSee('The YouTube URL is required')
 			->onPage('/admin/videos/' . $video->id);
 	}
+
+	/** @test */
+	public function it_deletes_a_video_review()
+	{
+		$video = TestDummy::create('WITR\Video');
+
+		$this->beEditor();
+		$this->visit('/admin/videos/' . $video->id)
+			->onPage('/admin/videos/' . $video->id)
+			->submitForm('Delete Review')
+			->andSee('Video Review Deleted!')
+			->onPage('/admin/videos')
+			->notSeeInDatabase('videos', ['id' => $video->id]);
+	}
 }
