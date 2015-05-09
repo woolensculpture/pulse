@@ -82,7 +82,8 @@ class AlbumReviewController extends Controller {
 		$review = AlbumReview::findOrFail($id);
 		File::delete(public_path() . '/img/albums/' . $review->img_name);
 		AlbumReview::destroy($id);
-		return redirect()->route('admin.reviews.index');
+		return redirect()->route('admin.reviews.index')
+			->with('success', 'Album Review Deleted!');
 	}
 
 }

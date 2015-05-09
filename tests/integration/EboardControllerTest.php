@@ -95,4 +95,18 @@ class EboardControllerTest extends IntegrationTestCase {
 			->andSee('The name field is required')
 			->onPage('/admin/eboard/' . $eboard->id);
 	}
+
+	/** @test */
+	public function it_deletes_an_eboard_position()
+	{
+		$eboard = TestDummy::create('WITR\Eboard');
+
+		$this->beEditor();
+		$this->visit('/admin/eboard/' . $eboard->id)
+			->onPage('/admin/eboard/' . $eboard->id)
+			->submitForm('Delete Position')
+			->andSee('Position Deleted!')
+			->onPage('/admin/eboard')
+			->notSeeInDatabase('eboard', ['id' => $eboard->id]);	
+	}
 }

@@ -143,4 +143,22 @@ class EventControllerTest extends IntegrationTestCase {
 			->andSee('The picture must be 670 pixels wide and 344 pixels tall')
 			->onPage('/admin/events/' . $event->id);
 	}
+
+	/** @test */
+	public function it_deletes_an_event_with_a_picture()
+	{
+		$event = TestDummy::create('WITR\Event', [
+			'picture' => '01234-event.jpg'
+		]);
+		copy(__DIR__ . '/files/event.jpg', public_path() . '/img/events/01234-event.jpg');
+
+		$this->beEditor();
+		$this->visit('/admin/events/' . $event->id)
+			->onPage('/admin/events/' . $event->id)
+			->submitForm('Delete Event')
+			->andSee('Event Deleted!')
+			->onPage('/admin/events')
+			->notSeeInDatabase('events', ['id' => $event->id])
+			->cannotSeeFile(public_path() . '/img/events/' . $event->picture);
+	}
 }
