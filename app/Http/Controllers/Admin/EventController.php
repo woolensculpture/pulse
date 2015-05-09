@@ -50,9 +50,7 @@ class EventController extends Controller {
 		$event->date = Carbon::createFromFormat('m/d/Y', $input['date']);
 		$event->type = 'SLIDER';
 		$file = $request->file('picture');
-		$filename = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
-		$file->move(public_path() . '/img/events/', $filename);
-		$event->picture = $filename;
+		$event->uploadFile('picture', $file);
 		$event->save();
 		return redirect()->route('admin.events.index')
 			->with('success', 'Event Saved!');
@@ -72,12 +70,8 @@ class EventController extends Controller {
 
 		if ($request->hasFile('picture'))
 		{
-			$oldFilename = $event->picture;
 			$file = $request->file('picture');
-			$filename = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
-			$file->move(public_path().'/img/events/', $filename);
-			$event->picture = $filename;
-			File::delete(public_path().'/img/events/'.$oldFilename);
+			$event->uploadFile('picture', $file);
 		}
 
 		$date = Carbon::createFromFormat('m/d/Y', $request->input('date'));

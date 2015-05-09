@@ -47,15 +47,11 @@ class ShowController extends Controller {
 	{
 		$show = new Show($request->except(['show_picture', 'slider_picture']));
 
-		$fileShow = $request->file('show_picture');
-		$filenameShow = Carbon::now()->timestamp . '-' . $fileShow->getClientOriginalName();
-		$fileShow->move(public_path() . '/img/shows/', $filenameShow);
-		$show->show_picture = $filenameShow;
+		$showPicture = $request->file('show_picture');
+		$show->uploadFile('show_picture', $showPicture);
 
-		$fileSlider = $request->file('slider_picture');
-		$filenameSlider = Carbon::now()->timestamp . '-' . $fileSlider->getClientOriginalName();
-		$fileSlider->move(public_path() . '/img/slider/', $filenameSlider);
-		$show->slider_picture = $filenameSlider;
+		$sliderPicture = $request->file('slider_picture');
+		$show->uploadFile('slider_picture', $sliderPicture);
 
 		$show->save();
 		return redirect()->route('admin.shows.index')
@@ -72,26 +68,18 @@ class ShowController extends Controller {
 	public function update(Requests\UpdateRequest $request, $id)
 	{
 		$show = Show::findOrFail($id);
-		$oldFilenameShow = $show->show_picture;
-		$oldFilenameSlider = $show->slider_picture;
 		$show->fill($request->except(['show_picture', 'slider_picture']));
 
 		if ($request->hasFile('show_picture')) 
 		{
-			File::delete(public_path() . '/img/shows/' . $oldFilenameShow);
-			$fileShow = $request->file('show_picture');
-			$filenameShow = Carbon::now()->timestamp . '-' . $fileShow->getClientOriginalName();
-			$fileShow->move(public_path() . '/img/shows', $filenameShow);
-			$show->show_picture = $filenameShow;
+			$showPicture = $request->file('show_picture');
+			$show->uploadFile('show_picture', $showPicture);
 		}
 
 		if ($request->hasFile('slider_picture')) 
 		{
-			File::delete(public_path() . '/img/slider/' . $oldFilenameSlider);
-			$fileSlider = $request->file('slider_picture');
-			$filenameSlider = Carbon::now()->timestamp . '-' . $fileSlider->getClientOriginalName();
-			$fileSlider->move(public_path() . '/img/slider', $filenameSlider);
-			$show->slider_picture = $filenameSlider;
+			$sliderPicture = $request->file('slider_picture');
+			$show->uploadFile('slider_picture', $sliderPicture);
 		}
 
 		$show->save();

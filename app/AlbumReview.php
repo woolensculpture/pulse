@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class AlbumReview extends Model {
 
+	use FileUploadTrait;
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -19,5 +21,9 @@ class AlbumReview extends Model {
 	protected $fillable = ['band_name', 'album_name', 'review', 'img_name'];
 
 	public $timestamps = false;
+
+	protected $uploadDirectories = [
+		'img_name' => '/img/albums/',
+	];
 
 }
