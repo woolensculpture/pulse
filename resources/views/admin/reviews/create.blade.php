@@ -4,6 +4,7 @@
 <div class="general_wrap border">
 	<div class="admin_section">
 		<h2>Add New Album Review</h2>
+		@include('shared.validation-messages')
 			{!! Form::open(array('route' => 'admin.reviews.create.save', 'files' => true)) !!}
 				<br>
 				<div>

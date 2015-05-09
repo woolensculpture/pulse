@@ -73,6 +73,13 @@ $factory('WITR\Video', [
 $factory('WITR\Event', [
     'name' => $faker->text(45),
     'date' => $faker->date('m/d/Y'),
-    'picture' => '',
+    'picture' => 'default.jpg',
     'url' => $faker->url
+]);
+
+$factory('WITR\AlbumReview', [
+    'band_name' => $faker->company,
+    'album_name' => $faker->text(45),
+    'review' => $faker->paragraph,
+    'img_name' => 'default.jpg'
 ]);
