@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model {
 
+	use FileUploadTrait;
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -19,4 +21,8 @@ class Event extends Model {
 	protected $fillable = ['type', 'name', 'date', 'picture', 'url'];
 
 	public $timestamps = false;
+
+	protected $uploadDirectories = [
+		'picture' => '/img/events/',
+	];
 }
