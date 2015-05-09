@@ -105,6 +105,7 @@ class ShowController extends Controller {
 		File::delete(public_path() . '/img/shows/' . $show->show_picture);
 		File::delete(public_path() . '/img/slider/' . $show->slider_picture);
 		Show::destroy($id);
-		return redirect()->route('admin.shows.index');
+		return redirect()->route('admin.shows.index')
+			->with('success', 'Show Deleted!');
 	}
 }

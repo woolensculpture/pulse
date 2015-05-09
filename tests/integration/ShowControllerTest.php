@@ -156,4 +156,25 @@ class ShowControllerTest extends IntegrationTestCase {
 			->andSee('The show picture must be 150 pixels wide and 150 pixels tall')
 			->onPage('/admin/shows/' . $show->id);
 	}
+
+	/** @test */
+	public function it_deletes_a_show_with_a_picture()
+	{
+		$show = TestDummy::create('WITR\Show', [
+			'slider_picture' => '012345-slider_picture.jpg',
+			'show_picture' => '012345-show_picture.jpg',
+		]);
+		copy(__DIR__ . '/files/slider_picture.jpg', public_path() . '/img/slider/01234-slider_picture.jpg');
+		copy(__DIR__ . '/files/show_picture.jpg', public_path() . '/img/shows/01234-show_picture.jpg');
+
+		$this->beEditor();
+		$this->visit('/admin/shows/' . $show->id)
+			->onPage('/admin/shows/' . $show->id)
+			->submitForm('Delete Show')
+			->andSee('Show Deleted!')
+			->onPage('/admin/shows')
+			->notSeeInDatabase('shows', ['id' => $show->id])
+			->cannotSeeFile(public_path() . '/img/shows/' . $show->show_picture)
+			->cannotSeeFile(public_path() . '/img/slider/' . $show->slider_picture);
+	}
 }
