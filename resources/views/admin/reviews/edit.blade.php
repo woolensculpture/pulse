@@ -4,6 +4,7 @@
 <div class="general_wrap border">
 	<div class="admin_section">
 		<h2>Edit Album Review</h2>
+		@include('shared.validation-messages')
 		{!! Form::model($review,['method' => 'put', 'route' => ['admin.reviews.update', $review->id], 'files' => true]) !!}
 			<br>
 			<div>

@@ -1,4 +1,4 @@
-<?php namespace WITR\Http\Requests\Admin\Video;
+<?php namespace WITR\Http\Requests\Admin\Show;
 
 use WITR\Http\Requests\Request;
 
@@ -22,18 +22,10 @@ class UpdateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'artist' => 'required',
-			'song' => 'required',
-			'album' => 'required',
-			'review' => 'required',
-			'url_tag' => 'required'
-		];
-	}
-
-	public function messages()
-	{
-		return [
-			'url_tag.required' => 'The YouTube URL is required.',
+			'name' => 'required',
+			'slider_picture' => 'sometimes|image_size:670,344',
+			'show_picture' => 'sometimes|image_size:150,150',
+			'style' => 'required'
 		];
 	}
 

@@ -1,4 +1,4 @@
-<?php namespace WITR\Http\Requests\Admin\Video;
+<?php namespace WITR\Http\Requests\Admin\Show;
 
 use WITR\Http\Requests\Request;
 
@@ -22,18 +22,18 @@ class CreateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'artist' => 'required',
-			'song' => 'required',
-			'album' => 'required',
-			'review' => 'required',
-			'url_tag' => 'required'
+			'name' => 'required',
+			'slider_picture' => 'required|image_size:670,344',
+			'show_picture' => 'required|image_size:150,150',
+			'style' => 'required'
 		];
 	}
 
 	public function messages()
 	{
 		return [
-			'url_tag.required' => 'The YouTube URL is required.',
+			'slider_picture.image_size' => 'The slider picture must be :width wide and :height tall.',
+			'show_picture.image_size' => 'The show picture must be :width wide and :height tall.',
 		];
 	}
 

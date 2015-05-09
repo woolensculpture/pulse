@@ -4,7 +4,8 @@
 <div class="general_wrap border">
 	<div class="admin_section">
 
-		<h2>Edit Album Review</h2>
+		<h2>Edit Show</h2>
+		@include('shared.validation-messages')
 
 		{!! Form::model($show,['method' => 'put', 'route' => ['admin.shows.update', $show->id], 'files' => true]) !!}
 			<br>
@@ -21,7 +22,7 @@
 				{!! Form::file('show_picture') !!}
 			</div>
 			<div>
-				{!! Form::label('review', 'Slider Picture: (Note: Pictures shoule be of size 670x344') !!}
+				{!! Form::label('slider-input', 'Slider Picture: (Note: Pictures should be of size 670x344') !!}
 				{!! Form::file('slider_picture', [ 'id' => 'slider-input' ]) !!}
 			</div>
 			<div>

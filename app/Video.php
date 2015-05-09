@@ -19,4 +19,14 @@ class Video extends Model {
 	protected $fillable = ['artist', 'song', 'album', 'review', 'url_tag'];
 
 	public $timestamps = false;
+
+	public function setUrlTagAttribute($value)
+    {
+    	parse_str( parse_url( $value, PHP_URL_QUERY ), $params );
+		if (isset($params['v']) || array_key_exists('v', $params)) {
+			$this->attributes['url_tag'] = $params['v'];
+		} else {
+			$this->attributes['url_tag'] = $value;
+		}	
+    }
 }
