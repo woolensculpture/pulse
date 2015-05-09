@@ -93,7 +93,8 @@ class EventController extends Controller {
 		$event = Event::findOrFail($id);
 		File::delete(public_path().'/img/events/'.$event->picture);
 		Event::destroy($id);
-		return redirect()->route('admin.events.index');
+		return redirect()->route('admin.events.index')
+			->with('success', 'Event Deleted!');
 	}
 
 }
