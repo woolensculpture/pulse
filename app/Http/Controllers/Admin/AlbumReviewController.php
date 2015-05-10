@@ -45,8 +45,7 @@ class AlbumReviewController extends Controller {
 		$review = new AlbumReview($request->except('img_name'));
 
 		$file = $request->file('img_name');
-		$review->img_name = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
-		$file->move(public_path() . '/img/albums', $review->img_name);
+		$review->uploadFile('img_name', $file);
 
 		$review->save();
 		return redirect()->route('admin.reviews.index')
@@ -64,12 +63,11 @@ class AlbumReviewController extends Controller {
 	{
 		$review = AlbumReview::findOrFail($id);
 		$review->fill($request->except('img_name'));
+		
 		if ($request->hasFile('img_name')) 
 		{
-			File::delete(public_path() . '/img/albums/' . $review->img_name);
 			$file = $request->file('img_name');
-			$review->img_name = Carbon::now()->timestamp . '-' . $file->getClientOriginalName();
-			$file->move(public_path() . '/img/albums', $review->img_name);
+			$review->uploadFile('img_name', $file);
 		}
 
 		$review->save();
@@ -82,7 +80,8 @@ class AlbumReviewController extends Controller {
 		$review = AlbumReview::findOrFail($id);
 		File::delete(public_path() . '/img/albums/' . $review->img_name);
 		AlbumReview::destroy($id);
-		return redirect()->route('admin.reviews.index');
+		return redirect()->route('admin.reviews.index')
+			->with('success', 'Album Review Deleted!');
 	}
 
 }

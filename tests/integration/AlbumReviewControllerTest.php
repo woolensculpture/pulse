@@ -150,4 +150,22 @@ class AlbumReviewControllerTest extends IntegrationTestCase {
 			->andSee('The album cover should be an image')
 			->onPage('/admin/reviews/' . $album->id);
 	}
+
+	/** @test */
+	public function it_deletes_an_album_review_with_a_picture()
+	{
+		$album = TestDummy::create('WITR\AlbumReview', [
+			'img_name' => '01234-review.jpg'
+		]);
+		copy(__DIR__ . '/files/review.jpg', public_path() . '/img/albums/01234-review.jpg');
+
+		$this->beEditor();
+		$this->visit('/admin/reviews/' . $album->id)
+			->onPage('/admin/reviews/' . $album->id)
+			->submitForm('Delete Review')
+			->andSee('Album Review Deleted!')
+			->onPage('/admin/reviews')
+			->notSeeInDatabase('album_reviews', ['id' => $album->id])
+			->cannotSeeFile(public_path() . '/img/albums/' . $album->img_name);	
+	}
 }

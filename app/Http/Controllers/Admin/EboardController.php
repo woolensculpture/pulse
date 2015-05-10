@@ -69,7 +69,8 @@ class EboardController extends Controller {
 	public function delete($id)
 	{
 		Eboard::destroy($id);
-		return redirect()->route('admin.eboard.index');
+		return redirect()->route('admin.eboard.index')
+			->with('success', 'Position Deleted!');
 	}
 
 }
