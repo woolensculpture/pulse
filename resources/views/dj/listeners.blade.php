@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<meta http-equiv="refresh" content="60; url={{ route('dj.listeners') }}" />
+<meta http-equiv="refresh" content="60; url={{ route('dj.listeners', ['studio' => $studio]) }}" />
 <style type="text/css">
 	table {
 		padding: 0px;

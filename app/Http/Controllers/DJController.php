@@ -25,7 +25,7 @@ class DJController extends Controller {
 	public function listeners(IcecastReader $icecast, $studio = 'studio-x')
 	{
 		$listeners = $icecast->get($studio);
-		return view('dj.listeners', compact('listeners'));
+		return view('dj.listeners', compact('listeners', 'studio'));
 	}
 
 	public function fetchFile(Storage $storage, $file)
