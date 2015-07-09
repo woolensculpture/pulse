@@ -68,6 +68,11 @@ return [
 	'ticket_recipient' => [
 		'name' => 'WITR Engineering',
 		'email' => env('TICKET_EMAIL', 'test@example.com')
+	],
+
+	'askdestler_recipient' => [
+		'name' => 'WITR Programming Director',
+		'email' => env('ASKDESTLER_EMAIL', 'test@example.com')
 	]
 
 ];
