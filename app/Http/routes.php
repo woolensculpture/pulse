@@ -13,7 +13,8 @@ Route::get('about', ['as' => 'about', 'uses' => 'HomeController@about']);
 Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 
 Route::get('hockey', ['as' => 'hockey', 'uses' => 'HockeyController@index']);
-Route::get('askdestler', ['as' => 'askdestler', 'uses' => 'ShowController@schedule']);
+Route::get('askdestler', ['as' => 'askdestler', 'uses' => 'AskDestlerController@index']);
+Route::post('askdestler', ['as' => 'askdestler.submit', 'uses' => 'AskDestlerController@submit']);
 
 Route::get('login', ['uses' => 'Auth\AuthController@login']);
 Route::get('logout', ['uses' => 'Auth\AuthController@logout']);
