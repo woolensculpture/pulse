@@ -7,6 +7,7 @@ use WITR\Http\Controllers\Controller;
 use WITR\User;
 use WITR\Role;
 use Input;
+use File;
 
 use Illuminate\Http\Request;
 
@@ -51,7 +52,8 @@ class UserController extends Controller {
 		dd($user->dj_name);
 
 		$user->save();
-		return redirect()->route('admin.users.index');
+		return redirect()->route('admin.users.index')
+			->with('success', 'User Created!');
 	}
 
 	/**
@@ -74,12 +76,20 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Requests\UpdateRequest $request, $id)
 	{
 		$user = User::findOrFail($id);
-		$user->fill(Input::all());
+		$user->fill($request->except(['picture']);
+
+		if($request->hasFile('picture'))
+		{
+			$file = $request->file('picture');
+			$user->uploadFile('picture', $file);
+		}
+
 		$user->save();
-		return redirect()->route('admin.users.index');
+		return redirect()->route('admin.users.index')
+			->with('success', 'User Saved!');
 	}
 
 	/**
@@ -90,8 +100,11 @@ class UserController extends Controller {
 	 */
 	public function delete($id)
 	{
+		$user = findOrFail($id);
+		File::delete(public_path().'/img/djs/'.$user->picture);
 		User::destroy($id);
-		return view('admin.users.index');
+		return view('admin.users.index')
+		->with('success', 'User Deleted');
 	}
 
 }
