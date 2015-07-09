@@ -6,6 +6,7 @@
 	    <h2>Admin</h2>
 	    <ul>
 	        <li><a href="{{ route('admin.eboard.index') }}">Change Eboard</a></li>
+	        <li><a href="{{ route('admin.settings') }}">System Settings</a></li>
 	    </ul>
 	</div>
 	<div class="admin_section">

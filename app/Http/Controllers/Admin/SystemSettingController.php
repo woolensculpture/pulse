@@ -42,5 +42,8 @@ class SystemSettingController extends Controller {
 			$setting->value = $value;
 			$setting->save();
 		}
+
+		return redirect()->route('admin.settings')
+			->with('success', 'Settings Saved!');
 	}
 }
