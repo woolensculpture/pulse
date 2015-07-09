@@ -18,6 +18,9 @@ Route::delete('eboard/{id}', ['as' => 'admin.eboard.delete', 'uses' => 'EboardCo
 Route::get('/schedule', ['as' => 'admin.schedule', 'uses' => 'ScheduleController@index']);
 Route::put('/schedule/update', ['as' => 'admin.schedule.update', 'uses' => 'ScheduleController@update']);
 
+Route::get('/settings', ['as' => 'admin.settings', 'uses' => 'SystemSettingController@index']);
+Route::put('/settings/update', ['as' => 'admin.settings.update', 'uses' => 'SystemSettingController@update']);
+
 Route::get('/events', ['as' => 'admin.events.index', 'uses' => 'EventController@index']);
 Route::get('/events/create', ['as' => 'admin.events.create', 'uses' => 'EventController@new_event']);
 Route::post('/events/create', ['as' => 'admin.events.create.save', 'uses' => 'EventController@create']);
