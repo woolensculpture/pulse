@@ -79,7 +79,7 @@ class UserController extends Controller {
 	public function update(Requests\UpdateRequest $request, $id)
 	{
 		$user = User::findOrFail($id);
-		$user->fill($request->except(['picture']);
+		$user->fill($request->except(['picture']));
 
 		if($request->hasFile('picture'))
 		{
@@ -100,11 +100,11 @@ class UserController extends Controller {
 	 */
 	public function delete($id)
 	{
-		$user = findOrFail($id);
+		$user = User::findOrFail($id);
 		File::delete(public_path().'/img/djs/'.$user->picture);
 		User::destroy($id);
 		return view('admin.users.index')
-		->with('success', 'User Deleted');
+		->with('success', 'User Deleted!');
 	}
 
 }
