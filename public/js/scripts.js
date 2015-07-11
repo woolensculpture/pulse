@@ -15,11 +15,13 @@ $(document).ready(function() {
        	}
 	);
 
-	$('#player_popup a').click(function() {
-		$('#player_popup').fadeOut('normal');
-	});
+//	$('#player_popup a').click(function() {
+//		$('#player_popup').fadeOut('normal');
+//	});
 	
-	$("#player_link[rel]").overlay();
+	$("#player_link[rel]").overlay({
+        closeOnClick: true
+    });
 
     $('.noty-message').each(function(index, value) {
         var $this = $(this),

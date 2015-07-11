@@ -37,13 +37,13 @@ return [
 
 		'mounts' => [
 			'studio-x' => [
-				'witr-mp3-192',
-				'witr-mp3-80',
-				'witr-mobile',
+				'192 kb MP3' => 'witr-mp3-192',
+				'80 kb MP3' => 'witr-mp3-80',
+				'64 kb AAC' => 'witr-mobile',
 			],
 			'studio-a' => [
-				'witr-undrgnd-mp3-192',
-				'witr-undrgnd-mobile',
+				'192 kb MP3' => 'witr-undrgnd-mp3-192',
+				'64 kb AAC' => 'witr-undrgnd-mobile',
 			]
 		]
 	],

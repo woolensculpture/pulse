@@ -25,4 +25,11 @@ class HomeController extends Controller {
 		return view('contact', ['eboard' => $eboard]);
 	}
 
+	public function listen()
+	{
+		$pulseMounts = app('config')['witr.icecast.mounts.studio-x']; 
+		$undergroundMounts = app('config')['witr.icecast.mounts.studio-a']; 
+		return view('listen', compact('pulseMounts', 'undergroundMounts'));
+	}
+
 }
