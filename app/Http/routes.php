@@ -9,6 +9,7 @@
 Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('home/listen', ['as' => 'listen', 'uses' => 'HomeController@listen']);
+Route::get('home/zomgdanmansen/69', ['as' => 'default', 'uses' => 'HomeController@defaultDan']);
 Route::get('about', ['as' => 'about', 'uses' => 'HomeController@about']);
 Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 
