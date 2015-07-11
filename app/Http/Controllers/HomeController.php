@@ -14,7 +14,7 @@ class HomeController extends Controller {
 		return view('home.index');
 	}
 
-	public function default()
+	public function defaultDan()
 	{
 		return view('home.default');
 	}
