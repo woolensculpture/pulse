@@ -122,11 +122,7 @@ Developer: John Phillip Betley
 <!--
 
 function popitup(url) {
-	newwindow = window.open(url,'name','height=265,width=560');
-	if (window.focus) {
-		newwindow.focus();
-	}
-	return false;
+	window.open(url,'name','height=265,width=590');
 }
 
 // -->
