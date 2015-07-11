@@ -20,12 +20,12 @@ class SystemSetting extends Model {
 		return self::find(self::AskDestlerTextID);
 	}
 
-	public static function scopeDJHoursFormLocation()
+	public static function scopeDjHoursFormLocation()
 	{
 		return self::find(self::DJHoursFormLocationID);
 	}
 
-	public static function scopeCDSignoutFormLocation()
+	public static function scopeCdSignoutFormLocation()
 	{
 		return self::find(self::CDSignoutFormLocationID);
 	}
