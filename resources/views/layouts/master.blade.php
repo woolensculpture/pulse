@@ -69,12 +69,14 @@ Developer: John Phillip Betley
 		
 		<!-- NAVIGATION -->
 		<ul id="nav">
-			<li><a href="{{ route('shows.index') }}">Shows &amp; Schedule</a>
+			<li><a href="{{ route('shows.index') }}">Schedule</a>
+				<!--
 				<ul class="sub_nav">
 				    <li><a href="{{ route('shows.schedule') }}">Full Schedule</a></li>
 				    <li><a href="{{ route('shows.specialty') }}">Specialty Shows</a></li>
 				    <li><a href="{{ route('shows.pulse') }}">The Pulse of Music</a></li>
 				</ul>
+				-->
 			</li>
 			<li><a href="{{ route('about') }}">About</a>
 				<!--
