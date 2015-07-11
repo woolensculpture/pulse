@@ -7,6 +7,7 @@ use WITR\Services\IcecastReader;
 use WITR\TopTwenty\Reader as WeeklyChart;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Mail\Mailer;
+use WITR\SystemSetting;
 
 use Illuminate\Http\Request;
 
@@ -19,7 +20,9 @@ class DJController extends Controller {
 
 	public function index()
 	{
-		return view('dj.index');
+		$workHoursForm = SystemSetting::djHoursFormLocation()->value;
+		$cdSignoutForm = SystemSetting::cdSignoutFormLocation()->value;
+		return view('dj.index', compact('workHoursForm', 'cdSignoutForm'));
 	}
 
 	public function listeners(IcecastReader $icecast, $studio = 'studio-x')
