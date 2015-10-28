@@ -18,13 +18,13 @@ class EventController extends Controller {
 	}
 	
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the Events.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$events = Event::where('type', 'SLIDER')->get();
+		$events = Event::where('type', 'SLIDER')->orderBy('date', 'desc')->get();
 		return view('admin.events.index', ['events' => $events]);
 	}
 
@@ -39,7 +39,7 @@ class EventController extends Controller {
 	}
 
 	/**
-	* Save the new eboard position.
+	* Save the new Event
 	*
 	* @return Response
 	*/

@@ -15,6 +15,6 @@ class UsersViewComposer {
 	 */
 	public function compose(View $view)
 	{
-		$view->with('users', User::all());
+		$view->with('users', User::orderBy('dj_name', 'asc')->get());
 	}
 }

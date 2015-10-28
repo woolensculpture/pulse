@@ -15,13 +15,13 @@ class AlbumReviewController extends Controller {
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the Album Reviews.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$reviews = AlbumReview::all();
+		$reviews = AlbumReview::orderBy('band_name', 'asc')->get();
 		return view('admin.reviews.index', ['reviews' => $reviews]);
 	}
 
@@ -36,7 +36,7 @@ class AlbumReviewController extends Controller {
 	}
 
 	/**
-	* Save the new eboard position.
+	* Save the new Album Review.
 	*
 	*@return Response
 	*/
