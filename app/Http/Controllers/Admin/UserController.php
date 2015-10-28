@@ -20,13 +20,13 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the Users.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$users = User::all();
+		$users = User::orderBy('name', 'asc')->get();
 		return view('admin.users.index', ['users' => $users]);
 	}
 
