@@ -3,13 +3,13 @@
 @section('content')
 <div class="general_wrap border">
 	<div class="general_section">
-		<div class="header">Welcome to the DJ Page!</div>
+		<div class="header">Help! Something Broke.</div>
 
 		@include('shared.validation-messages')
 
 		{!! Form::open(['route' => 'dj.support.create']) !!}
 			<div>
-				{!! Form::label('name', 'Name:') !!}
+				{!! Form::label('name', 'Your Name:') !!}
 				{!! Form::text('name') !!}
 			</div>
   			<div>
@@ -18,7 +18,7 @@
 			</div>
 			<div>
 				{!! Form::label('issue', 'Issue:') !!}
-				{!! Form::textarea('issue') !!}
+				{!! Form::textarea('issue', null, array('placeholder' => 'Please include the location (if applicable) and enough details to help Engineering fix this for you! Also include your email address if you\'d like further correspondence.')) !!}
 			</div>
 			<div>
 				{!! Form::submit('Submit Ticket') !!}
