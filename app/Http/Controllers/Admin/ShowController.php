@@ -24,7 +24,7 @@ class ShowController extends Controller {
 	 */
 	public function index()
 	{
-		$shows = Show::all();
+		$shows = Show::orderBy('name', 'asc')->get();
 		return view('admin.shows.index', ['shows' => $shows]);
 	}
 
