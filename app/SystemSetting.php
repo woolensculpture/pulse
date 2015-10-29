@@ -14,6 +14,7 @@ class SystemSetting extends Model {
 	const AskDestlerTextID = 1;
 	const DJHoursFormLocationID = 2;
 	const CDSignoutFormLocationID = 3;
+	const FrontPageBannerTextID = 4;
 
 	public static function scopeAskDestlerText()
 	{
@@ -30,4 +31,8 @@ class SystemSetting extends Model {
 		return self::find(self::CDSignoutFormLocationID);
 	}
 
+	public static function scopeFrontPageBannerText()
+	{
+		return self::find(self::FrontPageBannerTextID);
+	}
 }

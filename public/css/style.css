@@ -977,6 +977,17 @@ input[type=submit]:hover, button:hover, .button:hover {
 	background-color: #ed0909;
 }
 
+.system-settings #value_4 {
+    display: inline-block;
+    width: 90%;
+}
+
+.system-settings .enabled-switch {
+    display: inline-block;
+    float: right;
+    margin-top: 12px;
+}
+
 
 
 /************************
