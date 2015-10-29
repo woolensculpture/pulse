@@ -26,7 +26,7 @@ class HockeyController extends Controller {
 	private function getNextGame($parser)
 	{
 		$reader = Reader::forParser($parser);
-		$games = $reader->get()->sort(function($game) {
+		$games = $reader->get()->sortBy(function($game) {
 			return $game->startUtc->timestamp;
 		});
 		$laterGames = $games->filter(function ($game) {
