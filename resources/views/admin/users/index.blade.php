@@ -3,11 +3,10 @@
 @section('content')
 <div class="general_wrap border">
 	<div class="general_section" >
-		<div class="header">Users</div>
+        <div class="header">Users
+            <a class="header_button button" href="{{ route('admin.users.create') }}">New User</a>
+        </div>
 		<ul>
-			<li>
-				<a href="{{ route('admin.users.create') }}">New User</a>
-			</li>
 			@foreach($users as $user)
 				<li>
 					<a href="{{ route('admin.users.edit', $user->id) }}"> {{ $user->name }}: {{ $user->dj_name }} </a>
