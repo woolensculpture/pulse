@@ -13,7 +13,7 @@
 				{!! Form::label('value_' . $setting->id, $setting->label) !!}
 				{!! Form::text('value_' . $setting->id, $setting->value) !!}
                 @if ($setting->id == 4)
-                    {!! Form::select('enabled', array(1 => 'On', 2 => 'Off'), $setting->enabled, array('class' => 'enabled-switch')) !!}
+                    {!! Form::select('enabled_' . $setting->id, array(1 => 'On', 0 => 'Off'), $setting->enabled, array('class' => 'enabled-switch')) !!}
                 @endif
 			@endforeach
 			<div>

@@ -9,7 +9,7 @@ class SystemSetting extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['value'];
+	protected $fillable = ['value', 'enabled'];
 
 	const AskDestlerTextID = 1;
 	const DJHoursFormLocationID = 2;

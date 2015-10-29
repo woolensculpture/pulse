@@ -1,6 +1,7 @@
 <?php namespace WITR\Http\Controllers;
 
 use WITR\Eboard;
+use WITR\SystemSetting;
 
 class HomeController extends Controller {
 
@@ -11,7 +12,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home.index');
+        $banner = SystemSetting::frontPageBannerText();
+		return view('home.index')->withBanner($banner);
 	}
 
 	public function defaultDan()
