@@ -43,6 +43,12 @@
 		
 		<div id="home_primary" class="border">
 
+            @if ($banner->enabled)
+                <div id="banner_notice">
+                    <p>{{ $banner->value }}</p>
+                </div>
+            @endif
+
 			@include('home.partials.slider')
 			
 			<hr class="white">
