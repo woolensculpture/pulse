@@ -16,13 +16,13 @@ class VideoController extends Controller {
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the Videos.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$videos = Video::all();
+		$videos = Video::orderBy('artist', 'asc')->get();
 		return view('admin.videos.index', ['videos' => $videos]);
 	}
 

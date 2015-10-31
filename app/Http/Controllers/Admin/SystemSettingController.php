@@ -40,6 +40,14 @@ class SystemSettingController extends Controller {
 		foreach ($settings as $setting) {
 			$value = $input['value_' . $setting->id];
 			$setting->value = $value;
+
+            $enabled_id = 'enabled_' . $setting->id;
+            if (array_key_exists($enabled_id, $input)) {
+                $setting->enabled = $input[$enabled_id];
+            } else {
+                $setting->enabled = 1;
+            }
+
 			$setting->save();
 		}
 

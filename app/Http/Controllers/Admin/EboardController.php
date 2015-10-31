@@ -22,7 +22,7 @@ class EboardController extends Controller {
 	 */
 	public function index()
 	{
-		$eboard = Eboard::all();
+		$eboard = Eboard::orderBy('position', 'asc')->get();
 		return view('admin.eboard.index', ['eboard' => $eboard]);
 	}
 

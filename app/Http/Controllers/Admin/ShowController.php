@@ -18,13 +18,13 @@ class ShowController extends Controller {
 	}
 	
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the Shows.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$shows = Show::all();
+		$shows = Show::orderBy('name', 'asc')->get();
 		return view('admin.shows.index', ['shows' => $shows]);
 	}
 
@@ -39,7 +39,7 @@ class ShowController extends Controller {
 	}
 
 	/**
-	* Save the new eboard position.
+	* Save the new Show.
 	*
 	*@return Response
 	*/

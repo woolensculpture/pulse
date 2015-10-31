@@ -18,7 +18,7 @@ class ShowsViewComposer {
 	public function compose(View $view)
 	{
 		if ($this->shows == null) {
-			$this->shows = Show::all();
+			$this->shows = Show::orderBy('name', 'asc')->get();
 		}
 		$view->with('shows', $this->shows);
 	}

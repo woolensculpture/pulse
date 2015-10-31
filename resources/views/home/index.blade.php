@@ -24,7 +24,8 @@
 			<div id="sidecontent" class="borderb">
 				<div id="request" class="border">
 					<div id="make">Make A Request</div>
-					<p>(585) 475-2271 &nbsp; IM: WITRDJ</p>
+                    <p>(585) 475-2271</p>
+                    <p>Tweet: #WITRrequest</p>
 					<hr class="white">
 					<div style="padding: 0px 10px 0px 10px; text-align: left">
 						<span style="color: #7bc1eb">Want to Promote your business on WITR? Email:</span>
@@ -41,6 +42,12 @@
 		</div>
 		
 		<div id="home_primary" class="border">
+
+            @if ($banner->enabled)
+                <div id="banner_notice">
+                    <p>{{ $banner->value }}</p>
+                </div>
+            @endif
 
 			@include('home.partials.slider')
 			

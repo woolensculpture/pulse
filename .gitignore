@@ -2,9 +2,13 @@
 /node_modules
 .env
 
+# binary blabs
+composer.phar
+
 # legacy
 wiki/
 
 # other
 .DS_Store
 Thumbs.db
+*.swp

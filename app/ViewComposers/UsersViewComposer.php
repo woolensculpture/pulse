@@ -18,7 +18,7 @@ class UsersViewComposer {
 	public function compose(View $view)
     {
         if ($this->users == null) {
-            $this->users = User::all();
+            $this->users = User::orderBy('dj_name', 'asc')->get();
         }
 		$view->with('users', $this->users);
 	}

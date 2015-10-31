@@ -20,6 +20,7 @@ class CreateSystemSettings extends Migration {
 			$table->primary('id');
 			$table->string('label');
 			$table->string('value');
+            $table->integer('enabled')->default(1);
 			$table->timestamps();
 		});	
 
@@ -41,6 +42,13 @@ class CreateSystemSettings extends Migration {
 			'id' => SystemSetting::CDSignoutFormLocationID, 
 			'label' => 'CD Signout Form Location',
 			'value' => 'https://google.com/'
+		]);
+
+		SystemSetting::create([
+			'id' => SystemSetting::FrontPageBannerTextID, 
+			'label' => 'Front Page Banner Text',
+			'value' => 'WITR Engineers are currently learning about electricity! Things might flicker a little...stay tuned!',
+            'enabled' => 0
 		]);
 	}
 

@@ -150,7 +150,7 @@ p {
     <div id="content">
     	<div class="section">
         	<h1 style="width: 250px;">WITR IS PROUD TO PRESENT LIVE BROADCASTS OF MEN'S AND WOMEN'S DIVISION I ICE HOCKEY!</h1>
-            <p style="width: 250px; margin-top: 20px;">We parter with the RIT Men's and Women's Hockey teams to bring all the Division I action straight to you!</p>
+            <p style="width: 250px; margin-top: 20px;">We partner with the RIT Men's and Women's Hockey teams to bring all the Division I action straight to you!</p>
         </div>
         <div id="divider"></div>
         <div class="section" id="hockey">
