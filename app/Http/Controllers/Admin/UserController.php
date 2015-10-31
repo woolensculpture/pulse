@@ -8,6 +8,7 @@ use WITR\User;
 use WITR\Role;
 use Input;
 use File;
+use Hash;
 
 use Illuminate\Http\Request;
 
@@ -45,11 +46,25 @@ class UserController extends Controller {
 	{
 		$input = Input::all();
 		$user = new User($input);
+		$user->password = Hash::make($input['password']);
+		$user->username = $input['email'];
 
-		$fullName = explode(' ', Input::input('name'));
-		$firstName = $fullName[0];
-		$user->dj_name = $firstName;
-		dd($user->dj_name);
+		if ($user->dj_name == '' || $user->dj_name == null)
+		{
+			$fullName = explode(' ', Input::input('name'));
+			$firstName = $fullName[0];
+			$user->dj_name = $firstName;
+		}
+
+		if(Input::hasFile('picture'))
+		{
+			$file = $input->file('picture');
+			$user->uploadFile('picture', $file);
+		}
+		else
+		{
+			$user->picture = 'default.jpg';
+		}
 
 		$user->save();
 		return redirect()->route('admin.users.index')
