@@ -6,6 +6,8 @@ use WITR\Show;
 use Illuminate\View\View;
 
 class ShowsViewComposer {
+	
+	protected $shows;
 
 	/**
 	 * Bind data to the view.
@@ -15,6 +17,9 @@ class ShowsViewComposer {
 	 */
 	public function compose(View $view)
 	{
-		$view->with('shows', Show::all());
+		if ($this->shows == null) {
+			$this->shows = Show::all();
+		}
+		$view->with('shows', $this->shows);
 	}
 }

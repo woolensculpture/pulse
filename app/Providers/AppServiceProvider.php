@@ -33,10 +33,10 @@ class AppServiceProvider extends ServiceProvider {
 		);
 
 		if ($this->app->environment('production')) {
-		    $this->app->bind('WITR\TopTwenty\Reader', 'WITR\TopTwenty\SQLReader');
-        } else {
-		    $this->app->bind('WITR\TopTwenty\Reader', 'WITR\TopTwenty\DummyReader');
-        }
+			$this->app->bind('WITR\TopTwenty\Reader', 'WITR\TopTwenty\SQLReader');
+		} else {
+			$this->app->bind('WITR\TopTwenty\Reader', 'WITR\TopTwenty\DummyReader');
+		}
 
 		if($this->app->environment('local'))
 		{
@@ -44,15 +44,18 @@ class AppServiceProvider extends ServiceProvider {
 			$this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
 		}
 
+		$this->app->singleton('WITR\ViewComposers\UsersViewComposer');
+		$this->app->singleton('WITR\ViewComposers\ShowsViewComposer');
+
 		$this->app['view']->composers([
-		    'WITR\ViewComposers\UsersViewComposer' => 'shared.user_dropdown',
-		    'WITR\ViewComposers\ShowsViewComposer' => 'shared.show_dropdown',
-		    'WITR\ViewComposers\VideoViewComposer' => 'home.partials.video',
-		    'WITR\ViewComposers\AlbumsViewComposer' => 'home.partials.albums',
-		    'WITR\ViewComposers\SliderViewComposer' => 'home.partials.slider',
-		    'WITR\ViewComposers\NowPlayingViewComposer' => 'home.partials.nowplaying',
-		    'WITR\ViewComposers\TopTwentyViewComposer' => 'home.partials.toptwenty',
-		    'WITR\ViewComposers\AuthViewComposer' => 'layouts.partials.auth-buttons',
+			'WITR\ViewComposers\UsersViewComposer' => 'shared.user_dropdown',
+			'WITR\ViewComposers\ShowsViewComposer' => 'shared.show_dropdown',
+			'WITR\ViewComposers\VideoViewComposer' => 'home.partials.video',
+			'WITR\ViewComposers\AlbumsViewComposer' => 'home.partials.albums',
+			'WITR\ViewComposers\SliderViewComposer' => 'home.partials.slider',
+			'WITR\ViewComposers\NowPlayingViewComposer' => 'home.partials.nowplaying',
+			'WITR\ViewComposers\TopTwentyViewComposer' => 'home.partials.toptwenty',
+			'WITR\ViewComposers\AuthViewComposer' => 'layouts.partials.auth-buttons',
 		]);
 
 		$this->app->bind('WITR\Services\Whitelist', function($app) {
