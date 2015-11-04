@@ -43,7 +43,7 @@ class AuthorizeAdmin {
 			return response('Unauthorized.', 401);
 		}
 		
-		return redirect()->guest('auth/login');
+		return redirect()->route('home');
 	}
 
 }
