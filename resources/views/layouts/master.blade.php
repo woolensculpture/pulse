@@ -79,20 +79,14 @@ Developer: John Phillip Betley
 				-->
 			</li>
 			<li><a href="{{ route('about') }}">About</a>
-				<!--
-				<ul class="sub_nav">
-				    <li><a href="/about/music">The Music</a></li>
-				    <li><a href="/about/performances">Studio Performances</a></li>
-				    <li><a href="/shows/witr">Past, Present, Future</a></li>
-				</ul>
-				-->
 			</li>
 			<li><a href="{{ route('hockey') }}">Hockey</a></li>
 			<li><a href="{{ route('contact') }}">Contact</a></li>
-      		<li><a href="{{ route('askdestler') }}">Ask Destler</a></li>
-      		<li><a href="https://www.facebook.com/WITR897"><img src="{{ secure_asset('img/header/facebook.png') }}"></a></li>
-      		<li><a href="https://www.twitter.com/WITR897"><img src="{{ secure_asset('img/header/twitter.png') }}"></a></li>
-      		<li><a href="https://www.instagram.com/WITR897"><img src="{{ secure_asset('img/header/instagram.png') }}"></a></li>
+			<li><a href="https://rit.edu/giving/witr">Donate!</a></li>
+      			<li><a href="{{ route('askdestler') }}">Ask Destler</a></li>
+      			<li><a href="https://www.facebook.com/WITR897"><img src="{{ secure_asset('img/header/facebook.png') }}"></a></li>
+      			<li><a href="https://www.twitter.com/WITR897"><img src="{{ secure_asset('img/header/twitter.png') }}"></a></li>
+      			<li><a href="https://www.instagram.com/WITR897"><img src="{{ secure_asset('img/header/instagram.png') }}"></a></li>
 		</ul>
 
 		<!-- OTHER -->
