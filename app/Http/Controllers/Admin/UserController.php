@@ -54,7 +54,7 @@ class UserController extends Controller {
 
         $response = $this->passwords->sendResetLink($request->only('email'), function($m)
 		{
-			$m->subject($this->getEmailSubject());
+			$m->subject('Welcome to WITR!');
 		});
 
 		switch ($response)

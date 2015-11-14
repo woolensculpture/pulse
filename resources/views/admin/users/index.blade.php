@@ -9,7 +9,7 @@
 		<ul>
 			@foreach($users as $user)
 				<li>
-					<a href="{{ route('admin.users.edit', $user->id) }}"> {{ $user->name }}: {{ $user->dj_name }} </a>
+					<a href="{{ route('admin.users.edit', $user->id) }}"> {{ $user->name }} </a>
 				</li>
 			@endforeach
 		</ul>

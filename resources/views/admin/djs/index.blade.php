@@ -9,7 +9,7 @@
 		<ul>
 			@foreach($djs as $dj)
 				<li>
-					<a href="{{ route('admin.djs.edit', $dj->id) }}"> {{ $dj->name }}: {{ $dj->name }} </a>
+					<a href="{{ route('admin.djs.edit', $dj->id) }}">{{ $dj->name }}</a>
 				</li>
 			@endforeach
 		</ul>

@@ -11,6 +11,7 @@
 		<div>
 			Email Address: {{ $user->email }}
 		</div>
+		<br>
 
 		{!! Form::open(['method' => 'delete', 'route' => ['admin.users.delete', $user->id], 'class' => 'delete-form']) !!}
 			{!! Form::submit('Delete User') !!}
