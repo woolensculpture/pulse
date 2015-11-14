@@ -7,7 +7,7 @@ use Prophecy\Argument;
 use Illuminate\Support\Collection;
 use WITR\TimeSlot;
 use WITR\Show;
-use WITR\User;
+use WITR\DJ;
 use WITR\Schedule\Weekday;
 use WITR\Schedule\ScheduleTime;
 use Carbon\Carbon;
@@ -163,11 +163,11 @@ class TimeSlotTestWrapper
 
 	public function djForTimeslot()
 	{
-		$user = new User([
-			'dj_name' => 'Philosopher'
+		$dj = new DJ([
+			'name' => 'Philosopher'
 		]);
-		$user->id = ($this->slot->hour - 1) % 4 < 2 ? 1 : 2;
-		return $user;
+		$dj->id = ($this->slot->hour - 1) % 4 < 2 ? 1 : 2;
+		return $dj;
 	}
 
 	public function __call($method, $arguments)

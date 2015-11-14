@@ -17,7 +17,7 @@ class TimeSlot extends Model {
 
 	public function djForTimeslot()
 	{
-		return $this->belongsTo('WITR\User', 'dj', 'id');
+		return $this->belongsTo('WITR\DJ', 'dj', 'id');
 	}
 
 	public function showForTimeslot()

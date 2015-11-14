@@ -28,7 +28,7 @@ class ScheduledShow
 
     public function dj()
     {
-        return $this->dj->dj_name;
+        return $this->dj->name;
     }
 
     public function djId()
