@@ -18,6 +18,9 @@
 	        <li>
 	            <a href="{{ route('admin.shows.index') }}">Add/Edit Shows</a>
 	        </li>
+	        <li>
+	            <a href="{{ route('admin.djs.index') }}">Add/Edit DJs</a>
+	        </li>
 	    </ul>
 	</div>
 	<div class="admin_section">
@@ -29,10 +32,10 @@
 	    </ul>
 	</div>
 	<div class="admin_section">
-	    <h2>DJs/Users</h2>
+	    <h2>Users</h2>
 	    <ul>
 	        <li>
-	            <a href="{{ route('admin.users.index') }}">Add/Edit DJs/Users</a>
+	            <a href="{{ route('admin.users.index') }}">Add/Edit Users</a>
 	        </li>
 	    </ul>
 	</div>
