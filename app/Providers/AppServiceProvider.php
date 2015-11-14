@@ -44,11 +44,11 @@ class AppServiceProvider extends ServiceProvider {
 			$this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
 		}
 
-		$this->app->singleton('WITR\ViewComposers\UsersViewComposer');
+		$this->app->singleton('WITR\ViewComposers\DJsViewComposer');
 		$this->app->singleton('WITR\ViewComposers\ShowsViewComposer');
 
 		$this->app['view']->composers([
-			'WITR\ViewComposers\UsersViewComposer' => 'shared.user_dropdown',
+			'WITR\ViewComposers\DJsViewComposer' => 'shared.dj_dropdown',
 			'WITR\ViewComposers\ShowsViewComposer' => 'shared.show_dropdown',
 			'WITR\ViewComposers\VideoViewComposer' => 'home.partials.video',
 			'WITR\ViewComposers\AlbumsViewComposer' => 'home.partials.albums',

@@ -2,12 +2,12 @@
 
 namespace WITR\ViewComposers;
 
-use WITR\User;
+use WITR\DJ;
 use Illuminate\View\View;
 
-class UsersViewComposer {
+class DJsViewComposer {
 
-    protected $users;
+    protected $djs;
 
 	/**
 	 * Bind data to the view.
@@ -17,9 +17,9 @@ class UsersViewComposer {
 	 */
 	public function compose(View $view)
     {
-        if ($this->users == null) {
-            $this->users = User::orderBy('dj_name', 'asc')->get();
+        if ($this->djs == null) {
+            $this->djs = DJ::orderBy('name', 'asc')->get();
         }
-		$view->with('users', $this->users);
+		$view->with('djs', $this->djs);
 	}
 }

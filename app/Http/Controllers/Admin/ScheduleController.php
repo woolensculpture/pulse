@@ -38,7 +38,7 @@ class ScheduleController extends Controller {
 		$timeslots = TimeSlot::all();
 
 		foreach ($timeslots as $timeslot) {
-			$dj = $input['user_' . $timeslot->id];
+			$dj = $input['dj_' . $timeslot->id];
 			$show = $input['show_' . $timeslot->id];
 			$timeslot->dj = $dj;
 			$timeslot->show = $show;

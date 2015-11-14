@@ -5,7 +5,6 @@ $factory('WITR\User', function($faker) {
     $roles = DB::table('user_roles')->lists('id');
     return [
         'name' => $faker->name,
-        'dj_name' => $faker->name,
         'username' => $faker->username,
         'password' => $password,
         'email' => $faker->email,
@@ -15,7 +14,6 @@ $factory('WITR\User', function($faker) {
 
 $factory('WITR\User', 'normal_user', [
     'name' => 'Test User',
-    'dj_name' => 'Dee Testable',
     'username' => 'test',
     'password' => Hash::make('test'),
     'email' => 'normal@example.com',
@@ -24,7 +22,6 @@ $factory('WITR\User', 'normal_user', [
 
 $factory('WITR\User', 'editor_user', [
     'name' => 'Editor',
-    'dj_name' => 'Editor',
     'username' => 'editor',
     'password' => Hash::make('test'),
     'email' => 'editor@example.com',
@@ -33,7 +30,6 @@ $factory('WITR\User', 'editor_user', [
 
 $factory('WITR\User', 'admin_user', [
     'name' => 'Admin',
-    'dj_name' => 'Admin',
     'username' => 'admin',
     'password' => Hash::make('test'),
     'email' => 'admin@example.com',
@@ -51,7 +47,7 @@ $factory('WITR\Show', [
 $factory('WITR\TimeSlot', [
     'show' => 'factory:WITR\Show',
     'day' => 1,
-    'dj' => 'factory:WITR\User',
+    'dj' => 'factory:WITR\DJ',
     'hour' => 1
 ]);
 
@@ -82,4 +78,9 @@ $factory('WITR\AlbumReview', [
     'album_name' => $faker->text(45),
     'review' => $faker->paragraph,
     'img_name' => 'default.jpg'
+]);
+
+$factory('WITR\DJ', [
+    'name' => $faker->name,
+    'picture' => 'default.jpg'
 ]);

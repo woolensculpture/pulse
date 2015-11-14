@@ -2,7 +2,7 @@
 
 namespace WITR\Http\Controllers\Admin;
 
-use WITR\Http\Requests;
+use WITR\Http\Requests\Admin\User as Requests;
 use WITR\Http\Controllers\Controller;
 use WITR\User;
 use WITR\Role;
@@ -11,13 +11,16 @@ use File;
 use Hash;
 
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\PasswordBroker;
 
 class UserController extends Controller {
 
-	public function __construct()
+	public function __construct(PasswordBroker $passwords)
 	{
 		$this->middleware('auth');
 		$this->middleware('admin');
+
+		$this->passwords = $passwords;
 	}
 
 	/**
@@ -42,33 +45,26 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Requests\CreateRequest $request)
 	{
-		$input = Input::all();
-		$user = new User($input);
-		$user->password = Hash::make($input['password']);
-		$user->username = $input['email'];
-
-		if ($user->dj_name == '' || $user->dj_name == null)
-		{
-			$fullName = explode(' ', Input::input('name'));
-			$firstName = $fullName[0];
-			$user->dj_name = $firstName;
-		}
-
-		if(Input::hasFile('picture'))
-		{
-			$file = $input->file('picture');
-			$user->uploadFile('picture', $file);
-		}
-		else
-		{
-			$user->picture = 'default.jpg';
-		}
-
+		$user = new User($request->all());
+		$user->username = $request['email'];
+		$user->password = '';
 		$user->save();
-		return redirect()->route('admin.users.index')
-			->with('success', 'User Created!');
+
+        $response = $this->passwords->sendResetLink($request->only('email'), function($m)
+		{
+			$m->subject($this->getEmailSubject());
+		});
+
+		switch ($response)
+		{
+			case PasswordBroker::RESET_LINK_SENT:
+				return redirect()->route('admin.users.index')
+					->with('success', 'User Created!');
+			case PasswordBroker::INVALID_USER:
+				return redirect()->back()->with('error', trans($response));
+		}
 	}
 
 	/**
@@ -86,28 +82,6 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update(Requests\UpdateRequest $request, $id)
-	{
-		$user = User::findOrFail($id);
-		$user->fill($request->except(['picture']));
-
-		if($request->hasFile('picture'))
-		{
-			$file = $request->file('picture');
-			$user->uploadFile('picture', $file);
-		}
-
-		$user->save();
-		return redirect()->route('admin.users.index')
-			->with('success', 'User Saved!');
-	}
-
-	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
@@ -118,8 +92,8 @@ class UserController extends Controller {
 		$user = User::findOrFail($id);
 		File::delete(public_path().'/img/djs/'.$user->picture);
 		User::destroy($id);
-		return view('admin.users.index')
-		->with('success', 'User Deleted!');
+		return redirect()->route('admin.users.index')
+			->with('success', 'User Deleted!');
 	}
 
 }

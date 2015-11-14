@@ -5,7 +5,7 @@ namespace spec\WITR\Schedule;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use WITR\Show;
-use WITR\User;
+use WITR\DJ;
 use WITR\Schedule\ScheduledShow;
 use WITR\Schedule\ScheduleTime;
 use Carbon\Carbon;
@@ -23,8 +23,8 @@ class ScheduledShowSpec extends ObjectBehavior
 		]);
 		$show->id = 2;
 
-		$dj = new User([
-			'dj_name' => 'Philosopher',
+		$dj = new DJ([
+			'name' => 'Philosopher',
 			'picture' => 'dj.jpg'
 		]);
 		$dj->id = 1;
@@ -38,7 +38,7 @@ class ScheduledShowSpec extends ObjectBehavior
 		$this->id()->shouldBe(100);
 	}
 
-	function it_should_display_a_dj_name()
+	function it_should_display_a_name()
 	{
 		$this->dj()->shouldBe('Philosopher');
 	}

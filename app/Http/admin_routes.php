@@ -46,8 +46,14 @@ Route::get('/users', ['as' => 'admin.users.index', 'uses' => 'UserController@ind
 Route::get('/users/create', ['as' => 'admin.users.create', 'uses' => 'UserController@new_user']);
 Route::post('/users/create', ['as' => 'admin.users.create.save', 'uses' => 'UserController@create']);
 Route::get('users/{id}', ['as' => 'admin.users.edit', 'uses' => 'UserController@edit']);
-Route::put('users/{id}', ['as' => 'admin.users.update', 'uses' => 'UserController@update']);
 Route::delete('users/{id}', ['as' => 'admin.users.delete', 'uses' => 'UserController@delete']);
+
+Route::get('/djs', ['as' => 'admin.djs.index', 'uses' => 'DJController@index']);
+Route::get('/djs/create', ['as' => 'admin.djs.create', 'uses' => 'DJController@create']);
+Route::post('/djs/create', ['as' => 'admin.djs.create.save', 'uses' => 'DJController@store']);
+Route::get('djs/{id}', ['as' => 'admin.djs.edit', 'uses' => 'DJController@edit']);
+Route::put('djs/{id}', ['as' => 'admin.djs.update', 'uses' => 'DJController@update']);
+Route::delete('djs/{id}', ['as' => 'admin.djs.delete', 'uses' => 'DJController@delete']);
 
 Route::get('/videos', ['as' => 'admin.videos.index', 'uses' => 'VideoController@index']);
 Route::get('/videos/create', ['as' => 'admin.videos.create', 'uses' => 'VideoController@new_review']);
