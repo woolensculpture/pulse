@@ -47,7 +47,7 @@ $factory('WITR\Show', [
 $factory('WITR\TimeSlot', [
     'show' => 'factory:WITR\Show',
     'day' => 1,
-    'dj' => 'factory:WITR\User',
+    'dj' => 'factory:WITR\DJ',
     'hour' => 1
 ]);
 
