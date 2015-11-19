@@ -23,7 +23,8 @@ class UpdateRequest extends Request {
 	{
 		return [
 			'picture' => 'sometimes|image',
-			'name' => 'required'
+			'name' => 'required',
+			'realname' => 'required',
 		];
 	}
 
