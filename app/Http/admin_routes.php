@@ -46,6 +46,7 @@ Route::get('/users', ['as' => 'admin.users.index', 'uses' => 'UserController@ind
 Route::get('/users/create', ['as' => 'admin.users.create', 'uses' => 'UserController@new_user']);
 Route::post('/users/create', ['as' => 'admin.users.create.save', 'uses' => 'UserController@create']);
 Route::get('users/{id}', ['as' => 'admin.users.edit', 'uses' => 'UserController@edit']);
+Route::put('users/{id}', ['as' => 'admin.users.update', 'uses' => 'UserController@update']);
 Route::delete('users/{id}', ['as' => 'admin.users.delete', 'uses' => 'UserController@delete']);
 
 Route::get('/djs', ['as' => 'admin.djs.index', 'uses' => 'DJController@index']);
