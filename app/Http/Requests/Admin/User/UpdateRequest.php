@@ -1,8 +1,8 @@
-<?php namespace WITR\Http\Requests\Admin\DJ;
+<?php namespace WITR\Http\Requests\Admin\User;
 
 use WITR\Http\Requests\Request;
 
-class CreateRequest extends Request {
+class UpdateRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,9 +22,8 @@ class CreateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'picture' => 'sometimes|image',
 			'name' => 'required',
-			'realname' => 'required',
+			'email' => 'required|email'
 		];
 	}
 

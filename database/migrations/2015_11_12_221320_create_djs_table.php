@@ -19,6 +19,7 @@ class CreateDjsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
+			$table->string('realname');
 			$table->string('picture');
 			$table->timestamps();
 		});	
@@ -30,6 +31,7 @@ class CreateDjsTable extends Migration {
 				'id' => $user->id,
 				'name' => $user->dj_name,
 				'picture' => $user->picture,
+				'realname' => $user->name
 			]);
 		}
 

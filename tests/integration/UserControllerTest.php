@@ -34,7 +34,6 @@ class UserControllerTest extends IntegrationTestCase {
 		$this->visit('/admin/users')
             ->onPage('/admin/users');
 	}
-
 	
 	/** @test */
 	public function it_creates_a_user()
@@ -68,6 +67,39 @@ class UserControllerTest extends IntegrationTestCase {
 			->andSee('The name field is required')
 			->andSee('The email must be a valid email address')
 			->onPage('/admin/users/create');
+	}
+
+	/** @test */
+	public function it_updates_a_user()
+	{
+		$user = TestDummy::create('WITR\User');
+		$form = ['name' => 'THIS UPDATED VALUE', 'email' => 'test@example.com'];
+
+		$this->beAdmin();
+		$this->visit('/admin/users/' . $user->id)
+			->onPage('/admin/users/' . $user->id)
+			->submitForm('Update User', $form)
+			->andSee('User Saved!')
+			->onPage('/admin/users')
+			->verifyInDatabase('user', $form);
+	}
+
+	/** @test */
+	public function it_validates_an_update_request()
+	{
+		$user = TestDummy::create('WITR\User');
+		$form = [
+			'name' => '',
+			'email' => 'asdfasdf',
+		];
+
+		$this->beAdmin();
+		$this->visit('/admin/users/' . $user->id)
+			->onPage('/admin/users/' . $user->id)
+			->submitForm('Update User', $form)
+			->andSee('The name field is required')
+			->andSee('The email must be a valid email address')
+			->onPage('/admin/users/' . $user->id);
 	}
 
 	/** @test */

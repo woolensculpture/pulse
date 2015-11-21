@@ -81,6 +81,17 @@ class UserController extends Controller {
 		return view('admin.users.edit', ['roles' => $roles, 'user' => $user]);
 	}
 
+	public function update(Requests\UpdateRequest $request, $id)
+	{
+		$user = User::findOrFail($id);
+		$user->fill($request->all());
+		$user->username = $request['email'];
+		$user->save();
+
+		return redirect()->route('admin.users.index')
+			->with('success', 'User Saved!');
+	}
+
 	/**
 	 * Remove the specified resource from storage.
 	 *

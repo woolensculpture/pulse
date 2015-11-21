@@ -12,6 +12,10 @@
 				{!! Form::text('name') !!}
 			</div>
 			<div>
+				{!! Form::label('realname', 'Real Name:') !!}
+				{!! Form::text('realname') !!}
+			</div>
+			<div>
 				{!! Form::label('picture', 'Picture: (Note: Pictures should be of size 175x175)') !!}
 				{!! Form::file('picture') !!}
 			</div>

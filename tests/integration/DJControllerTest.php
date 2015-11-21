@@ -64,7 +64,8 @@ class DJControllerTest extends IntegrationTestCase {
 	{
 		$form = TestDummy::attributesFor('WITR\DJ', [
 			'picture' => __DIR__ . '/files/non-dj.pdf',
-			'name' => ''
+			'name' => '',
+			'realname' => ''
 		]);
 		unset($form['updated_at']);
 		unset($form['created_at']);
@@ -74,6 +75,7 @@ class DJControllerTest extends IntegrationTestCase {
 			->onPage('/admin/djs/create')
 			->submitForm('Save DJ', $form)
 			->andSee('The name field is required')
+			->andSee('The realname field is required')
 			->andSee('The picture must be an image')
 			->onPage('/admin/djs/create');
 	}
@@ -84,6 +86,7 @@ class DJControllerTest extends IntegrationTestCase {
 		Carbon::setTestNow(Carbon::create(2014, 5, 21, 12));
 		$dj = TestDummy::create('WITR\DJ');
 		$dj->name = 'THIS VALUE HAS BEEN UPDATED';
+		$dj->realname = 'THIS VALUE HAS BEEN UPDATED';
 		$form = $dj->toArray();
 		unset($form['id']);
 		unset($form['updated_at']);

@@ -13,7 +13,7 @@ class DJ extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'picture'];
+	protected $fillable = ['name', 'picture', 'realname'];
 
 	protected $uploadDirectories = [
 		'picture' => '/img/djs/',

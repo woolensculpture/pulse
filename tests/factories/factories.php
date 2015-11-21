@@ -82,5 +82,6 @@ $factory('WITR\AlbumReview', [
 
 $factory('WITR\DJ', [
     'name' => $faker->name,
-    'picture' => 'default.jpg'
+    'picture' => 'default.jpg',
+    'realname' => $faker->name
 ]);
