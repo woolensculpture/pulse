@@ -11,30 +11,37 @@
 				color: #B0BEC5;
 				display: table;
 				font-weight: 100;
-				font-family: 'Lato';
+				font-family: 'Lato', Helvetica, Arial, sans-serif;
 			}
 
 			.container {
 				text-align: center;
-				display: table-cell;
 				vertical-align: middle;
 			}
 
 			.content {
 				text-align: center;
-				display: inline-block;
+                font-size: 36px;
+                margin-bottom: 20px;
 			}
 
 			.title {
+                text-align: center;
 				font-size: 72px;
-				margin-bottom: 40px;
+				margin-bottom: 20px;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Be right back.</div>
+                <div class="title">Be right back.</div>
+                <div class="content">Engineering is exploring another dimension.</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="content">
+                <iframe src="//giphy.com/embed/26tPrpzLYeTRXzNHq?html5=true&hideSocial=true" width="1360" height="772" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
 			</div>
 		</div>
 	</body>
