@@ -3,7 +3,7 @@
 .env
 
 # binary blabs
-composer.phar
+composer.*
 
 # legacy
 wiki/
@@ -12,3 +12,4 @@ wiki/
 .DS_Store
 Thumbs.db
 *.swp
+.vagrant
